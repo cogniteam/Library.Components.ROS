@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/ros-ydlidar-driver
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * 
@@ -39,8 +38,7 @@ This node does not provide tf
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/ros-ydlidar-driver
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * 

@@ -1,0 +1,17 @@
+<launch>
+    
+    <arg name="min_gray_scale_value" default="0" />
+    <arg name="max_gray_scale_value" default="255" />
+     <arg name="max_distance" default="3000" />
+
+    <node name="depth_to_grayscale_node" pkg="depth_to_grayscale" 
+            type="depth_to_grayscale_node" required = "true">   
+
+        <param name="min_gray_scale_value" value="$(arg min_gray_scale_value)" /> 
+        
+        <param name="max_distance" value="$(arg max_distance)" /> 
+
+
+    </node>
+
+</launch>

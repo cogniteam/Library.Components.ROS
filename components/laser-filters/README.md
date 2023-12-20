@@ -1,6 +1,6 @@
-# Cogniteam-Random-Goals
+# Laser-Filters
 
-<img src="laser-filters/scan_to_scan_filter_chain.png" alt="laser-filters" width="400"/>
+<img src="./laser-filters/Cogniteam_CMYK_Social_white_on_aubergine.jpg" alt="laser-filters" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/laser-filters
 * Supported architectures <b>arm64/amd64</b>
@@ -21,7 +21,6 @@ ROS topic | type
 /scan | sensor_msgs/LaserScan
 
 
-
 # Publishers
 ROS topic | type
 --- | ---
@@ -29,7 +28,8 @@ ROS topic | type
 
 
 # Required tf
-This node does not Required tf
+This node does not require tf
+
 
 # Provided tf
 This node does not provide tf

@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/sdk-examples
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * The generic listener from the ros1 tutorials 

@@ -1,0 +1,42 @@
+<launch>
+
+    <arg name="namespace" default="" />
+    <arg name="imu_filter_madgwick" default="false" />
+    <arg name="imu_filter_complementary" default="true" />
+
+    <!--  
+        IMU madgwick filter (earth-referenced orientation)
+    -->
+    <node if="$(arg imu_filter_madgwick)" name="imu_filter_madgwick_node" 
+            pkg="imu_filter_madgwick" type="imu_filter_node">
+        <remap from="imu/data_raw" to="imu" />
+        <remap from="imu/mag" to="mag" />
+
+        <param name="use_mag" value="true" />
+        <param name="gain" value="0.0" />
+        <param name="world_frame" value="enu" />
+        <param name="publish_tf" value="false" />
+    </node>
+
+    <!-- 
+        IMU complementary filter
+     -->
+    <node if="$(arg imu_filter_complementary)" name="imu_complementary_filter_node" 
+            pkg="imu_complementary_filter" type="complementary_filter_node">
+        <remap from="imu/data_raw" to="imu" />
+        <remap from="imu/mag" to="mag" />
+
+        <param name="fixed_frame" value="$(arg namespace)/odom" />
+        <param name="use_mag" value="true" />
+        <param name="gain_acc" value="0.1" />
+        <param name="gain_mag" value="0.05" />
+        <param name="constant_dt" value="0.01" />
+        <param name="publish_debug_topics" value="true" />
+
+        <param name="world_frame" value="enu" />
+        <param name="publish_tf" value="false" />
+        <param name="do_bias_estimation" value="true" />
+        <param name="do_adaptive_gain" value="true" />
+    </node>
+
+</launch>

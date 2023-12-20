@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/stm-remote-burn
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>ROS1
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * nimbus component for burning arduino/stm devices remotely

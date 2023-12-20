@@ -1,0 +1,12 @@
+download ZED_SDK_Tegra_JP45_v3.4.2.run from https://www.stereolabs.com/developers/release/
+
+sudo chmod 777 ZED_SDK_Tegra_JP45_v3.4.2.run
+
+cd ~/catkin_ws/src
+git clone https://github.com/stereolabs/zed-ros-wrapper.git
+cd ../
+rosdep install --from-paths src --ignore-src -r -y
+catkin_make -DCMAKE_BUILD_TYPE=Release
+source ./devel/setup.bash
+
+roslaunch zed_wrapper zed.launch

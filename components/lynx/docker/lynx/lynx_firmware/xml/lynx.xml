@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<mavlink>
+  <version>1</version>
+  <dialect>0</dialect>
+  <enums/>
+  <messages>
+    <message id="100" name="COMMAND_DRIVE_MOTOR">
+      <description>PWM signal to drive motor</description>
+      <field type="int16_t" name="duty">Target PWM for DC motor driver</field>
+    </message>
+    <message id="101" name="COMMAND_STEER_MOTOR">
+      <description>PWM signal to steering motor</description>
+      <field type="int16_t" name="target">Target PWM for steering servo</field>
+    </message>
+    <message id="102" name="COMMAND_CONFIG_DRIVE">
+      <description>Platform configurations</description>
+      <field type="uint16_t" name="throttle_zero_pwm">Zero velocity PWM value (from RC)</field>
+      <field type="uint16_t" name="steering_zero_pwm">Zero angle PWM value for steering servo</field>
+      <field type="uint16_t" name="steering_min_pwm">Minimum allowed PWM value for steering servo</field>
+      <field type="uint16_t" name="steering_max_pwm">Maximum allowed PWM value for steering servo</field>
+      <field type="uint16_t" name="throttle_deadzone">Throttle threshold for releasing the brakes</field>
+      <field type="uint16_t" name="front_breaks_on_pwm">PWM value for front breaks servo (when front breaks activated)</field>
+      <field type="uint16_t" name="front_breaks_off_pwm">PWM value for front breaks servo (when front breaks deactivated)</field>
+      <field type="uint16_t" name="rear_breaks_on_pwm">PWM value for rear breaks servo (when rear breaks activated)</field>
+      <field type="uint16_t" name="rear_breaks_off_pwm">PWM value for rear breaks servo (when rear breaks deactivated)</field>
+      <field type="int32_t" name="tick_to_meter">Value of each tick in meters</field>
+      <field type="uint16_t" name="throttle_min_dac_value">analogWrite() value to set ~0.8V to throttle DAC pin</field>
+    </message>
+    <message id="200" name="IMU">
+      <description>IMU data</description>
+      <field type="int16_t" name="gyro_x">Raw gyro x reading</field>
+      <field type="int16_t" name="gyro_y">Raw gyro y reading</field>
+      <field type="int16_t" name="gyro_z">Raw gyro z reading</field>
+      <field type="int16_t" name="accel_x">Raw accelerometer x reading</field>
+      <field type="int16_t" name="accel_y">Raw accelerometer y reading</field>
+      <field type="int16_t" name="accel_z">Raw accelerometer z reading</field>
+      <field type="int16_t" name="mag_x">Raw magnetometer x reading</field>
+      <field type="int16_t" name="mag_y">Raw magnetometer y reading</field>
+      <field type="int16_t" name="mag_z">Raw magnetometer z reading</field>
+    </message>
+    <message id="201" name="ENCODER">
+      <description>Encoder status</description>
+      <field type="int32_t" name="ticks">Total ticks count</field>
+      <field type="int32_t" name="velocity">Velocity mm/s</field>
+    </message>
+    <message id="202" name="STATE_DRIVE">
+      <description>Driving component state report</description>
+      <field type="uint8_t" name="offboard">Is offboard mode enabled</field>
+
+      <!-- Outputs -->
+      <field type="int16_t" name="throttle_voltage">Current throttle voltage output value</field>
+      <field type="int16_t" name="front_breaks_pwm">Current breaks PWM value</field>
+      <field type="int16_t" name="rear_breaks_pwm">Current breaks PWM value</field>
+      <field type="int16_t" name="steering_pwm">Current steering motor PWM value</field>
+      <field type="uint8_t" name="lights_state">Lights enabled state</field>
+      <field type="uint8_t" name="horn_state">Horn enabled state</field>
+      
+      <!-- Readings from RC -->
+      <field type="uint8_t" name="rc_connected">RC connection state</field>
+      <field type="int16_t" name="rc_offboard_pwm">RC input offboard channel PWM</field>
+      <field type="int16_t" name="rc_steering_pwm">RC input steering PWM</field>
+      <field type="int16_t" name="rc_throttle_pwm">RC input throttle PWM</field>
+      <field type="int16_t" name="rc_lights_pwm">RC input lights PWM</field>
+      <field type="int16_t" name="rc_horn_pwm">RC input horn PWM</field>
+    </message>
+    <message id="203" name="STATE_IMU">
+      <description>IMU state report</description>
+      <field type="uint8_t" name="lsm6_connected">LSM6 accelerometers and gyros driver connection state</field>
+      <field type="uint8_t" name="lis3mdl_connected">LIS3MDL magnetometers driver connection state</field>
+    </message>
+    <message id="210" name="STATE_PID">
+      <description>PID status</description>
+      <field type="int32_t" name="set_point">Target value</field>
+      <field type="int32_t" name="current_value">Current measurement</field>
+      <field type="int32_t" name="command">Output command value</field>
+    </message>
+  </messages>
+</mavlink>

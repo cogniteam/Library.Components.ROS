@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/cogniteam-merge-videos
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * ros node that subscribes to a multiple image topic and merge them to one image and publish it.

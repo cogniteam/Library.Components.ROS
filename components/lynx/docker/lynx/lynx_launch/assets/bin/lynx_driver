@@ -1,0 +1,3 @@
+#!/bin/bash
+
+roslaunch lynx_driver lynx_driver.launch --screen

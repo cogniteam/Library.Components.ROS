@@ -1,0 +1,13 @@
+bool offboard
+float64 throttle_voltage
+int32 front_breaks_pwm
+int32 rear_breaks_pwm
+int32 steering_pwm
+bool lights_state
+bool horn_state
+bool rc_connected
+int32 rc_offboard_pwm
+int32 rc_steering_pwm
+int32 rc_throttle_pwm
+int32 rc_lights_pwm
+int32 rc_horn_pwm

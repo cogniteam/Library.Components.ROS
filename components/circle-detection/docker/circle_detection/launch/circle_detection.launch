@@ -1,0 +1,23 @@
+<launch>
+    
+    <arg name="min_dist_between_two_circles" default="1.0" />
+    <arg name="canny_high_threshold" default="100.0" />
+    <arg name="min_number_of_votes" default="150.0" />
+    <arg name="min_radius" default="0" />
+    <arg name="max_radius" default="100" />
+
+
+    <node name="circle_detection_node" pkg="circle_detection" 
+            type="circle_detection_node" required = "true">   
+
+        <param name="min_dist_between_two_circles" value="$(arg min_dist_between_two_circles)" />         
+        <param name="canny_high_threshold" value="$(arg canny_high_threshold)" />   
+        <param name="min_number_of_votes" value="$(arg min_number_of_votes)" />     
+        <param name="min_radius" value="$(arg min_radius)" />     
+        <param name="max_radius" value="$(arg max_radius)" />   
+
+    </node>
+
+</launch>
+
+ 

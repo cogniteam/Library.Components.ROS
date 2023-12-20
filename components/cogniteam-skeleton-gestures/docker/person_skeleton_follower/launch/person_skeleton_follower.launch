@@ -1,0 +1,12 @@
+<launch>
+    
+    <arg name="box_percentage_from_image_to_stop" default="0.8" />
+   
+    <node name="person_skeleton_follower_node" pkg="person_skeleton_follower" 
+            type="person_skeleton_follower_node" required = "true">        
+
+
+    </node>
+    
+
+</launch>

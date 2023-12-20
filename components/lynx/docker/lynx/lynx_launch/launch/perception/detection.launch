@@ -1,0 +1,21 @@
+<launch>
+
+    <arg name="namespace"  />
+
+    <node pkg="dynamic_vino_sample" type="pipeline_with_params"
+            name="pipeline_with_params">
+
+        <remap from="/openvino_toolkit/detected_objects" 
+               to="/$(arg namespace)/openvino_toolkit/detected_objects" />
+
+        <remap from="/camera/color/image_raw" 
+               to="/$(arg namespace)/d435/color/image_raw" />
+
+	<remap from="/openvino_toolkit/images"
+		to="/$(arg namespace)/openvino_toolkit/images"/>
+
+        <param name="param_file" 
+            value="$(find lynx_launch)/params/pipeline.yaml" />   
+    </node>
+
+ </launch>

@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/tflite-object-detection
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * tf-lite to raspberry pi component for object detection: https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/raspberry_pi

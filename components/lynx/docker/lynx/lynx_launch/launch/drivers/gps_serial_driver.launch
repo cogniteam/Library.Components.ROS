@@ -1,0 +1,32 @@
+<launch>
+
+    <arg name="second_gps" default="false" />
+
+    <!--  
+        Ublox NEO-M8N GPS
+    -->
+	<node name="nmea_serial_driver_node" pkg="nmea_navsat_driver" type="nmea_serial_driver" >
+        <remap from="fix" to="sensors/gps/fix" />
+        <remap from="time_reference" to="sensors/gps/time_reference" />
+        <remap from="vel" to="sensors/gps/vel" />
+
+	    <param name="port" value="/dev/ttyS5" />
+        <param name="baud" value="38400" />
+        <param name="useRMC" value="false" />
+    </node>
+
+    <!--  
+        USB serial gps (optional)
+    -->
+	<node if="$(arg second_gps)" name="nmea_serial_driver2_node" pkg="nmea_navsat_driver" type="nmea_serial_driver" >
+        <remap from="fix" to="sensors/gps2/fix" />
+        <remap from="time_reference" to="sensors/gps2/time_reference" />
+        <remap from="vel" to="sensors/gps2/vel" />
+
+	    <param name="port" value="/dev/lynx/gps" />
+        <param name="baud" value="9600" />
+        <param name="useRMC" value="false" />
+    </node>
+
+</launch>
+

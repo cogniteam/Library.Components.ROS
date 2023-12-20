@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/cogniteam-random-goals
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * ros program that subscribe to the relevant tf and to the map topic and send the robot to a random goal every time through move-base node.
@@ -13,7 +12,7 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --network=host cognimbus/cogniteam-random-goals:noetic roslaunch adventech_launch adventech_demo.launch general_max_vel_x:=0.8 general_min_vel_x:=0.2
+docker run -it --network=host cognimbus/cogniteam-random-goals:noetic roslaunch adventech_launch adventech_demo.launch general_max_vel_x:=0.8 general_min_vel_x:=0.2 lidar_child_frame_id:=nimbus/slamtec-rplidar-a3
 ```
 
 # Subscribers
