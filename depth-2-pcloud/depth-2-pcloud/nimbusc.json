@@ -1,0 +1,110 @@
+{
+  "name": "nimbus/depth-2-pcloud",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Convert depth img (with float data) to compressed grayscale image.\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/depth-2-pcloud\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/depth_to_pcloud_scan",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "depth_to_pcloud_scan",
+        "depth_to_pcloud_scan.launch"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "depth_image_raw",
+        "type": "",
+        "description": "Rectified depth image.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/depth/image_rect_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "camera_info",
+        "type": "",
+        "description": "This defines meta information for a camera.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/depth/camera_info",
+          "type": "Messages.sensor_msgs.CameraInfo",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "points_cloud",
+        "type": "",
+        "description": "Point cloud.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/pointcloud",
+          "type": "Messages.sensor_msgs.PointCloud2",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Image processing",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

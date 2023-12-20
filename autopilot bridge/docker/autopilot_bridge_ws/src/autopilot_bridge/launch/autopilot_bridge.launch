@@ -1,0 +1,9 @@
+<launch>
+	<arg name="protocol" />
+	<arg name="ip" />
+	<arg name="port" />
+	<node pkg="autopilot_bridge" name="autopilot_bridge" type="mavbridge.py"/>
+	<param name="protocol" type="string" value="$(arg protocol)" />
+	<param name="port" type="int" value="$(arg port)" />
+	<param name="ip" type="string" value="$(arg ip)" />
+</launch>

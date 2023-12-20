@@ -1,0 +1,19 @@
+<launch>
+
+    <arg name="namespace" default="" />
+
+
+    <!--  
+        Intel RealSense T265 tracking (odometry) camera
+    -->
+    <include file="$(find realsense2_camera)/launch/rs_t265.launch">
+        <arg name="serial_no" value="852212110289" />
+        <arg name="camera" value="t265" />
+        <arg name="tf_prefix" value="$(arg namespace)/t265" />
+    </include>
+
+    <node name="t265_link_static_tf_node" pkg="tf2_ros" type="static_transform_publisher" 
+            args="0.53 0 0.48 0 0 0 $(arg namespace)/base_link $(arg namespace)/t265_link" />
+
+
+</launch>

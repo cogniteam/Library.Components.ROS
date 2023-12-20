@@ -1,0 +1,121 @@
+{
+  "name": "nimbus/rtsp-camera",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "RTSP camera driver\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/rtsp-camera",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "video_stream_opencv",
+        "camera.launch",
+        "video_stream_provider:=${video_stream_provider}",
+        "camera_name:=${camera_name}",
+        "camera_frame:=${network_camera.name}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": true,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "video_stream_provider",
+        "description": "Name of the video stream published by the RTSP camera.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "rtsp://admin@192.168.217.20:554/av0_0"
+      },
+      {
+        "name": "camera_name",
+        "description": "Namespace of the camera.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "camera"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": [
+      {
+        "name": "image",
+        "type": "",
+        "description": "Raw image stream from the camera.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [
+    {
+      "name": "network_camera",
+      "info": {
+        "type": "USB_PORT_TYPE_NETWORK",
+        "productId": "",
+        "vendorId": "",
+        "revision": "",
+        "serial": "",
+        "vendorName": "",
+        "productName": "",
+        "attributes": {},
+        "ports": [],
+        "portIndex": 0,
+        "simulation": false,
+        "ip": "",
+        "id": "",
+        "internalId": ""
+      },
+      "mountAs": "",
+      "optional": false
+    }
+  ],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Drivers/RGB Cameras",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

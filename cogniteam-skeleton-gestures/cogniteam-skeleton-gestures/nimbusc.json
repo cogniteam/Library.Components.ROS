@@ -1,0 +1,103 @@
+{
+  "name": "nimbus/cogniteam_skeleton_gestures",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "An algorithm to create gestures from skeleton detection (can be used with the Nvidia Gem)\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/cogniteam-skeleton-gestures\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/cogniteam-skeleton-gestures",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "person_skeleton_follower",
+        "person_skeleton_follower.launch",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "image_raw",
+        "type": "",
+        "description": "Raw image stream from the camera driver.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/webcam/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "skeletons_text",
+        "type": "",
+        "description": "A string with all the 25-keypoint of body/foot and keypoint estimation",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/skeletons_text",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "gesture_type",
+        "type": "",
+        "description": "A string which describes the gesture that have been done. Can be 'TWO_HANDS' or 'RIGHT_HAND_UP'",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/gesture_type",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Pose estimation",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

@@ -1,0 +1,19 @@
+<launch>
+
+    <arg name="namespace" default="" />
+
+    <!--  
+        Delayed Intel RealSense T265 tracking (odometry) camera
+    -->
+    <node name="realsense_t265_launcher" pkg="lynx_launch" type="delayed_run.sh"
+            args="5 roslaunch lynx_launch realsense_t265.launch initial_reset:=true namespace:=$(arg namespace) __ns:=$(arg namespace)" 
+            output="screen" />
+
+    <!--  
+        Delayed Intel RealSense D435i depth camera
+    -->
+    <node name="realsense_d435_launcher" pkg="lynx_launch" type="delayed_run.sh"
+            args="20 roslaunch lynx_launch realsense_d435.launch initial_reset:=true namespace:=$(arg namespace) __ns:=$(arg namespace)" 
+            output="screen" />
+
+</launch>

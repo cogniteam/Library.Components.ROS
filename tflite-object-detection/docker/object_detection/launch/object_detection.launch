@@ -1,0 +1,10 @@
+<launch>
+  <arg name="num_threads" default="4" />
+  <arg name="score_threshold" default="0.5" />
+  <arg name="max_results" default="30" />
+  <node name="object_detection_node" pkg="object_detection" type="object_detection_node.py" output="screen" required = "true">
+    <param name="num_threads" value="$(arg num_threads)" />
+    <param name="score_threshold" value="$(arg score_threshold)" />
+    <param name="max_results" value="$(arg max_results)" />
+  </node>
+</launch>

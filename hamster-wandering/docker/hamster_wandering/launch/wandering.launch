@@ -1,0 +1,10 @@
+<launch>
+
+	<!-- <node pkg="stage_ros" type="stageros" name="stage" args="$(find stage_ros)/world/willow-erratic.world" /> -->
+
+	<node pkg="hamster_wandering" type="hamster_wandering_node" name="wandering">
+	</node>
+
+	<!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find wanderer)/rviz/debug.rviz" /> -->
+
+</launch>

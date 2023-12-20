@@ -1,0 +1,86 @@
+{
+  "name": "nimbus/pixhawk-driver",
+  "category": "Drivers/Robots",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "description": "Pixhawk driver",
+  "environment": {
+    
+    "dockerInfo": {
+      "image": "cognimbus/pixhawk",
+    
+      "privileged": true
+    }
+  }, 
+  "requiredDevices": [
+    {
+      "name": "pixhawk",
+      "info": {
+        "type": "USB_PORT_TYPE_SERIAL",
+        "productId": "0011",
+        "vendorId": "26ac"        
+      },
+      "attachedDevice": {
+      },
+      "mountAs": "/dev/ttyACM0"
+    }
+  ],  
+  "parameters": {
+    "parameters": [
+    ]
+  }, 
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "global",
+        "type": "",
+        "ros_topic": {
+          "topic": "/mavros/setpoint_position/global",
+          "type": "Messages.geographic_msgs.GeoPoseStamped"
+        }
+      },
+      {
+        "name": "local",
+        "type": "",
+        "ros_topic": {
+          "topic": "/mavros/setpoint_position/local",
+          "type": "Messages.geometry_msgs.PoseStamped"
+        }
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "state",
+        "type": "",
+        "ros_topic": {
+          "topic": "/mavros/state",
+          "type": "Messages.mavros_msgs.State"
+        }
+      },
+      {
+        "name": "ExtendedState",
+        "type": "",
+        "ros_topic": {
+          "topic": "/mavros/extended_state",
+          "type": "Messages.mavros_msgs.ExtendedState"
+        }
+      },
+      {
+        "name": "out_global",
+        "type": "",
+        "ros_topic": {
+          "topic": "/mavros/setpoint_position/global",
+          "type": "Messages.geographic_msgs.GeoPoseStamped"
+        }
+      },
+      {
+        "name": "out_local",
+        "type": "",
+        "ros_topic": {
+          "topic": "/mavros/setpoint_position/local",
+          "type": "Messages.geometry_msgs.PoseStamped"
+        }
+      }
+    ]
+  }  
+}

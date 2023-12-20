@@ -1,0 +1,143 @@
+{
+  "name": "nimbus/circle-detection",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Detect the largest circle in video stream\nLicense: BSD\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/depth-2-grayscale",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/circle-detection",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "circle_detection",
+        "circle_detection.launch",
+        "min_dist_between_two_circles:=${min_dist_between_two_circles}",
+        "canny_high_threshold:=${canny_high_threshold}",
+        "min_number_of_votes:=${min_number_of_votes}",
+        "min_radius:=${min_radius}",
+        "max_radius:=${max_radius}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "min_dist_between_two_circles",
+        "description": "The minimum distance that can be allowed between two detected circles",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 1
+      },
+      {
+        "name": "canny_high_threshold",
+        "description": "If a pixel gradient is higher than the threshold, the pixel is accepted as an edge.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 100
+      },
+      {
+        "name": "min_number_of_votes",
+        "description": "The minimum votes needed for a distance to be declared as a circle radius.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "150"
+      },
+      {
+        "name": "min_radius",
+        "description": "The minimum raduis that circle can have.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "0"
+      },
+      {
+        "name": "max_radius",
+        "description": "The maximum raduis that circle can have.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "100"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "image_raw",
+        "type": "",
+        "description": "Raw image stream from the camera driver.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/usb_cam/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "circle_img",
+        "type": "",
+        "description": "The input raw image with the circle detection on it.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/circle_img/compressed",
+          "type": "Messages.sensor_msgs.CompressedImage",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "largest_circle",
+        "type": "",
+        "description": "The largest circle that was detected in the current image.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/largest_circle",
+          "type": "Messages.geometry_msgs.Vector3",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Object detection",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

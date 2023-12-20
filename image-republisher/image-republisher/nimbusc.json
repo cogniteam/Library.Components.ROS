@@ -1,0 +1,97 @@
+{
+  "name": "nimbus/image-republisher",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Republish a message in nimbus, can be parametrized\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/image-republisher\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/image-republisher",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "img_republisher",
+        "img_republisher.launch",
+        "msgs_per_sec:=${msgs_per_sec}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "msgs_per_sec",
+        "description": "The rate that the new messages will be published in.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 5
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "color_image_raw",
+        "type": "",
+        "description": "This message contains an uncompressed image in a RGB format (colored image).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/color/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "republished_img",
+        "type": "",
+        "description": "The republished image in the required rate. (The image message containes an uncompressed image in a RGB format).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/color/image/republished_img/throttled",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Image processing",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

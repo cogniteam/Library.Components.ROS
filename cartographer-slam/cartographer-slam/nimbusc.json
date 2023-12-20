@@ -1,0 +1,132 @@
+{
+  "name": "nimbus/cartographer-slam",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.",
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/cartographer-slam",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "cartographer_ros",
+        "my_robot.launch"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "scan",
+        "type": "",
+        "description": "Publishes a scan from the laser scanner. Supported in 2D and 3D (e.g. using an axially rotating planar laser scanner).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/scan",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "The frame attached to the odometry system.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "odom",
+          "childFrame": "base_link",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "map",
+        "type": "",
+        "description": "Get the map data from this topic, which is latched, and updated periodically.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/map",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "tracked_pose",
+        "type": "",
+        "description": "The pose of the tracked frame (base_link) with respect to the map frame.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/tracked_pose",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "scan_matched_points2",
+        "type": "",
+        "description": "Point cloud as it was used for the purpose of scan-to-submap matching.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/scan_matched_points2",
+          "type": "Messages.sensor_msgs.PointCloud2",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/SLAM 2D",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "Apache 2.0"
+}

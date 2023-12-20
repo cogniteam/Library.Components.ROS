@@ -1,0 +1,150 @@
+{
+  "name": "nimbus/image-topic-to-rtsp",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "ROS1 node that subscribes to image topic and publish it through RTSP server.",
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/image-topic-to-rtsp",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "ros_rtsp",
+        "rtsp_streams.launch",
+        "numOfStreams:=${numOfStreams}",
+        "mountpoint:=${mountpoint}",
+        "topicPrefix:=${topicPrefix}",
+        "port:=${port}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": true,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "numOfStreams",
+        "description": "number of desired streams from the rtsp server",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "4"
+      },
+      {
+        "name": "mountpoint",
+        "description": "the end point perfix of the rtsp server address",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "/cam"
+      },
+      {
+        "name": "topicPrefix",
+        "description": "the topic name the server will listen to",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "/usb_cam/image_raw"
+      },
+      {
+        "name": "port",
+        "description": "the port the server will listen on",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "8554"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "image1",
+        "type": "",
+        "description": "Raw image stream from the camera.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/usb_cam/image_raw1",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "image2",
+        "type": "",
+        "description": "Raw image stream from the camera.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/usb_cam/image_raw2",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "image3",
+        "type": "",
+        "description": "Raw image stream from the camera.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/usb_cam/image_raw3",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "image4",
+        "type": "",
+        "description": "Raw image stream from the camera.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/usb_cam/image_raw4",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": []
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Image processing",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

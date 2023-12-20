@@ -1,0 +1,264 @@
+{
+  "name": "nimbus/ros1-autopilot-bridge-NavSatFix",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "A ROS bridge to various autopilot protocols. Currently, MAVLink is supported",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 16,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/ros1-autopilot-bridge:navSatFix",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "autopilot_bridge",
+        "autopilot_bridge.launch",
+        "protocol:=${Protocol}",
+        "ip:=${IP}",
+        "port:=${Port}"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": true,
+      "binds": [],
+      "user": "",
+      "runtime": ""
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "Protocol",
+        "description": "UDP/TCP",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "udp"
+      },
+      {
+        "name": "IP",
+        "description": "Device ip",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "192.168.0.20"
+      },
+      {
+        "name": "Port",
+        "description": "Device port",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "10024"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "waypoint_goto",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/waypoint_goto",
+          "type": "Messages.std_msgs.UInt16",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "mode",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/mode",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "arm",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/arm",
+          "type": "Messages.std_msgs.Bool",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "guided_goto_NavSatFix",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/guided_goto_NavSatFix",
+          "type": "Messages.sensor_msgs.NavSatFix",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "guided_goto",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/guided_goto",
+          "type": "Messages.autopilot_bridge.LLA",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "imu",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/imu",
+          "type": "Messages.sensor_msgs.Imu",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "gps",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/gps",
+          "type": "Messages.sensor_msgs.NavSatFix",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "gps_odom",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/gps_odom",
+          "type": "Messages.nav_msgs.Odometry",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "flight_mode",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/flight_mode",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "voltage_battery",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/voltage_battery",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "current_battery",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/current_battery",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "status",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/autopilot/status",
+          "type": "Messages.autopilot_bridge.Status",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false,
+    "ros2DomainId": 0
+  },
+  "tags": {},
+  "category": "Algorithms/Navigation",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "Public Domain",
+  "id": "59e71bdf-1156-405f-9e52-010d963904cd"
+}

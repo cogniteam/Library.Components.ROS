@@ -1,0 +1,84 @@
+{
+  "name": "nimbus/joystick-teleop-twist",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "nimbus component for controlling your robot with ps3/xbox joystick.\nFor safety, before you move your robot with the left stick, hold the X(xbox)/Square(ps3) button",
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/joystick-teleop",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "teleop_twist_joy",
+        "teleop.launch",
+        "joy_config:=${joy_config}",
+        "joy_dev:=${joy_dev}"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": false,
+      "binds": [],
+      "user": ""
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "joy_config",
+        "description": "joystick type xbox/ps3",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "xbox"
+      },
+      {
+        "name": "joy_dev",
+        "description": "path to the connected device",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "/dev/input/js0"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": [
+      {
+        "name": "twist_cmd",
+        "type": "",
+        "description": "This expresses velocity in free space broken into its linear and angular parts.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Uncategorized/None",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD"
+}

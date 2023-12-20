@@ -1,0 +1,192 @@
+{
+  "name": "nimbus/turtlebot3-navigation",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "The turtlebot3_navigation provides roslaunch scripts for starting the navigation.\nLicense: Apache 2.0\nSource: git https://github.com/ROBOTIS-GIT/turtlebot3.git",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/turtlebot3-wafflepi",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "turtlebot3_navigation",
+        "move_base.launch",
+        "model:=${model}",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "model",
+        "description": "The model type. Can be: burger, waffle, or waffle pi.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "waffle_pi"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "goal",
+        "type": "",
+        "description": "Provides a non-action interface to move_base for users that don't care about tracking the execution status of their goals.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base_simple/goal",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map",
+        "type": "",
+        "description": "Get the map data from this topic, which is latched, and updated periodically.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/map",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "scan",
+        "type": "",
+        "description": "Publishes a scan from the laser scanner",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "scan",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom",
+        "type": "",
+        "description": "Odometry information that gives the local planner the current speed of the robot.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "odom",
+          "type": "Messages.nav_msgs.Odometry",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom_base_footprint",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "TF from odometry to base_footprint.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "odom",
+          "childFrame": "base_footprint",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map_odom",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "TF from map to odometry.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "map",
+          "childFrame": "odom",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "cmd_vel",
+        "type": "",
+        "description": "A stream of velocity commands meant for execution by a mobile base.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "status",
+        "type": "",
+        "description": "Provides status information on the goals that are sent to the move_base action.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/status",
+          "type": "Messages.actionlib_msgs.GoalStatusArray",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_footprint",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Navigation",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "Apache 2.0",
+  "id": ""
+}

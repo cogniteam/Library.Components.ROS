@@ -1,0 +1,159 @@
+{
+  "name": "nimbus/yocs-velocity-smoother",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Bound incoming velocity messages according to robot velocity and acceleration limits.\nAuthor: Jorge Santos Simon\nLicense: BSD\nSource: git https://github.com/yujinrobot/yujin_ocs.git",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/yocs_velocity_smoother",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "yocs_velocity_smoother",
+        "velocity_smoother_with_params.launch",
+        "accel_lim_v:=${accel_lim_v}",
+        "accel_lim_w:=${accel_lim_w}",
+        "decel_factor:=${decel_factor}",
+        "frequency:=${frequency}",
+        "speed_lim_v:=${speed_lim_v}",
+        "speed_lim_w:=${speed_lim_w}",
+        "robot_feedback:=${robot_feedback}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "accel_lim_v",
+        "description": "Linear acceleration limit. Mandatory.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.3
+      },
+      {
+        "name": "accel_lim_w",
+        "description": "Angular acceleration limit. Mandatory.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 3.5
+      },
+      {
+        "name": "speed_lim_v",
+        "description": "Linear velocity limit. Mandatory.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.8
+      },
+      {
+        "name": "speed_lim_w",
+        "description": "Angular velocity limit. Mandatory.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 5.4
+      },
+      {
+        "name": "decel_factor",
+        "description": "Deceleration/acceleration ratio. Useful to make deceleration more aggressive, for example to safely brake on robots with high inertia.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 1
+      },
+      {
+        "name": "frequency",
+        "description": "Output messages rate. The velocity smoother keeps it regardless incoming messages rate, interpolating whenever necessary.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 20
+      },
+      {
+        "name": "robot_feedback",
+        "description": "Robot velocity feedback type: 0- none, 1- odometry, 2- end robot commands.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "0"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "raw_cmd_vel",
+        "type": "",
+        "description": "Input velocity commands.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/raw_cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom",
+        "type": "",
+        "description": "Odometry frame. We compare the output velocity commands to 'real' velocity to ensure we don't create very big jumps in the velocity profile.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/odom",
+          "type": "Messages.nav_msgs.Odometry",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "smooth_cmd_vel",
+        "type": "",
+        "description": "Smoothed output velocity commands respecting velocity and acceleration limits.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/smooth_cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Filtering",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

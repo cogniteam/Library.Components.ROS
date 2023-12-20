@@ -1,0 +1,22 @@
+<launch>
+
+    <arg name="namespace" default="" />
+
+    <!--  
+        Intel RealSense D435i depth camera
+    -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="serial_no" value="902512070217" />
+        <arg name="camera" value="d435" />
+        <arg name="tf_prefix" value="$(arg namespace)/d435" />
+        <arg name="align_depth" value="true" />
+        <arg name="enable_pointcloud" value="true" />
+    </include>
+
+    <param name="d435/depth/image_rect_raw/compressedDepth/png_level" value="5" />
+    <param name="d435/aligned_depth_to_color/image_raw/compressedDepth/png_level" value="5" />
+
+    <node name="d435_link_static_tf_node" pkg="tf2_ros" type="static_transform_publisher" 
+            args="0.83 0 0.435 0 0 0 $(arg namespace)/base_link $(arg namespace)/d435_link" />
+
+</launch>

@@ -1,0 +1,226 @@
+{
+  "name": "nimbus/zed-camera-jetson-xavier",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Camera dirver with cuda for zed camera (stereolabs) running on jetson xavier\nLicense: MIT\nSource: https://github.com/stereolabs/zed-ros-wrapper",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/zed-camera-jetson-xavier",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "zed_wrapper",
+        "zed.launch",
+        "svo_file:=${svo_file}",
+        "stream:=${stream}",
+        "node_name:=${node_name}",
+        "camera_model:=${camera_model}",
+        "base_frame:=${base_frame}",
+        "publish_urdf:=${publish_urdf}",
+        "cam_pos_x:=${cam_pos_x}",
+        "cam_pos_y:=${cam_pos_y}",
+        "cam_pos_z:=${cam_pos_z}",
+        "cam_roll:=${cam_roll}",
+        "cam_pitch:=${cam_pitch}",
+        "cam_yaw:=${cam_yaw}"
+      ],
+      "privileged": true,
+      "gpu": true,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "svo_file",
+        "description": "Path to the svo file (file.svo).",
+        "Category": "Static",
+        "node": "",
+        "stringValue": ""
+      },
+      {
+        "name": "stream",
+        "description": "<ip_address>:<port>",
+        "Category": "Static",
+        "node": "",
+        "stringValue": ""
+      },
+      {
+        "name": "node_name",
+        "description": "The name of the ROS node that will be running.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "zed_node"
+      },
+      {
+        "name": "camera_model",
+        "description": "Type of Stereolabs camera. Can be or 'zed' or 'zedm'.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "zed"
+      },
+      {
+        "name": "base_frame",
+        "description": "Frame_id of the frame that indicates the reference base of the robot.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "base_link"
+      },
+      {
+        "name": "publish_urdf",
+        "description": "A flag which is meant to know, whether to publish the URDF or not. (URDF- Unified Robot Description Format. Which is an XML format for representing a robot model.)",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "true"
+      },
+      {
+        "name": "cam_pos_x",
+        "description": "Position of x respect to base frame (i.e. 'base_link')",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "cam_pos_y",
+        "description": "Position of y respect to base frame (i.e. 'base_link')",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "cam_pos_z",
+        "description": "Position of z respect to base frame (i.e. 'base_link')",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "cam_roll",
+        "description": "Orientation respect to base frame (i.e. 'base_link')",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "cam_pitch",
+        "description": "Pitch orientation respect to base frame (i.e. 'base_link')",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "cam_yaw",
+        "description": "Yaw orientation respect to base frame (i.e. 'base_link')",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": [
+      {
+        "name": "image_rect_color",
+        "type": "",
+        "description": "Color rectified image (left RGB image by default).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/zed/zed_node/left/image_rect_color",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "left_image_rect_compressed",
+        "type": "",
+        "description": "Color rectified compressed image (left RGB image by default).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/zed/zed_node/left/image_rect_color/compressed",
+          "type": "Messages.sensor_msgs.CompressedImage",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "depth_camera_info",
+        "type": "",
+        "description": "Depth camera calibration data.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/zed/zed_node/depth/camera_info",
+          "type": "Messages.sensor_msgs.CameraInfo",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "disparity_image",
+        "type": "",
+        "description": "Disparity map.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/zed/zed_node/disparity/disparity_image",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "depth_registered",
+        "type": "",
+        "description": "Depth map image registered on left image (32-bit float in meters by default).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/zed/zed_node/depth/depth_registered",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Drivers/Stereo Cameras",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "MIT",
+  "id": ""
+}

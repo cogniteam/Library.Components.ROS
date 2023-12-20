@@ -1,0 +1,2 @@
+SUBSYSTEMS=="usb", KERNEL=="ttyUSB[0-9]*", ACTION=="add", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", MODE="666", SYMLINK+="lynx/gps", GROUP="dialout"
+SUBSYSTEMS=="usb", KERNEL=="ttyUSB[0-9]*", ACTION=="add", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="666", SYMLINK+="lynx/llc", GROUP="dialout"

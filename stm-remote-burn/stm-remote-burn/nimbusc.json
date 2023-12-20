@@ -1,0 +1,65 @@
+{
+  "name": "nimbus/stm-remote-burn",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "nimbus component for burning arduino/stm devices remotely",
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/stm-remote-burn",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "./burn_script.sh",
+        "${url}",
+        "${fileName}"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "url",
+        "description": "url for git repository with the relevant file to burn",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "none"
+      },
+      {
+        "name": "fileName",
+        "description": "the name of the file from the repo that you want to burn",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "none"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": []
+  },
+  "tags": {},
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

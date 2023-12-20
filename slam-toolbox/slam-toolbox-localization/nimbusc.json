@@ -1,0 +1,99 @@
+{
+  "name": "nimbus/slam-toolbox-localization",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "The Slam Toolbox package incorporates information from laser scanners in the form of a LaserScan message and TF transforms from odom->base link, and creates a map 2D map of a space. This package will allow you to fully serialize the data and pose-graph of the SLAM map to be reloaded to continue mapping, localize, merge, or otherwise manipulate.\nThis component provides an optimization-based localization mode built on the pose-graph from the Slam Toolbox package by Steve Macenski.\nSource: git https://github.com/SteveMacenski/slam_toolbox.git \nLicense: LGPL",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/slam-toolbox",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "slam_toolbox",
+        "online_sync.launch"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "initial_pose",
+        "type": "",
+        "description": "Subscriber to the /initialpose topic used by AMCL to relocalize to a position.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "initialpose",
+          "type": "Messages.geometry_msgs.PoseWithCovarianceStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "scan",
+        "type": "",
+        "description": "Publishes a scan from the laser scanner",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "scan",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "map",
+        "type": "",
+        "description": "Occupancy grid representation of the pose-graph at map_update_interval frequency.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/map",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Mapping 2D",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "LGPL",
+  "id": ""
+}

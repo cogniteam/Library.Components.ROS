@@ -1,0 +1,129 @@
+{
+  "name": "nimbus/theora-encoder",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Theora_image_transport provides a plugin to image_transport for transparently sending an image stream encoded with the Theora codec.theora_image_transport only works with 8-bit color or grayscale images.\nAuthor: Patrick Mihelich, Ethan Dreyfuss\nLicense: BSD\nSource: git https://github.com/ros-perception/image_transport_plugins.git",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/theora-encoder:latest",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "theora_info",
+        "theora_info_publisher.launch",
+        "optimize_for:=${optimize_for}",
+        "target_bitrate:=${target_bitrate}",
+        "quality:=${quality}",
+        "keyframe_frequency:=${keyframe_frequency}",
+        "time_interval:=${time_interval}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "optimize_for",
+        "description": "Controls whether to use constant bitrate (CBR) encoding, aiming for ~theora/target_bitrate; or variable bitrate (VBR) encoding, aiming for ~theora/quality. Values are Bitrate (0) and Quality (1).",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "1"
+      },
+      {
+        "name": "target_bitrate",
+        "description": "Target bitrate. Used if optimize_for is set to Bitrate.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "800000"
+      },
+      {
+        "name": "quality",
+        "description": "Encoding quality level, in the range [0, 63]. Used if optimize_for is set to Quality.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "31"
+      },
+      {
+        "name": "keyframe_frequency",
+        "description": "Maximum distance between key frames. If set to 1, every frame is a keyframe.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "64"
+      },
+      {
+        "name": "time_interval",
+        "description": "The rate of the theora publisher (The frequency with which it will publish a theora image transport).",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 1
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "image_raw",
+        "type": "",
+        "description": "Message that contains an uncompressed image.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/usb_cam/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "theora",
+        "type": "",
+        "description": "Theora transport subtopic.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/video/theora",
+          "type": "Messages.theora_image_transport.Packet",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Drivers/RGB Cameras",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

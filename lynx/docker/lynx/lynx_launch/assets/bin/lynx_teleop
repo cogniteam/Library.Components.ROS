@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rosrun lynx_driver lynx_teleop_node _dev:=/dev/input/js${1:-0} _scale_angular:=${2:-0.5}

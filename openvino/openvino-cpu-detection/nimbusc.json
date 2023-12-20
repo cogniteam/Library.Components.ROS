@@ -1,0 +1,118 @@
+{
+  "name": "nimbus/openvino-cpu-detection",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "openvino cpu enabled image recognition\nLicense: Apache 2.0",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "intelpengo/openvino",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "bash",
+        "-ic",
+        "roslaunch vino_launch pengo_detection.launch myriad:=${myriad}",
+        "camera_name:=${camera_name}"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "myriad",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      },
+      {
+        "name": "camera_name",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "camera"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "color_image_raw",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/color/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "openvino_detection_img",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/openvino_toolkit/images",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "detected_objects_boxes",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/openvino_toolkit/detected_objects",
+          "type": "Messages.object_msgs.ObjectsInBoxes",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Object detection",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "Apache 2.0",
+  "id": ""
+}

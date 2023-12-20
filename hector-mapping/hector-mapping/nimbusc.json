@@ -1,0 +1,245 @@
+{
+  "name": "nimbus/hector-mapping",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "2D laser scan mapping using Hector mapping algorithm\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/hector-mapping/hector-mapping-hd\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/hector-mapping",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "hector_mapping",
+        "hector_mapping.launch",
+        "map_resolution:=${map_resolution}",
+        "map_size:=${map_size}",
+        "base_frame:=${base_frame}",
+        "map_multi_res_levels:=${map_multi_res_levels}",
+        "scan_subscriber_queue_size:=${scan_subscriber_queue_size}",
+        "map_frame:=${map_frame}",
+        "output:=${output}",
+        "use_tf_scan_transformation:=${use_tf_scan_transformation}",
+        "tf_map_scanmatch_transform_frame_name:=${tf_map_scanmatch_transform_frame_name}",
+        "map_start_x:=${map_start_x}",
+        "map_start_y:=${map_start_y}",
+        "max_rotation:=${max_rotation}",
+        "max_translation:=${max_translation}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "map_multi_res_levels",
+        "description": "The number of map multi-resolution grid levels.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "3"
+      },
+      {
+        "name": "scan_subscriber_queue_size",
+        "description": "The queue size of the scan subscriber. This should be set to high values (for example 50) if logfiles are played back to hector_mapping at faster than realtime speeds.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "5"
+      },
+      {
+        "name": "map_frame",
+        "description": "The name of the map frame.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "map"
+      },
+      {
+        "name": "output",
+        "description": "Prints output, the value can be screen or log",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "screen"
+      },
+      {
+        "name": "use_tf_scan_transformation",
+        "description": "Whether to transform the scan with the tf attached to the scan message",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "true"
+      },
+      {
+        "name": "tf_map_scanmatch_transform_frame_name",
+        "description": "The frame name when publishing the scanmatcher to map transform as described in the preceding parameter.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "laser"
+      },
+      {
+        "name": "map_resolution",
+        "description": "The map resolution [m]. This is the length of a grid cell edge.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.025
+      },
+      {
+        "name": "map_size",
+        "description": "The size [number of cells per axis] of the map. The map is square and has (map_size * map_size) grid cells.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 2048
+      },
+      {
+        "name": "map_start_x",
+        "description": "Location of the origin [0.0, 1.0] of the /map frame on the x axis relative to the grid map. 0.5 is in the middle.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.5
+      },
+      {
+        "name": "map_start_y",
+        "description": "Location of the origin [0.0, 1.0] of the /map frame on the y axis relative to the grid map. 0.5 is in the middle.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.5
+      },
+      {
+        "name": "max_rotation",
+        "description": "Maximum rotation",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 1000
+      },
+      {
+        "name": "max_translation",
+        "description": "The max translation is the maximum vector that is represented by tf::Vector3, which is equivalent to btVector3.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 99999
+      },
+      {
+        "name": "base_frame",
+        "description": "The name of the base frame of the robot. This is the frame used for localization and for transformation of laser scan data.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "base_link"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "scan",
+        "type": "",
+        "description": "The laser scan used by the SLAM system.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "scan",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "map",
+        "type": "",
+        "description": "Get the map data from this topic, which is latched, and updated periodically.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/map",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "pose_stamped",
+        "type": "",
+        "description": "The estimated robot pose without covariance.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/slam_out_pose",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map_base_link",
+        "type": "Messages.geometry_msgs.Pose",
+        "description": "TF map to baselink as odometry",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "map",
+          "childFrame": "base_link",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map_odom",
+        "type": "Nimbus.Core.Messages.Ros1.Messages.nav_msgs.Odometry",
+        "description": "TF map to odom as odometry",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "map",
+          "childFrame": "odom",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Mapping 2D",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

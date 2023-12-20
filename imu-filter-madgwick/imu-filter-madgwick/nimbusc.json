@@ -1,0 +1,130 @@
+{
+  "name": "nimbus/imu-filter-madgwick",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "IMU-related filters and visualizers\nLicense: GPL",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/imu_tools",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "imu_filter_madgwick",
+        "imu_filter_madgwick.launch"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "data_raw",
+        "type": "",
+        "description": "Raw Data",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/imu/data_raw",
+          "type": "Messages.sensor_msgs.Imu",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "imu_mag",
+        "type": "",
+        "description": "Magnetic Field",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/imu/mag",
+          "type": "Messages.sensor_msgs.MagneticField",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "parameter_descriptions",
+        "type": "",
+        "description": "Parameter Descriptions",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/ImuFilterNodelet/parameter_descriptions",
+          "type": "Messages.dynamic_reconfigure.ConfigDescription",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "parameter_updates",
+        "type": "",
+        "description": "Parameter Updates",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/ImuFilterNodelet/parameter_updates",
+          "type": "Messages.dynamic_reconfigure.Config",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "imu_data",
+        "type": "",
+        "description": "IMU Data",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/imu/data",
+          "type": "Messages.sensor_msgs.Imu",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Uncategorized/None",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "GPL",
+  "id": ""
+}

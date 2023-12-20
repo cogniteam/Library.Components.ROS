@@ -1,0 +1,265 @@
+{
+  "name": "nimbus/prokit_driver",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "AAEON Prokit driver \ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/hamster-driver/prokit-driver\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "prokit driver",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/hamster-driver",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "hamster_driver",
+        "hamster_driver.launch",
+        "serial_port:=${serial_port}",
+        "robot_id:=${robot_id}",
+        "odom_frame:=${odom_frame}",
+        "base_frame:=${base_frame}",
+        "max_speed:=${max_speed}",
+        "steer_offset:=${steer_offset}",
+        "mag_offset_x:=${mag_offset_x}",
+        "mag_offset_y:=${mag_offset_y}",
+        "mag_offset_z:=${mag_offset_z}",
+        "gyro_offset_x:=${gyro_offset_x}",
+        "gyro_offset_y:=${gyro_offset_y}",
+        "gyro_offset_z:=${gyro_offset_z}",
+        "enable_gps:=${enable_gps}",
+        "enable_detection:=${enable_detection}",
+        "enable_realsense:=${enable_realsense}"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "serial_port",
+        "description": "Will attach to the device with the given serial port (Linux USB device port).",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "/dev/ttyS5"
+      },
+      {
+        "name": "enable_realsense",
+        "description": "If this flag is true, the prokit driver will enable realsense.",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      },
+      {
+        "name": "robot_id",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": ""
+      },
+      {
+        "name": "odom_frame",
+        "description": "The odometry frame, defines the origin coordinate system in ROS convention.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "odom"
+      },
+      {
+        "name": "base_frame",
+        "description": "The base_frame of the robot, defines the frame_id all static transformations refers to.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "base_link"
+      },
+      {
+        "name": "max_speed",
+        "description": "The maximum speed the prokit can have.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 1.2
+      },
+      {
+        "name": "steer_offset",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "mag_offset_x",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "mag_offset_y",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "mag_offset_z",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "gyro_offset_x",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "gyro_offset_y",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "gyro_offset_z",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "enable_gps",
+        "description": "If this flag is true, the hamster_driver will use gps.",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "true"
+      },
+      {
+        "name": "enable_detection",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "ackermann_cmd",
+        "type": "",
+        "description": "Time stamped drive command for robots with Ackermann steering.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/ackermann_cmd",
+          "type": "Messages.ackermann_msgs.AckermannDriveStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "twist_cmd",
+        "type": "",
+        "description": "This expresses velocity in free space broken into its linear and angular parts.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/twist_cmd",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "gyro",
+        "type": "",
+        "description": "gyro stream (which shows angular velocity).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/gyro/sample",
+          "type": "Messages.sensor_msgs.Imu",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "accel",
+        "type": "",
+        "description": "accel stream (which shows linear acceleration).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/accel/sample",
+          "type": "Messages.sensor_msgs.Imu",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "odom",
+        "type": "",
+        "description": "This represents an estimate of a position and velocity in free space.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/odom",
+          "type": "Messages.nav_msgs.Odometry",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "battery",
+        "type": "",
+        "description": "The current battery voltage the hamster have.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/battery",
+          "type": "Messages.std_msgs.Float32",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Drivers/Robots",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

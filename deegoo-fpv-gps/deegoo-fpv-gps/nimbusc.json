@@ -1,0 +1,147 @@
+{
+  "name": "nimbus/deegoo-fpv-gps",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "deegoo-fpv-gps driver\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/deegoo-fpv-gps",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "nmea_navsat_driver",
+        "nmea_serial_driver.launch",
+        "baud:=${baud}",
+        "frame_id:=${gps.name}",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "baud",
+        "description": "The baud rate to receive NMEA data.",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "9600"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": [
+      {
+        "name": "fix",
+        "type": "",
+        "description": "GPS position fix reported by the device.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/fix",
+          "type": "Messages.sensor_msgs.NavSatFix",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "heading",
+        "type": "",
+        "description": "Heading is the compass direction in which a device is travelling or should be travelling.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/heading",
+          "type": "Messages.geometry_msgs.QuaternionStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "vel",
+        "type": "",
+        "description": "Velocity output from the GPS device. Only published when the device outputs valid velocity information. The driver does not calculate the velocity based on only position fixes.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/vel",
+          "type": "Messages.geometry_msgs.TwistStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [
+    {
+      "name": "gps",
+      "info": {
+        "type": "USB_PORT_TYPE_SERIAL",
+        "productId": "7523",
+        "vendorId": "1a86",
+        "revision": "",
+        "serial": "",
+        "vendorName": "",
+        "productName": "",
+        "attributes": {},
+        "ports": [],
+        "portIndex": 0,
+        "simulation": false,
+        "ip": "",
+        "id": "",
+        "internalId": ""
+      },
+      "attachedDevice": {
+        "name": "",
+        "connected": false,
+        "id": ""
+      },
+      "mountAs": "/dev/ttyUSB0",
+      "optional": false
+    }
+  ],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Drivers/GPS",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

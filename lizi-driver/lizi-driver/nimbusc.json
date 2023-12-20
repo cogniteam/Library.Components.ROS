@@ -1,0 +1,101 @@
+{
+  "name": "nimbus/lizi-driver",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Robotican Lizi robot driver\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/lizi-driver\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/lizi-driver",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "lizi_hw",
+        "lizi_hw.launch",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "cmd_vel",
+        "type": "",
+        "description": "Command velocity.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/mobile_base/commands/velocity",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": []
+  },
+  "requiredDevices": [
+    {
+      "name": "lizi-driver",
+      "info": {
+        "type": "USB_PORT_TYPE_SERIAL",
+        "productId": "0483",
+        "vendorId": "16c0",
+        "revision": "",
+        "serial": "",
+        "vendorName": "",
+        "productName": "",
+        "attributes": {},
+        "ports": [],
+        "portIndex": 0,
+        "simulation": false,
+        "ip": "",
+        "id": "",
+        "internalId": ""
+      },
+      "attachedDevice": {
+        "name": "",
+        "connected": false,
+        "id": ""
+      },
+      "mountAs": "/dev/mobilican/RICBOARD",
+      "optional": false
+    }
+  ],
+  "tags": {},
+  "category": "Drivers/Robots",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

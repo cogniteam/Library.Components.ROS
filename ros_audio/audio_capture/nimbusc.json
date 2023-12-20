@@ -1,0 +1,136 @@
+{
+  "name": "nimbus/audio-capture",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "capture audio\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/ros-audio",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "audio_capture",
+        "capture.launch",
+        "device:=${device}",
+        "bitrate:=${bitrate}",
+        "channels:=${channels}",
+        "sample_rate:=${sample_rate}",
+        "format:=${format}",
+        "sample_format:=${sample_format}"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "device",
+        "description": "Device name",
+        "Category": "Static",
+        "node": "",
+        "stringValue": ""
+      },
+      {
+        "name": "bitrate",
+        "description": "Bit rate",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "128"
+      },
+      {
+        "name": "channels",
+        "description": "Channel",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "1"
+      },
+      {
+        "name": "sample_rate",
+        "description": "Sample rate",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "16000"
+      },
+      {
+        "name": "format",
+        "description": "Audio format",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "mp3"
+      },
+      {
+        "name": "sample_format",
+        "description": "PCM sample format",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "S16LE"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": [
+      {
+        "name": "audio_data",
+        "type": "",
+        "description": "Audio data",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/audio/audio",
+          "type": "audio_common_msgs.AudioData",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "audio_info",
+        "type": "",
+        "description": "Information about the audio data",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/audio/audio_info",
+          "type": "audio_common_msgs.AudioInfo",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Uncategorized/None",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

@@ -1,0 +1,4 @@
+<launch>
+  <node name="spot_action_listener_node" pkg="cogniteam_bridge" type="action_listener_node.py" output="screen">
+  </node>
+</launch>

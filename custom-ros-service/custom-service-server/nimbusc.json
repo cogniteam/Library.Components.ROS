@@ -1,0 +1,78 @@
+{
+  "name": "nimbus/custom-service-server",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Dummy data subscriber\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/custom-ros-service",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "services",
+        "server.launch",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": [],
+      "user": ""
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "message",
+        "type": "cognimbus@gmail.com/services.greeter",
+        "description": "",
+        "streamMode": "STREAM_MODE_SERVICE",
+        "service": {
+          "requestType": "cognimbus@gmail.com/services.greeterRequest",
+          "responseType": "cognimbus@gmail.com/services.greeterResponse"
+        },
+        "rosService": {
+          "name": "/greeter",
+          "type": "Nimbus.Package.Messages.services.greeter"
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": []
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Uncategorized/None",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": "fa89947b-eea6-4b40-a70e-bfa90a6d1588"
+}

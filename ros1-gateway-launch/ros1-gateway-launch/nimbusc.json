@@ -1,0 +1,149 @@
+{
+  "name": "nimbus/ros1-gateway-launch",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Local ROS master gateway\nLicense: BSD",
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "roscore",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/ros1-gateway",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "empty",
+        "empty.launch"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": true,
+      "binds": [],
+      "user": ""
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "ros_ip",
+        "description": "The ROS_IP is set to the IP address of the computer that the ROS node is running on",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "127.0.0.1"
+      },
+      {
+        "name": "ros_master_uri",
+        "description": "ROS_MASTER_URI is a required setting that tells nodes where they can locate the master",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "http://127.0.0.1:11311"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "odom",
+        "type": "nav_msgs.Odometry",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "odom",
+          "childFrame": "base_link",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "laser_scan",
+        "type": "",
+        "description": "Laser scan topic (for laser_scan1).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_gateway/output/laser_scan",
+          "type": "sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "image_compressed",
+        "type": "",
+        "description": "Compressed input image1.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_gateway/output/camera/image_raw/compressed",
+          "type": "sensor_msgs.CompressedImage",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "string_command",
+        "type": "",
+        "description": "ROS messagge from type std_msgs.String",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_gateway/input/string_command",
+          "type": "std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "cmd_vel",
+        "type": "",
+        "description": "Command velocity",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_gateway/input/cmd_vel",
+          "type": "geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "generatePort": false,
+    "rosMasterUri": "${ros_master_uri}",
+    "rosIp": "${ros_ip}",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Test",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD"
+}

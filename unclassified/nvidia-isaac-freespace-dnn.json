@@ -1,0 +1,51 @@
+{
+  "name": "nimbus/nvidia_isaac_freespace_dnn",  
+  "category": "Drivers/RGBD Cameras",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "description": "Nvidia ISAAC",
+  "environment": {
+    "dockerInfo": {
+      "privileged": true,
+      "gpu": true,
+      "image": "cognimbus/isaac-freespace-dnn-ros",
+      "commands": []
+    }
+  },
+  "parameters": {
+    "parameters": []
+  },  
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "image_raw",
+        "type": "",
+        "ros_topic": {
+          "topic": "/camera/color/image_raw",
+          "type": "Messages.sensor_msgs.Image"
+        }
+      },
+      {
+        "name": "camera_info",
+        "type": "",
+        "ros_topic": {
+          "topic": "/camera/color/camera_info",
+          "type": "Messages.sensor_msgs.CameraInfo"
+        }
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "tensor_image",
+        "type": "",
+        "ros_topic": {
+          "topic": "/tensor_image",
+          "type": "Messages.sensor_msgs.Image"
+        }
+      }
+
+    ]
+  },
+  "requiredDevices": []
+}
+

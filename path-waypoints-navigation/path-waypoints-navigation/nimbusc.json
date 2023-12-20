@@ -1,0 +1,300 @@
+{
+  "name": "nimbus/path-waypoints-navigation",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "waypoints_navigation\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/path-waypoints-navigation",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "waypoints_navigation",
+        "waypoints_navigation.launch",
+        "minimal_distance:=${minimal_distance}",
+        "wait_for_pause_cmd_enable:=${wait_for_pause_cmd_enable}",
+        "go_to_next_point_before_reach_current:=${go_to_next_point_before_reach_current}",
+        "max_distance_before_skip_current_goal:=${max_distance_before_skip_current_goal}",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "minimal_distance",
+        "description": "The minimum distance that must be between two points.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": -1
+      },
+      {
+        "name": "wait_for_pause_cmd_enable",
+        "description": "Need to put this flag as true when connecting this component to intel manager.",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      },
+      {
+        "name": "go_to_next_point_before_reach_current",
+        "description": "If we want the robot to move to the next point when it is at a certain distance from a current point.",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      },
+      {
+        "name": "max_distance_before_skip_current_goal",
+        "description": "The distance at which you decide to skip the current point and move on to the next point.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.3
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "waypoints_route",
+        "type": "",
+        "description": "Path of the waypoints that the robot should move between them.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/waypoints_route",
+          "type": "Messages.nav_msgs.Path",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "start_mission",
+        "type": "",
+        "description": "When this flag is true, the robot will start his mission.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/start_mission",
+          "type": "Messages.std_msgs.Bool",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "command_string",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/command_string",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom_base_link",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "TF from odom to base_link.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "odom",
+          "childFrame": "base_link",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map_odom",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "TF from map to odometry.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "map",
+          "childFrame": "odom",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "move_base_feedback",
+        "type": "",
+        "description": "Feedback contains the current position of the base in the world.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/feedback",
+          "type": "Messages.move_base_msgs.MoveBaseActionFeedback",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "move_base_result",
+        "type": "",
+        "description": "Result is empty for the move_base action.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/result",
+          "type": "Messages.move_base_msgs.MoveBaseActionResult",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "move_base_status",
+        "type": "",
+        "description": "Provides status information on the goals that are sent to the move_base action.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/status",
+          "type": "Messages.actionlib_msgs.GoalStatusArray",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "log",
+        "type": "",
+        "description": "Log from the algorithm, for debugging.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/log",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "current_point_reached",
+        "type": "",
+        "description": "Boolean that indicates if the current point has already reached.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/current_goal_reached",
+          "type": "Messages.std_msgs.Bool",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "navigation_done",
+        "type": "",
+        "description": "Will publish true when the navigation is complete.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/navigation_done",
+          "type": "Messages.std_msgs.Bool",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "move_base_cancel",
+        "type": "",
+        "description": "A request to cancel a specific goal.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/cancel",
+          "type": "Messages.actionlib_msgs.GoalID",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "move_base_goal",
+        "type": "",
+        "description": "A goal for move_base to pursue in the world.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/goal",
+          "type": "Messages.move_base_msgs.MoveBaseActionGoal",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "waypoints_markers",
+        "type": "",
+        "description": "Visualization for the waypoints on the map.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/waypoints_markers",
+          "type": "Messages.visualization_msgs.MarkerArray",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Navigation",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

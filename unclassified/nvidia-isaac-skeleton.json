@@ -1,0 +1,31 @@
+{
+  "name": "nimbus/isaac-skeleton",
+  "className": "Ros1Component",
+  "environment": {
+    "dockerInfo": {
+      "gpu": true,
+      "image": "cognimbus/isaac-skeleton-ros"
+    }
+  },
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "image_in",
+        "ros_topic": {
+          "topic": "/webcam/image_raw",
+          "type": "Messages.sensor_msgs.Image"
+        }
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "skeletons",
+        "ros_topic": {
+          "topic": "/skeletons_text",
+          "type": "Messages.std_msgs.String"
+        }
+      }
+    ]
+  }
+}
+

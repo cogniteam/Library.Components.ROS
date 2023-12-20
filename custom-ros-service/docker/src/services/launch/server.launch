@@ -1,0 +1,3 @@
+<launch>
+  <node name="greeter_server" pkg="services" type="greeter_server.py" output="screen"/>
+</launch>

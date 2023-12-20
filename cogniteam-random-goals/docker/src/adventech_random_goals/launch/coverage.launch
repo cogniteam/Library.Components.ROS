@@ -1,0 +1,70 @@
+<launch>   
+
+    <arg name="distance_between_goals_m" default="0.1" />  
+    <arg name="walls_inflation_m" default="0.3" />  
+    <arg name="robot_w_m" default="0.50" />  
+    <arg name="robot_h_m" default="0.50" />  
+
+    <arg name="sanitization_radius" default="0.5" />  
+
+    <arg name="path_deg_angle_threshold" default="30.0" />  
+    
+    <arg name="COVERED_BY_OBSTACLE_COLOR" default="FF0000" />  
+    <arg name="COVERED_BY_ROBOT_PATH_COLOR" default="0000FF" />  
+    <arg name="UN_COVERED_COLOR" default="008000" /> 
+    <arg name="REJECTED_COLOR" default="FFA500" />  
+
+
+    
+
+
+   <arg name="coverage_image_path" default="/haystack_disinfect_report/images/" /> 
+    <!-- <arg name="coverage_image_path" default="/home/yakir/Pictures/" />  -->
+
+
+    <arg name="duration_wait_for_move_base_response" default="15.0" />  
+
+    <arg name="base_frame" default="base_footprint" />  
+    <arg name="global_frame" default="map" />  
+
+    <arg name="reducing_goals" default="false" /> 
+
+    <arg name="show_live_video" default="false" />      
+        
+    <node name="map_coverage_node" pkg="map_coverage" 
+            type="map_coverage_node">   
+
+        <param name="distance_between_goals_m" value="$(arg distance_between_goals_m)" /> 
+        <param name="walls_inflation_m" value="$(arg walls_inflation_m)" /> 
+        
+        <param name="robot_w_m" value="$(arg robot_w_m)" /> 
+        <param name="robot_h_m" value="$(arg robot_h_m)" /> 
+
+        <param name="sanitization_radius" value="$(arg sanitization_radius)" /> 
+
+
+        <param name="coverage_image_path" value="$(arg coverage_image_path)" /> 
+
+        <param name="base_frame" value="$(arg base_frame)" /> 
+        <param name="global_frame" value="$(arg global_frame)" /> 
+        
+        
+        <param name="reducing_goals" value="$(arg reducing_goals)" /> 
+
+        <param name="show_live_video" value="$(arg show_live_video)" />    
+        
+        <param name="COVERED_BY_OBSTACLE_COLOR" value="$(arg COVERED_BY_OBSTACLE_COLOR)" /> 
+        <param name="COVERED_BY_ROBOT_PATH_COLOR" value="$(arg COVERED_BY_ROBOT_PATH_COLOR)" />
+        <param name="UN_COVERED_COLOR" value="$(arg UN_COVERED_COLOR)" />
+        <param name="REJECTED_COLOR" value="$(arg REJECTED_COLOR)" />  
+
+        <param name="path_deg_angle_threshold" value="$(arg path_deg_angle_threshold)" /> 
+
+
+       
+    </node>
+
+    
+
+
+</launch>

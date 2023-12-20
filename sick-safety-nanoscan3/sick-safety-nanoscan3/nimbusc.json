@@ -1,0 +1,129 @@
+{
+  "name": "nimbus/sick-safety-nanoscan3",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "sick-safety-nanoscan3 driver\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/sick-safety-nanoscan3",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "sick_safetyscanners",
+        "sick_safetyscanners.launch",
+        "frame_id:=${laser.name}",
+        "sensor_ip:=${sensor_ip}",
+        "host_ip:=${host_ip}",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": true,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "frame_id",
+        "description": "The frame name of the sensor message.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "scan"
+      },
+      {
+        "name": "sensor_ip",
+        "description": "Sensor IP address. Can be passed as an argument to the launch file.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "192.168.1.10"
+      },
+      {
+        "name": "host_ip",
+        "description": "Host IP address. Can be passed as an argument to the launch file.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "192.168.1.9"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": [
+      {
+        "name": "scan",
+        "type": "",
+        "description": "Publishes a scan from the laser scanner",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/scan",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [
+    {
+      "name": "laser",
+      "info": {
+        "type": "USB_PORT_TYPE_NETWORK",
+        "productId": "",
+        "vendorId": "",
+        "revision": "",
+        "serial": "",
+        "vendorName": "",
+        "productName": "",
+        "attributes": {},
+        "ports": [],
+        "portIndex": 0,
+        "simulation": false,
+        "ip": "",
+        "id": "",
+        "internalId": ""
+      },
+      "mountAs": "",
+      "optional": false
+    }
+  ],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Drivers/2D Lidars",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

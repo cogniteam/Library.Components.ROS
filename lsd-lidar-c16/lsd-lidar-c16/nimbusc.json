@@ -1,0 +1,150 @@
+{
+  "name": "nimbus/lsd-lidar-c16",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "lsd-lidar-c16 driver\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/lsd-lidar-c16",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "lslidar_c16_decoder",
+        "lslidar_c16.launch",
+        "frame_id:=${laser.name}",
+        "lidar_ip:=${lidar_ip}",
+        "device_port:=${device_port}",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": true,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "lidar_ip",
+        "description": "The lidar's IP address.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "192.168.1.200"
+      },
+      {
+        "name": "frame_id",
+        "description": "The frame id of the lidar.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "laser_link"
+      },
+      {
+        "name": "distance_unit",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "0.25"
+      },
+      {
+        "name": "device_port",
+        "description": "Linux USB device port.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "2368"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [],
+    "outputStreams": [
+      {
+        "name": "scan",
+        "type": "",
+        "description": "The scan data from the lidar.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/scan_topic",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "point_Cloud",
+        "type": "",
+        "description": "Point cloud from the lidar.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/lslidar_point_cloud",
+          "type": "Messages.sensor_msgs.PointCloud2",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [
+    {
+      "name": "laser",
+      "info": {
+        "type": "USB_PORT_TYPE_NETWORK",
+        "productId": "",
+        "vendorId": "",
+        "revision": "",
+        "serial": "",
+        "vendorName": "",
+        "productName": "",
+        "attributes": {},
+        "ports": [],
+        "portIndex": 0,
+        "simulation": false,
+        "ip": "",
+        "id": "",
+        "internalId": ""
+      },
+      "mountAs": "",
+      "optional": false
+    }
+  ],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Drivers/2D Lidars",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

@@ -1,0 +1,79 @@
+<launch>
+  <arg name="odom_frame_id"   default="odom"/>
+  <arg name="global_frame_id" default="odom"/>
+  <arg name="odom_topic" default="odom" />
+  <arg name="laser_topic" default="scan" />
+  
+  <!-- scan -->
+  <arg name="scan_min_obstacle_height" default="0.1" />
+  <arg name="scan_max_obstacle_height" default="0.8" />
+  <arg name="scan_observation_persistence" default="0.0" />
+  <!-- realsense_camera -->
+  <arg name="d435_cam1_min_obstacle_height" default="0.2" />
+  <arg name="d435_cam1_max_obstacle_height" default="1.0" />
+  <arg name="d435_cam1_observation_persistence" default="0.0" />
+
+  <!--general -->
+  <arg name="max_obstacle_height" default="1.0" />
+  <arg name="max_vel_x" default="0.3" />
+  <arg name="min_vel_x" default="-0.3" />
+  <arg name="max_vel_trans" default="0.3" />
+  <arg name="min_vel_trans" default="0.1" />
+  <arg name="max_vel_theta" default="1.0" />
+  <arg name="min_vel_theta" default="0.0" />
+  <arg name="acc_lim_x" default="2.5" />
+  <arg name="acc_lim_theta" default="1.6" />
+  <arg name="xy_goal_tolerance" default="0.05" />
+  <arg name="yaw_goal_tolerance" default="0.10" />
+
+  <arg name="obstacle_range" default="3.0" />
+  <arg name="obstacle_inflation_radius" default="0.1" />
+  <arg name="inflation_layer_inflation_radius" default="1.75" />
+
+
+<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+    <rosparam file="$(find magni_nav)/param/costmap_common_param.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find magni_nav)/param/costmap_common_param.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find magni_nav)/param/local_costmap_param.yaml" command="load" />
+    <rosparam file="$(find magni_nav)/param/global_costmap_param.yaml" command="load" />
+    <rosparam file="$(find magni_nav)/param/base_local_planner_param.yaml" command="load" />
+    <rosparam file="$(find magni_nav)/param/move_base_params.yaml" command="load" />   
+   <!--     
+   speed limits
+    <param name="DWAPlannerROS/max_vel_x" value="$(arg max_vel_x)"/>
+    <param name="DWAPlannerROS/max_vel_trans" value="$(arg max_vel_trans)"/>
+    <param name="DWAPlannerROS/min_vel_trans" value="$(arg min_vel_trans)"/>
+    <param name="DWAPlannerROS/max_vel_theta" value="$(arg max_vel_theta)"/>
+    <param name="DWAPlannerROS/min_vel_theta" value="$(arg min_vel_theta)"/>
+    <param name="DWAPlannerROS/acc_lim_x" value="$(arg acc_lim_x)"/>
+    <param name="DWAPlannerROS/acc_lim_theta" value="$(arg acc_lim_theta)"/>
+    <param name="DWAPlannerROS/xy_goal_tolerance" value="$(arg xy_goal_tolerance)"/>
+    <param name="DWAPlannerROS/yaw_goal_tolerance" value="$(arg yaw_goal_tolerance)"/>
+
+    <param name="local_costmap/obstacle_range" value="$(arg obstacle_range)"/>
+    <param name="global_costmap/obstacle_range" value="$(arg obstacle_range)"/>
+ 
+
+    scan heigths
+    <param name="local_costmap/obstacle_layer/scan/min_obstacle_height" value="$(arg scan_min_obstacle_height)"/>
+    <param name="local_costmap/obstacle_layer/scan/max_obstacle_height" value="$(arg scan_max_obstacle_height)"/>
+    <param name="global_costmap/obstacle_layer/scan/min_obstacle_height" value="$(arg scan_min_obstacle_height)"/>
+    <param name="global_costmap/obstacle_layer/scan/max_obstacle_height" value="$(arg scan_max_obstacle_height)"/>
+    -->
+    
+    <!-- Inflation radius -->
+    <!-- param name="local_costmap/obstacle_layer/inflation_radius" value="$(arg obstacle_inflation_radius)"/-->
+    <!-- param name="global_costmap/obstacle_layer/inflation_radius" value="$(arg obstacle_inflation_radius)"/-->
+
+    <!-- param name="local_costmap/inflation_layer/inflation_radius" value="$(arg inflation_layer_inflation_radius)"/ -->
+    <!-- param name="global_costmap/inflation_layer/inflation_radius" value="$(arg inflation_layer_inflation_radius)"/ -->
+
+   
+
+  </node>
+
+
+</launch>
+

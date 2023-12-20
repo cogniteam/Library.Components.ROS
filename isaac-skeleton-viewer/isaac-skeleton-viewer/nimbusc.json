@@ -1,0 +1,59 @@
+{
+  "name": "nimbus/isaac-skeleton-viewer",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "IsaacSkeletonViewerComponent",
+  "instanceName": "",
+  "description": "Showing skeletons's persons\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "image_in",
+        "type": "Nimbus.Messages.sensor_msgs.Image",
+        "description": "The uncompressed image from the webcam (Raw uncompressed image in a RGB format).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "skeletons",
+        "type": "Nimbus.Messages.std_msgs.String",
+        "description": "2D real-time multi person keypoint detection: 25-keypoint body/foot keypoint estimation.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "skeleton_image",
+        "type": "Nimbus.Messages.sensor_msgs.Image",
+        "description": "The input image with the keypoint detection.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Pose estimation",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

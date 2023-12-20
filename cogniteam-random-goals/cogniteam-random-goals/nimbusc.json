@@ -1,0 +1,283 @@
+{
+  "name": "nimbus/cogniteam-random-goals",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "ros program that subscribe to the relevant tf and to the map topic and send the robot to a random goal every time through move-base node.\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/cogniteam-random-goals:latest",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "adventech_launch",
+        "adventech_demo.launch",
+        "general_max_vel_x:=${general_max_vel_x}",
+        "general_min_vel_x:=${general_min_vel_x}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "general_max_vel_x",
+        "description": "The maximum forward velocity allowed for the base in meters/sec.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.8
+      },
+      {
+        "name": "general_min_vel_x",
+        "description": "The minimum forward velocity allowed for the base in meters/sec. It is useful to specify this to guarantee that velocity commands sent to a mobile base are high enough to allow the base to overcome friction.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.2
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "goal_simple",
+        "type": "",
+        "description": "Provides a non-action interface to move_base for users that don't care about tracking the execution status of their goals (Communicate with move_base node over ROS directly).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base_simple/goal",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom_base_link",
+        "type": "Nimbus.Core.Messages.Ros1.Messages.nav_msgs.Odometry",
+        "description": "Tf transform from odom to base link",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "odom",
+          "childFrame": "base_link",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map_odom",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "tf from map to odometry",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "map",
+          "childFrame": "odom",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map",
+        "type": "",
+        "description": "Map of the world.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/map",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom",
+        "description": "The odometry of the robot based on the gyro and motor encoders.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/odom",
+          "type": "Messages.nav_msgs.Odometry",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "scan",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/scan",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "start_stop_navigation",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/start_stop_navigation",
+          "type": "Messages.std_msgs.Bool",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "cmd_vel",
+        "type": "",
+        "description": "A stream of velocity commands meant for execution by a mobile base.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "nimbus_robot_pose",
+        "type": "",
+        "description": "Publishes /nimbus_robot_pose",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_robot_pose",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": true,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "nimbus_lidar_pose",
+        "type": "",
+        "description": "Publishes /nimbus_lidar_pose",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_lidar_pose",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": true,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "plan",
+        "type": "",
+        "description": "The local plan or trajectory that scored the highest on the last cycle. Used primarily for visualization purposes.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/NavfnROS/plan",
+          "type": "Messages.nav_msgs.Path",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "local_cost_map",
+        "type": "",
+        "description": "The values in the local costmap.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/local_costmap/costmap",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "current_goal",
+        "type": "",
+        "description": "current goal.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/current_goal",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "robot_state",
+        "type": "",
+        "description": "current goal.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/robot_state",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/SLAM 2D",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

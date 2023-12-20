@@ -1,0 +1,28 @@
+<launch>       
+    <!-- anomaly_detection_node -->  
+    <arg name="csv_path" default="/home/jonathan/Desktop/stam.csv" />
+    <arg name="time" default="10" />
+    <arg name="detection_mode" default ="false"/>
+    <arg name="algorithm_type" default="1" />
+    <arg name="result_file_path" default="/home/jonathan/Desktop/results" />
+    <!--<arg name="write_csv" default ="true"/> -->
+    <arg name="simple_detector_threshold" default="0.7" />
+    <arg name="upper_bound" default="0.9" />
+    <arg name="lower_bound" default="0.5" />
+
+    <node name="msg_convertor_node" pkg="msg_convertor" type="msg_convertor_node" required = "true">
+        <param name="csv_path" value="$(arg csv_path)"/>
+        <param name="detection_mode" value="$(arg detection_mode)"/>
+        <param name="time" value="$(arg time)"/>
+    </node>
+    <node name="algorithms_node" pkg="algorithms" type="algorithms_node" required = "true">
+        <!--<param name="csv_path_train" value="$(arg csv_path_train)"/>-->
+        <param name="csv_path" value="$(arg csv_path)"/>
+        <param name="detection_mode" value="$(arg detection_mode)"/>
+        <param name="algorithm_type" value="$(arg algorithm_type)"/>
+        <param name="result_file_path" value="$(arg result_file_path)" />
+        <param name="simple_detector_threshold" value="$(arg simple_detector_threshold)" />
+        <param name="upper_bound" value="$(arg upper_bound)" />
+        <param name="lower_bound" value="$(arg lower_bound)" />
+     </node>
+</launch>

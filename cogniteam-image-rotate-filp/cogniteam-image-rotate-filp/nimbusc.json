@@ -1,0 +1,136 @@
+{
+  "name": "nimbus/image-rotate-flip",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "A Component for image rotation or fliping.\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/cogniteam-person-follower-rgb\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/image-rotate-filp",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "image_rotate_filp",
+        "image_rotate_filp.launch",
+        "angle_rotation_degrees:=${angle_rotation_degrees}",
+        "flip_both:=${flip_both}",
+        "flip_vertical:=${flip_vertical}",
+        "flip_horizontal:=${flip_horizontal}",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "angle_rotation_degrees",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "integerValue": "180"
+      },
+      {
+        "name": "flip_both",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      },
+      {
+        "name": "flip_vertical",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      },
+      {
+        "name": "flip_horizontal",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "color_image_raw",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera/color/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "out_img_raw",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/out_img/",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "out_img_compressed",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/out_img/compressed/",
+          "type": "Messages.sensor_msgs.CompressedImage",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Algorithms/Image processing",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

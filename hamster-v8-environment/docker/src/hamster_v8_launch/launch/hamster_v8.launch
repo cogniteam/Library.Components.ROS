@@ -1,0 +1,80 @@
+
+<launch>
+  <!--Hamster Driver Parameters-->
+  <arg name="odom_frame" default="odom" />
+  <arg name="base_frame" default="base_link" />
+
+  <arg name="max_speed" default="1.2" />
+  <arg name="steer_offset" default="0.0" />
+
+  <arg name="mag_offset_x" default= "0" />
+  <arg name="mag_offset_y" default= "0" />
+  <arg name="mag_offset_z" default= "0" />
+  <arg name="gyro_offset_x" default= "0" />
+  <arg name="gyro_offset_y" default= "0" />
+  <arg name="gyro_offset_z" default= "0" />
+  <arg name="serial_port" default= "/dev/ttyAMA0" />
+  <arg name="enable_gps" default="true" />
+  <arg name="enable_detection" default= "false" />
+  <arg name="enable_realsense" default="true" />
+  <arg name="node_start_delay" default="3.0" />
+  <!--End Of Hamster Parameters-->
+
+
+  <!--Gmapping Parameters-->
+    <arg name="use_sim_time" default="false" />
+    <arg name="sigma" default="0.1" />
+    <arg name="xmin" default="-25" />
+    <arg name="ymin" default="-25" />
+    <arg name="xmax" default="25" />
+    <arg name="ymax" default="25" />
+    <arg name="delta" default="0.05" />
+  <!--End Of Gmaping parameters-->
+
+  <!--Move Base Parameters-->
+  <!--general -->
+  <arg name="general_max_vel_x" default="0.45" />
+  <arg name="general_min_vel_x" default="0.2" />
+  <!--End Of Move Base Parameters-->
+
+  <!--Object Detection Parameters-->
+  <arg name="num_threads" default="4" />
+  <arg name="score_threshold" default="0.5" />
+  <arg name="max_results" default="30" />
+  <!--End of Object Detection Parameters-->
+
+  <include file="$(find hamster-realsense2-camera)/launch/rs_camera_with_jpeg_level.launch"/>
+
+
+
+  <!-- <include file="$(find hamster_driver)/launch/hamster_driver.launch">
+    <arg name="serial_port"                  value="$(arg serial_port)" />
+    <arg name="steer_offset"          value="$(arg steer_offset)" />
+    <arg name="odom_frame"            value="$(arg odom_frame)" />
+    <arg name="base_frame"            value="$(arg base_frame)" />
+    <arg name="max_speed"             value="$(arg max_speed)" />
+    <arg name="enable_realsense"      value="$(arg enable_realsense )" />
+    <arg name="mag_offset_x" value= "0" />
+    <arg name="mag_offset_y" value= "0" />
+    <arg name="mag_offset_z" value= "0" />
+    <arg name="gyro_offset_x" value= "0" />
+    <arg name="gyro_offset_y" value= "0" />
+    <arg name="gyro_offset_z" value= "0" />
+    <arg name="enable_gps" value="true" />
+    <arg name="enable_detection" value= "false" />
+    <arg name="node_start_delay" value="3.0" />
+  </include> 
+
+ 
+ 
+  <include file="$(find hamster-rplidar)/launch/rplidar.launch">
+    <arg name="frame_id" value="laser" />
+  </include>
+
+
+  <node pkg="tf" type="static_transform_publisher" name="laser_tf_node" args="-0.05 0 0.16 0 0 0 1 base_link laser 100" />
+
+  <node pkg="tf" type="static_transform_publisher" name="camera_tf_node" args="0.13 0 0.07 0 0 0 1  base_link camera_link 100" />-->
+</launch>
+
+

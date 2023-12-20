@@ -1,0 +1,216 @@
+{
+  "name": "nimbus/person-follower",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "A person following algorithm that can work with either openvino or ros-deep-learing detections\nLicense: BSD\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/cogniteam-person-follower-depth",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/person-follower",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "hupster_detection",
+        "intel.launch",
+        "enabled:=${enabled}",
+        "min_speed:=${min_speed}",
+        "max_speed:=${max_speed}",
+        "max_rotation:=${max_rotation}",
+        "min_distance:=${min_distance}",
+        "max_distance:=${max_distance}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "enabled",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "true"
+      },
+      {
+        "name": "min_speed",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.1
+      },
+      {
+        "name": "max_speed",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.4
+      },
+      {
+        "name": "max_rotation",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 1
+      },
+      {
+        "name": "min_distance",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 1.5
+      },
+      {
+        "name": "max_distance",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 3.5
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "depth_image_raw",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera_front/aligned_depth_to_color/image_raw",
+          "type": "Messages.sensor_msgs.Image",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "camera_info",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/camera_front/color/camera_info",
+          "type": "Messages.sensor_msgs.CameraInfo",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "detected_objects_vision_msg",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/vision_msg_detected_objects",
+          "type": "Messages.vision_msgs.Detection2DArray",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "openvino_detected_objects",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/openvino_toolkit/detected_objects",
+          "type": "Messages.object_msgs.ObjectsInBoxes",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "tf_base_link_to_camera_depth_optical_frame",
+        "type": "Messages.geometry_msgs.Pose",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "base_link",
+          "childFrame": "camera_depth_optical_frame",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "raw_cmd_vel",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/navigation_velocity_smoother/raw_cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "detected_objects_text",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/detected_objects",
+          "type": "Messages.visualization_msgs.MarkerArray",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Object tracking",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

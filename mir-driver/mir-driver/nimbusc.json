@@ -1,0 +1,98 @@
+{
+  "name": "nimbus/yujin-kobuki-driver",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "DFKI mir robot driver\ngit: https://github.com/dfki-ric/mir_robot\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/dfki_mir_driver",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "mir_driver",
+        "mir.launch",
+        "tf_prefix:=${tf_prefix}",
+        "mir_hostname:=${mir_hostname}",
+        "disable_map:=${disable_map}"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "tf_prefix",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": ""
+      },
+      {
+        "name": "mir_hostname",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "192.168.12.20"
+      },
+      {
+        "name": "disable_map",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "booleanValue": "false"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "cmd_vel",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/mobile_base/commands/velocity",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": []
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Drivers/Robots",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

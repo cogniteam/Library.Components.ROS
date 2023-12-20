@@ -1,0 +1,15 @@
+<launch>
+
+  <arg name="line_rate" default="0.15"/>
+  <arg name="arc_rate" default="0.1"/>
+
+  <node name="path_creator" pkg="polygon_scripts"  type="test_ros_path.py" output="screen">
+      <rosparam param="maestro_path" command="load" file="$(find polygon_scripts)/launch/maestro_path.yaml" />
+      <param name="line_rate"              type="double" value="$(arg line_rate)"/>
+      <param name="arc_rate"              type="double" value="$(arg arc_rate)"/>
+      <param name="file_path" value="$(find polygon_scripts)/output/"/>
+      
+  </node>
+
+
+</launch>

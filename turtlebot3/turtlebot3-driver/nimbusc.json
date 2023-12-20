@@ -1,0 +1,140 @@
+{
+  "name": "Robolem/turtlebot3-wafflepi-driver",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "turtlebot3-wafflepi-driver\nLicense: Apache 2.0\nSource: git https://github.com/ROBOTIS-GIT/turtlebot3.git",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 3,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/turtlebot3-wafflepi",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "turtlebot3_bringup",
+        "turtlebot3_core.launch"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": [],
+      "user": "",
+      "runtime": ""
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": []
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "cmd_vel",
+        "type": "",
+        "description": "A stream of velocity commands meant for execution by a mobile base.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "odom",
+        "type": "",
+        "description": "The frame attached to the odometry system.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/odom",
+          "type": "Messages.nav_msgs.Odometry",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "sensor_state",
+        "type": "",
+        "description": "The frame attached to the odometry system.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/sensor_state",
+          "type": "Messages.turtlebot3_msgs.SensorState",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "imu",
+        "type": "",
+        "description": "The imu sensor data",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/imu",
+          "type": "Messages.sensor_msgs.Imu",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [
+    {
+      "name": "turtlebot3-wafflepi-driver",
+      "info": {
+        "type": "USB_PORT_TYPE_SERIAL",
+        "productId": "5740",
+        "vendorId": "0483",
+        "revision": "",
+        "serial": "",
+        "vendorName": "",
+        "productName": "",
+        "attributes": {},
+        "ports": [],
+        "portIndex": 0,
+        "simulation": false,
+        "ip": "",
+        "id": "",
+        "internalId": ""
+      },
+      "mountAs": "/dev/ttyACM0",
+      "optional": false
+    }
+  ],
+  "tags": {},
+  "category": "Drivers/Robots",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "MIT",
+  "id": "01b69420-00a7-40dd-b915-a28c3fc6c4b4"
+}

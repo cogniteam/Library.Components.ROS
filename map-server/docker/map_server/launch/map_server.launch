@@ -1,0 +1,16 @@
+<launch>
+  <!-- Arguments -->
+  
+  <arg name="publish_rate" default="1.0" />
+  
+  <arg name="map_file" default="/opt/nimbus/data/map-server/maps/map.yaml"/>
+
+   <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" required = "true">
+
+     <param name="publish_rate" value="$(arg publish_rate)" /> 
+  
+  </node>
+  
+
+</launch>

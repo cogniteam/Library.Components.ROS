@@ -1,0 +1,139 @@
+{
+  "name": "nimbus/text_to_speech",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Text to speech from audio_common, gets string, output sound\nLicense: BSD",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/audio_say",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "ros_audio_launch",
+        "say_string.launch",
+        "voice:=${voice}",
+        "volume:=${volume}",
+        "device:=${device}",
+        "bitrate:=${bitrate}",
+        "channels:=${channels}",
+        "sample_rate:=${sample_rate}",
+        "format:=${format}",
+        "sample_format:=${sample_format}",
+        "--screen"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "voice",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "voice_kal_diphone"
+      },
+      {
+        "name": "volume",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "1.0"
+      },
+      {
+        "name": "device",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": ""
+      },
+      {
+        "name": "bitrate",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "128"
+      },
+      {
+        "name": "channels",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "1"
+      },
+      {
+        "name": "sample_rate",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "16000"
+      },
+      {
+        "name": "format",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "mp3"
+      },
+      {
+        "name": "sample_format",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "S16LE"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "sentence",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/msg_to_play",
+          "type": "Messages.std_msgs.String",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": []
+  },
+  "requiredDevices": [],
+  "tags": {},
+  "category": "Uncategorized/None",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "BSD",
+  "id": ""
+}

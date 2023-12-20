@@ -1,0 +1,195 @@
+{
+  "name": "nimbus/amcl",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "Amcl is a probabilistic localization system for a robot moving in 2D. It implements the adaptive (or KLD-sampling) Monte Carlo localization approach (as described by Dieter Fox), which uses a particle filter to track the pose of a robot against a known map.\nLicense: LGPL\nGIT: http://wiki.ros.org/amcl\nSource: git: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/amcl",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "message": "",
+    "progress": 0,
+    "requiredDevices": [],
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/amcl",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch",
+        "amcl",
+        "cogniteam_amcl.launch",
+        "initial_pose_x:=${initial_pose_x}",
+        "initial_pose_y:=${initial_pose_y}",
+        "initial_pose_a:=${initial_pose_a}",
+        "--screen"
+      ],
+      "privileged": false,
+      "gpu": false,
+      "networkHost": false,
+      "binds": []
+    },
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "initial_pose_x",
+        "description": "Initial pose mean (x), used to initialize filter with Gaussian distribution.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "initial_pose_y",
+        "description": "Initial pose mean (y), used to initialize filter with Gaussian distribution.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      },
+      {
+        "name": "initial_pose_a",
+        "description": "Initial pose mean (yaw), used to initialize filter with Gaussian distribution.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "initialpose",
+        "type": "",
+        "description": "Mean and covariance with which to (re-)initialize the particle filter.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/initialpose",
+          "type": "Messages.geometry_msgs.PoseWithCovarianceStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "scan",
+        "type": "",
+        "description": "Laser scan data from the lidar.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/scan",
+          "type": "Messages.sensor_msgs.LaserScan",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "odom",
+        "type": "Nimbus.Core.Messages.Ros1.Messages.nav_msgs.Odometry",
+        "description": "Tf transform from odom to base link",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "odom",
+          "childFrame": "base_link",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map",
+        "type": "",
+        "description": "Map for laser-based localization.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/map",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "amcl_pose_with_covariance",
+        "type": "",
+        "description": "Robot's estimated pose in the map, with covariance.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/amcl_pose",
+          "type": "Messages.geometry_msgs.PoseWithCovarianceStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "robot_pose",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "TF map to base_link as odometry",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "map",
+          "childFrame": "base_link",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "map_odom",
+        "type": "Nimbus.Messages.nav_msgs.Odometry",
+        "description": "TF map to odom as odometry",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTf": {
+          "baseFrame": "map",
+          "childFrame": "odom",
+          "rate": 10,
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Algorithms/Localization",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "LGPL",
+  "id": ""
+}

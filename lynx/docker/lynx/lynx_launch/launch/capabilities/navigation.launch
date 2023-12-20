@@ -1,0 +1,54 @@
+<launch>
+
+    <arg name="namespace" default="" />
+
+    <arg name="rate" default="30" />
+    <arg name="steer_range" default="25.0" />
+    <arg name="steer_trajectories" default="51.0" />
+    <arg name="speed" default="1.0" />
+    <arg name="speed_obstacle" default="0.7" />
+    <arg name="goal_tolerance" default="2.0" />
+    <arg name="steer_scale" default="1.0" />
+
+    <arg name="lidar_3d_min_obstacle_height" default="0.1" />
+    <arg name="lidar_3d_max_obstacle_height" default="1.5" />
+
+    <!--
+        Costmap 2d
+    -->
+    <param name="tf_prefix" value="$(arg namespace)" />
+    
+    <node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" clear_params="true" required = "true">
+        <rosparam file="$(find lynx_launch)/params/costmap.yaml" command="load" ns="costmap" />
+
+        <param name="/costmap/lslidar/max_obstacle_height" value="$(arg lidar_3d_max_obstacle_height)"/>
+        <param name="/costmap/lslidar/min_obstacle_height" value="$(arg lidar_3d_min_obstacle_height)"/>
+
+    </node>
+
+    <!--  
+        Goto point navigation
+    -->
+    <node name="lynx_navigation_node" pkg="lynx_navigation" type="lynx_navigation_node" required = "true">
+        <param name="tf_prefix" value="$(arg namespace)" />
+        <param name="rate" value ="$(arg rate)" />
+        <param name="steer_range" value ="$(arg steer_range)" />
+        <param name="steer_trajectories" value ="$(arg steer_trajectories)" />
+        <param name="speed" value ="$(arg speed)" />
+        <param name="speed_obstacle" value ="$(arg speed_obstacle)" />
+        <param name="speed_person" value="0.0" />
+        <param name="person_timeout" value="0.5" />
+        <param name="goal_tolerance" value ="$(arg goal_tolerance)" />
+        <param name="simulation_time" value="6.0" />
+        <param name="simulation_step" value="0.2" />
+        <param name="steer_scale" value ="$(arg steer_scale)" />
+    </node>
+
+    <!--  
+        Navigation mission manager
+    -->
+    <node name="lynx_navigation_manager_node" pkg="lynx_navigation" type="lynx_navigation_manager_node" required = "true" />
+
+    <node name="transform_map_odom" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map odom 100" required = "true" />
+
+</launch>

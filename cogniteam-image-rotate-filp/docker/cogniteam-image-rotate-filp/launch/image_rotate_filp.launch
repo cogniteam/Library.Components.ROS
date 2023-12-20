@@ -1,0 +1,25 @@
+<launch>
+    
+    
+    <arg name="angle_rotation_degrees" default="180" />
+    
+    <arg name="flip_both" default="false" />
+
+    <arg name="flip_vertical" default="false" />
+
+    <arg name="flip_horizontal" default="false" />    
+   
+    <node name="image_rotate_filp_node" pkg="image_rotate_filp" 
+            type="image_rotate_filp_node" required = "true">   
+
+        <param name="angle_rotation_degrees" value="$(arg angle_rotation_degrees)" /> 
+        <param name="flip_both" value="$(arg flip_both)" /> 
+        <param name="flip_vertical" value="$(arg flip_vertical)" /> 
+        <param name="flip_horizontal" value="$(arg flip_horizontal)" /> 
+      
+
+    </node>
+
+   
+
+</launch>

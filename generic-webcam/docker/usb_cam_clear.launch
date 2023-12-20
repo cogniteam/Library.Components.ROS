@@ -1,0 +1,21 @@
+<launch>
+
+  <arg name="width" default="800" />
+  <arg name="height" default="600" />
+  <arg name="fps" default="30" />
+  <arg name="pixel_format" default="yuyv" /> <!-- mjpeg/yuyv -->
+  <arg name="device" default="/dev/video0" />
+  <arg name="io_method" default="userptr" />
+  <arg name="quality" default="40" />
+
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" required = "true">
+    <param name="video_device" value="$(arg device)" />
+    <param name="image_width" value="$(arg width)" />
+    <param name="image_height" value="$(arg height)" />
+    <param name="pixel_format" value="$(arg pixel_format)" />
+    <param name="framerate" value="$(arg fps)" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="$(arg io_method)"/> 
+    <param name="image_raw/compressed/jpeg_quality" value="$(arg quality)"/> 
+  </node>
+</launch>
