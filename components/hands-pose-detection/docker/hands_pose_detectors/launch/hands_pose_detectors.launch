@@ -1,0 +1,6 @@
+<launch>
+ 
+  <node name="hands_pose_detectors_node" pkg="hands_pose_detectors" type="hands_pose_detectors_node.py" output="screen" required = "true">
+
+  </node>
+</launch>

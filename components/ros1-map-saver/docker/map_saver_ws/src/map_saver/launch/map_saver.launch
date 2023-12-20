@@ -1,0 +1,11 @@
+<launch>
+  <arg name="path" default="/opt/nimbus/data"/>
+	<arg name="map_name" default="" />
+
+   <!-- Map saver -->
+  <param name="path" type="string" value="$(arg path)" />
+  <param name="map_name" type="string" value="$(arg map_name)" />
+  <node pkg="map_saver_node" name="map_saver_node" type="mapSaver.py" output="screen">
+
+  </node>
+</launch>

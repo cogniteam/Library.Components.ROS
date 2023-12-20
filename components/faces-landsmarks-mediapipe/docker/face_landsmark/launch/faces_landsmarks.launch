@@ -1,0 +1,6 @@
+<launch>
+ 
+  <node name="face_landsmark_node" pkg="face_landsmark" type="face_landsmark_node.py" output="screen" required = "true">
+
+  </node>
+</launch>

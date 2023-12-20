@@ -1,0 +1,5 @@
+.vscode
+build
+devel
+docker/.catkin_workspace
+docker/src/CMakeLists.txt

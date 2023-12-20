@@ -1,0 +1,14 @@
+<launch>
+  
+  <arg name="minimal_distance" default="-1.0" />  
+
+  <arg name="wait_for_pause_cmd_enable" default="false" /> 
+  
+  <node name="waypoint_driver_node" pkg="waypoints_navigation" type="waypoint_driver_node" output="screen" required="true">
+		
+		<param name="minimal_distance" value="$(arg minimal_distance)" />	
+
+    <param name="wait_for_pause_cmd_enable" value="$(arg wait_for_pause_cmd_enable)" />	
+	
+	</node>
+</launch>

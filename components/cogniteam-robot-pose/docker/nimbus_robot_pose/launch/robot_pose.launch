@@ -1,0 +1,12 @@
+<launch>
+    <!-- Define arguments for source and target frames -->
+    <arg name="source_frame" default="/map" />
+    <arg name="target_frame" default="/base_link" />
+
+    <!-- Set parameters for source and target frames using the arguments -->
+    <param name="source_frame" value="$(arg source_frame)" />
+    <param name="target_frame" value="$(arg target_frame)" />
+
+    <!-- Launch the generic_robot_pose node -->
+    <node pkg="nimbus_robot_pose" type="nimbus_robot_pose_node.py" name="generic_robot_pose" output="screen" />
+</launch>

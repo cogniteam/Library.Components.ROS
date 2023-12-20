@@ -1,0 +1,33 @@
+<launch>
+
+  <!-- PARAMS ########################################################################-->    
+  
+  <arg name="general_max_vel_x" default="0.8" />
+  <arg name="general_min_vel_x" default="-0.1" />
+  <arg name="lidar_child_frame_id" default='nimbus/slamtec-rplidar-a3' />
+  <!--tf fix for nimbus ########################################################################-->    
+
+  <param name="lidar_child_frame_id" type="string" value="$(arg lidar_child_frame_id)" />
+  <node name="nimbus_lidar_pose" pkg="nimbus_lidar_pose" type="nimbus_lidar_pose_node.py" output="screen" >
+  </node>
+
+  <node name="nimbus_robot_pose" pkg="nimbus_robot_pose" type="nimbus_robot_pose_node.py" output="screen" >
+  </node>
+
+  <!-- <adventech_random_goals_node ########################################################################-->     -->
+
+  <node name="adventech_random_goals_node" pkg="adventech_random_goals" 
+            type="adventech_random_goals_node"/>
+
+  <include file="$(find yocs_velocity_smoother)/launch/velocity_smoother_with_params.launch"/> 
+
+  <!--Move Base ############################################################################-->
+
+  <include file="$(find adventech_navigation)/launch/includes/move_base.launch.xml">
+   
+    <param name="general_max_vel_x" value="$(arg general_max_vel_x)"/>
+    <param name="general_min_vel_x" value="$(arg general_min_vel_x)"/>
+  
+  </include>
+
+</launch>

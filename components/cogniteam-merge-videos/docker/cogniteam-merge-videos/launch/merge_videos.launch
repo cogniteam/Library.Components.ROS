@@ -1,0 +1,28 @@
+<launch>   
+
+   <arg name="front_camera_topic" default="/cam2/camera/image_raw" /> 
+   <arg name="back_camera_topic" default="/camera/image_raw" /> 
+   
+   <arg name="right_camera_topic" default="/usb_cam_right/image_right" /> 
+   <arg name="left_camera_topic" default="/usb_cam_left/image_left" /> 
+
+    <arg name="merged_image_topic" default="/merged_image" /> 
+
+    <!-- four_cameras -->
+    <arg name="video_layout" default="front_back" />  
+   
+    <node name="merge_videos_node" pkg="merge_videos" 
+            type="merge_videos_node">   
+
+        <param name="front_camera_topic" value="$(arg front_camera_topic)" /> 
+        <param name="back_camera_topic" value="$(arg back_camera_topic)" />         
+        <param name="right_camera_topic" value="$(arg right_camera_topic)" /> 
+        <param name="left_camera_topic" value="$(arg left_camera_topic)" /> 
+
+        <param name="merged_image_topic" value="$(arg merged_image_topic)" /> 
+        <param name="video_layout" value="$(arg video_layout)" /> 
+       
+    </node>    
+
+
+</launch>

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+  <!-- params -->
+  <param name="forest_file" value="/leg_tracker_ws/src/leg_tracker/config/trained_leg_detector_res=0.33.yaml"/>
+  <param name="scan_topic" value="/scan" />
+  <param name="scan_frequency" value="10"/>  
+  
+  
+  <!-- run detect_leg_clusters -->  
+  <node pkg="leg_tracker" type="detect_leg_clusters" name="detect_leg_clusters" output="screen"/>
+
+ 
+</launch>
+

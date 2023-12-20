@@ -1,0 +1,6 @@
+<launch>
+    <arg name="type" default="DICT_ARUCO_ORIGINAL" />
+    <node name="aruco_detection_node" pkg="aruco_detection" type="aruco_detection_node.py" output="screen">
+        <param name="type" value="$(arg type)" />
+    </node>
+</launch>
