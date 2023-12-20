@@ -4,10 +4,8 @@
   
   <arg name="general_max_vel_x" default="0.8" />
   <arg name="general_min_vel_x" default="-0.1" />
-  <arg name="lidar_child_frame_id" default='nimbus/slamtec-rplidar-a3' />
-  <!--tf fix for nimbus ########################################################################-->    
 
-  <param name="lidar_child_frame_id" type="string" value="$(arg lidar_child_frame_id)" />
+  <!--tf fix for nimbus ########################################################################-->    
   <node name="nimbus_lidar_pose" pkg="nimbus_lidar_pose" type="nimbus_lidar_pose_node.py" output="screen" >
   </node>
 
@@ -25,9 +23,16 @@
 
   <include file="$(find adventech_navigation)/launch/includes/move_base.launch.xml">
    
-    <param name="general_max_vel_x" value="$(arg general_max_vel_x)"/>
-    <param name="general_min_vel_x" value="$(arg general_min_vel_x)"/>
+    <arg name="general_max_vel_x" value="$(arg general_max_vel_x)"/>
+    <arg name="general_min_vel_x" value="$(arg general_min_vel_x)"/>
   
   </include>
+
+  <include file="$(find laser_filters)/launch/laser_scan_filter.launch">    
+  
+  </include>
+  
+
+
 
 </launch>

@@ -30,8 +30,7 @@
                 "adventech_launch",
                 "adventech_demo.launch",
                 "general_max_vel_x:=${general_max_vel_x}",
-                "general_min_vel_x:=${general_min_vel_x}",
-                "lidar_child_frame_id:=${lidar_child_frame_id}"
+                "general_min_vel_x:=${general_min_vel_x}"
             ],
             "privileged": false,
             "gpu": false,
@@ -57,13 +56,6 @@
                 "Category": "Static",
                 "node": "",
                 "doubleValue": 0.2
-            },
-            {
-                "name": "lidar_child_frame_id",
-                "description": "lidar_child_frame_id",
-                "Category": "Static",
-                "node": "",
-                "stringValue": "nimbus/slamtec-rplidar-a3"
             }
         ]
     },

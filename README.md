@@ -41,7 +41,6 @@ Image | Link
 <img src="./components/ros-tutorials-talker/ros-tutorials-talker/nimbusc.jpg" alt="ros-tutorials-talker" width="40"/> | [ros-tutorials-talker](components/ros-tutorials-talker)
 <img src="./components/ros1-gateway-arm32/ros1-gateway-arm32/nimbusc.jpg" alt="ros1-gateway-arm32" width="40"/> | [ros1-gateway-arm32](components/ros1-gateway-arm32)
 <img src="./components/ros1-gateway-launch/ros1-gateway-launch/nimbusc.jpg" alt="ros1-gateway-launch" width="40"/> | [ros1-gateway-launch](components/ros1-gateway-launch)
-<img src="./components/ros1-map-saver/map-saver/Cogniteam_CMYK_Social_white_on_aubergine copy.jpg" alt="map-saver" width="40"/> | [ros1-map-saver](components/ros1-map-saver)
 <img src="./components/sick-safety-nanoscan3/sick-safety-nanoscan3/nanoscan3.png" alt="sick-safety-nanoscan3" width="40"/> | [sick-safety-nanoscan3](components/sick-safety-nanoscan3)
 <img src="./components/slamtec-rplidar-driver/rplidar-a1/slamtec-rplidar-a1-driver.jpg" alt="rplidar-a1" width="40"/> | [rplidar-a1](components/slamtec-rplidar-driver)
 <img src="./components/slamtec-rplidar-driver/rplidar-a3/slamtec-rplidar-a3-driver.jpg" alt="rplidar-a3" width="40"/> | [rplidar-a3](components/slamtec-rplidar-driver)
@@ -57,8 +56,6 @@ Image | Link
 <img src="./components/turtlebot3/turtlebot3-slam/turtlebot.jpeg" alt="turtlebot3-slam" width="40"/> | [turtlebot3-slam](components/turtlebot3)
 <img src="./components/turtlebot3/turtlebot3-navigation/turtlebot.jpeg" alt="turtlebot3-navigation" width="40"/> | [turtlebot3-navigation](components/turtlebot3)
 <img src="./components/vosk-speech-to-text/vosk-speech-to-text/speech-text.png" alt="vosk-speech-to-text" width="40"/> | [vosk-speech-to-text](components/vosk-speech-to-text)
-<img src="./components/ydlidar-driver/ydlidar-tmini-pro/ydlidar-tmini-pro.png" alt="ydlidar-tmini-pro" width="40"/> | [ydlidar-tmini-pro](components/ydlidar-driver)
-<img src="./components/ydlidar-driver/ydlidar-sdm15/ydlidar-sdm15.png" alt="ydlidar-sdm15" width="40"/> | [ydlidar-sdm15](components/ydlidar-driver)
 
 # Contributed Components Table 
 Image | Link

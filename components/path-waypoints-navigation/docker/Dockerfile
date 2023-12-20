@@ -2,6 +2,12 @@ FROM ros:noetic
 
 COPY ./waypoints_navigation_ws /waypoints_navigation_ws
 
+
+
+	
+	
+	
+	
 WORKDIR /waypoints_navigation_ws
 
 RUN apt-get update && \ 

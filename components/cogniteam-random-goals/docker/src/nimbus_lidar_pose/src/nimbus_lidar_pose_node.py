@@ -1,6 +1,8 @@
 #!/usr/bin/env python3  
 import rospy
+import math
 import tf
+import geometry_msgs.msg
 from geometry_msgs.msg import PoseStamped
 
 
@@ -8,15 +10,13 @@ if __name__ == '__main__':
     rospy.init_node('nimbus_lidar_pose')
 
     listener = tf.TransformListener()
-
-    child_frame_id = rospy.get_param("lidar_child_frame_id",'nimbus/slamtec-rplidar-a3')
-
+    
     nimbus_lidar_pose_pub = rospy.Publisher('/nimbus_lidar_pose', PoseStamped, queue_size=10)   
 
     rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
         try:
-            (trans,rot) = listener.lookupTransform('map', str(child_frame_id), rospy.Time(0))
+            (trans,rot) = listener.lookupTransform('map', 'nimbus/slamtec-rplidar-a3', rospy.Time(0))
             print(str(rot))
 
             lidar_pose = PoseStamped()

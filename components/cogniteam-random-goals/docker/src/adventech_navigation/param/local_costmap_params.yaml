@@ -37,5 +37,5 @@ local_costmap:
     footprint_padding: 0.01
 
     observation_sources:   scan
-    #laser_scan_sensor: {data_type: LaserScan, topic: scan,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }
-    scan: {data_type: LaserScan, topic: scan,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }
+    #laser_scan_sensor: {data_type: LaserScan, topic: scan_filtered,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }
+    scan: {data_type: LaserScan, topic: scan_filtered,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }

@@ -1,0 +1,7 @@
+<launch>
+	<arg name="ip" />
+	<arg name="port" />
+	<node pkg="next_vision_cam" name="next_vision_cam" type="cam_control.py"/>
+	<param name="port" type="int" value="$(arg port)" />
+	<param name="ip" type="string" value="$(arg ip)" />
+</launch>

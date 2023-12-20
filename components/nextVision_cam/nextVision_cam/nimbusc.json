@@ -1,0 +1,102 @@
+{
+    "name": "ros1-nextVision-cam",
+    "type": "COMPONENT_TYPE_COMPONENT",
+    "className": "Ros1Component",
+    "instanceName": "",
+    "description": "ros node for controll the camera gimbal of nexvision.\nLicense: BSD",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 4,
+        "build": ""
+    },
+    "start": "START_MODE_AUTO",
+    "environment": {
+        "name": "",
+        "ipAddress": "",
+        "state": "ENVIRONMENT_STATE_UNLOADED",
+        "message": "",
+        "progress": 0,
+        "requiredDevices": [],
+        "ports": [],
+        "hostIpAddress": "",
+        "variables": [],
+        "dockerInfo": {
+            "image": "cognimbus/ros1-nextvision-cam:noetic",
+            "containerId": "",
+            "imageSize": 0,
+            "commands": [
+                "roslaunch",
+                "next_vision_cam",
+                "next_vision.launch",
+                "ip:=${IP}",
+                "port:=${Port}"
+            ],
+            "privileged": true,
+            "gpu": false,
+            "networkHost": true,
+            "binds": [],
+            "user": "",
+            "runtime": ""
+        },
+        "log": "",
+        "convertedCommands": "",
+        "onExit": "IGNORE"
+    },
+    "parameters": {
+        "parameters": [
+            {
+                "name": "IP",
+                "description": "Device ip",
+                "Category": "Static",
+                "node": "",
+                "stringValue": "192.168.0.20"
+            },
+            {
+                "name": "Port",
+                "description": "Device port",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "10024"
+            }
+        ]
+    },
+    "state": "COMPONENT_STATE_UNLOADED",
+    "message": "",
+    "streams": {
+        "inputStreams": [
+            {
+                "name": "cmd_vel",
+                "type": "",
+                "description": "",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/next_vision_cam/cmd_vel",
+                    "type": "geometry_msgs.Twist",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            }
+        ],
+        "outputStreams": []
+    },
+    "requiredDevices": [],
+    "ros": {
+        "baseFrame": "",
+        "rate": 0,
+        "publishTfDevices": false,
+        "generatePort": false,
+        "rosMasterUri": "${ros_master_uri}",
+        "rosIp": "${ros_ip}",
+        "autoDetectIp": false,
+        "ros2DomainId": 0
+    },
+    "tags": {},
+    "category": "Uncategorized/None",
+    "simulation": false,
+    "pluginFile": "",
+    "license": "",
+    "id": "820b85b8-4800-452d-ac44-ca8c4ee55505"
+}

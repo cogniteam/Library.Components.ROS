@@ -43,7 +43,7 @@ public:
   LaserFootprintFilter()
     : nh_("~"), listener_(ros::Duration(10))
   {
-    scan_pub_ = nh_.advertise<sensor_msgs::LaserScan>("/scan_ttt", 1);
+    scan_filtered_pub_ = nh_.advertise<sensor_msgs::LaserScan>("/scan_filtered_ttt", 1);
     scan_sub_ = nh_.subscribe("/scan_ttt", 1000, &LaserFootprintFilter::update, this);
 
     nh_.param<double>("footprint_inscribed_radius", inscribed_radius_, 0.16495*1.1);
@@ -82,7 +82,7 @@ public:
 
     }
 
-    scan_pub_.publish(filtered_scan);
+    scan_filtered_pub_.publish(filtered_scan);
   }
 
   // Filter out circular area
@@ -99,7 +99,7 @@ private:
   tf::TransformListener listener_;
   double inscribed_radius_;
   std::string base_frame_;
-  ros::Publisher scan_pub_;
+  ros::Publisher scan_filtered_pub_;
   ros::Publisher debug_pub_;
   ros::Subscriber scan_sub_;
 };

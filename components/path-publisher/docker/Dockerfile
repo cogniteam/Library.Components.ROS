@@ -1,10 +1,14 @@
 FROM ros:noetic
 
-ENV ROS_WS=path_publisher_ws
+COPY ./path_publisher /path_publisher_ws/src/path_publisher
 
-COPY ./path_publisher /${ROS_WS}/src/path_publisher
 
-WORKDIR /${ROS_WS}
+
+	
+	
+	
+	
+WORKDIR /path_publisher_ws
 
 RUN apt-get update && \
     apt-get install ros-noetic-geometry-msgs -y && \
@@ -15,8 +19,14 @@ RUN apt-get update && \
     rm /var/lib/apt/lists/* -rf
 
 RUN . /opt/ros/noetic/setup.sh && catkin_make
+
+
+	
 	
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
+
+ 
+

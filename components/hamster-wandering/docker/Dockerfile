@@ -1,8 +1,10 @@
 FROM ros:noetic
 
-COPY ./hamster_wandering /hamster_wandering_ws/src/hamster_wandering
+ENV HAMSTER_WS=hamster_wandering_ws
 
-WORKDIR /hamster_wandering_ws
+COPY ./hamster_wandering /${HAMSTER_WS}/src/hamster_wandering
+
+WORKDIR /${HAMSTER_WS}
 
 RUN apt-get update && \
     apt-get install ros-noetic-ackermann-msgs && \
