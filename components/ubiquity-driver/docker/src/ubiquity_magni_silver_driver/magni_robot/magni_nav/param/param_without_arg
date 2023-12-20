@@ -1,0 +1,130 @@
+DWAPlannerROS: {acc_lim_theta: 2.5, acc_lim_trans: 0.1, acc_lim_x: 1.25, acc_lim_y: 0.0,
+  angular_sim_granularity: 0.1, controller_frequency: 40.0, forward_point_distance: 0.325,
+  goal_distance_bias: 20.0, latch_xy_goal_tolerance: false, max_scaling_factor: 0.2,
+  max_vel_theta: 0.9, max_vel_trans: 0.1, max_vel_x: 0.3, max_vel_y: 0.0, min_vel_theta: 0.45,
+  min_vel_trans: 0.05, min_vel_x: -0.3, min_vel_y: 0.0, occdist_scale: 0.02, oscillation_reset_angle: 0.2,
+  oscillation_reset_dist: 0.05, path_distance_bias: 32.0, prune_plan: false, restore_defaults: false,
+  scaling_speed: 0.2, sim_granularity: 0.025, sim_time: 2.0, stop_time_buffer: 0.2,
+  theta_stopped_vel: 0.1, trans_stopped_vel: 0.1, twirling_scale: 0.0, use_dwa: true,
+  vth_samples: 20, vx_samples: 40, vy_samples: 10, xy_goal_tolerance: 0.05, yaw_goal_tolerance: 0.1}
+GlobalPlanner: {allow_unknown: true, cost_factor: 0.55, default_tolerance: 0.0, lethal_cost: 253,
+  neutral_cost: 66, old_navfn_behavior: false, orientation_mode: 1, orientation_window_size: 1,
+  planner_costmap_publish_frequency: 0.0, planner_window_x: 0.0, planner_window_y: 0.0,
+  publish_potential: true, publish_scale: 100, use_dijkstra: true, use_grid_path: false,
+  use_quadratic: true}
+aggressive_reset: {reset_distance: 1.84}
+base_global_planner: global_planner/GlobalPlanner
+base_local_planner: dwa_local_planner/DWAPlannerROS
+clearing_rotation_allowed: true
+conservative_reset: {reset_distance: 3.0}
+conservative_reset_dist: 3.0
+controller_frequency: 20.0
+controller_patience: 15.0
+global_costmap:
+  footprint: '[[0.15,0.275],[0.15,-0.275],[-0.4,-0.275],[-0.4,0.275]]'
+  footprint_padding: 0.01
+  global_frame: odom
+  height: 20
+  inflation_layer: {cost_scaling_factor: 5.0, enabled: true, inflate_unknown: false,
+    inflation_radius: 0.3}
+  obstacle_layer:
+    combination_method: 1
+    enabled: true
+    footprint_clearing_enabled: true
+    inflation_radius: 0.3
+    mark_threshold: 0
+    max_obstacle_height: 1.0
+    observation_sources: scan
+    obstacle_range: 3.0
+    origin_z: 0.0
+    raytrace_range: 3.5
+    scan: {clearing: true, data_type: LaserScan, marking: true, max_obstacle_height: 1.0,
+      min_obstacle_height: 0.01, sensor_frame: base_link, topic: scan}
+    unknown_threshold: 15
+    z_resolution: 0.2
+    z_voxels: 10
+  origin_x: 0.0
+  origin_y: 0.0
+  plugins:
+  - {name: obstacle_layer, type: 'costmap_2d::VoxelLayer'}
+  - {name: range_sensor_layer, type: 'range_sensor_layer::RangeSensorLayer'}
+  - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
+  publish_frequency: 10.0
+  range_sensor_layer:
+    clear_on_max_reading: false
+    clear_threshold: 0.4
+    enabled: true
+    inflate_cone: 0.0
+    mark_threshold: 0.9
+    no_readings_timeout: 0.0
+    ns: /cliff_controller
+    phi: 1.2
+    topics: [/cliff_front_right, /cliff_front_left, /cliff_rear_right, /cliff_rear_left]
+  resolution: 0.05
+  robot_base_frame: base_footprint
+  robot_radius: 0.46
+  rolling_window: true
+  static_map: false
+  transform_tolerance: 0.2
+  update_frequency: 5.0
+  width: 20
+local_costmap:
+  footprint: '[[0.15,0.275],[0.15,-0.275],[-0.4,-0.275],[-0.4,0.275]]'
+  footprint_padding: 0.01
+  global_frame: odom
+  height: 3
+  inflation_layer: {cost_scaling_factor: 3.0, enabled: true, inflate_unknown: false,
+    inflation_radius: 1.0}
+  obstacle_layer:
+    combination_method: 1
+    enabled: true
+    footprint_clearing_enabled: true
+    inflation_radius: 0.3
+    mark_threshold: 0
+    max_obstacle_height: 1.0
+    observation_sources: scan
+    obstacle_range: 3.0
+    origin_z: 0.0
+    raytrace_range: 3.5
+    scan: {clearing: true, data_type: LaserScan, marking: true, max_obstacle_height: 1.0,
+      min_obstacle_height: 0.01, sensor_frame: base_link, topic: scan}
+    unknown_threshold: 15
+    z_resolution: 0.2
+    z_voxels: 10
+  origin_x: 0.0
+  origin_y: 0.0
+  plugins:
+  - {name: obstacle_layer, type: 'costmap_2d::VoxelLayer'}
+  - {name: range_sensor_layer, type: 'range_sensor_layer::RangeSensorLayer'}
+  - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
+  publish_frequency: 10.0
+  range_sensor_layer:
+    clear_on_max_reading: false
+    clear_threshold: 0.4
+    enabled: true
+    inflate_cone: 0.0
+    mark_threshold: 0.9
+    no_readings_timeout: 0.0
+    ns: /cliff_controller
+    phi: 1.2
+    topics: [/cliff_front_right, /cliff_front_left, /cliff_rear_right, /cliff_rear_left]
+  resolution: 0.05
+  robot_base_frame: base_footprint
+  robot_radius: 0.46
+  rolling_window: true
+  transform_tolerance: 0.5
+  update_frequency: 20.0
+  width: 3
+make_plan_add_unreachable_goal: true
+make_plan_clear_costmap: true
+max_planning_retries: -1
+oscillation_distance: 0.2
+oscillation_timeout: 10.0
+planner_frequency: 20.0
+planner_patience: 5.0
+publish_cost_grid_pc: true
+publish_traj_pc: true
+recovery_behavior_enabled: true
+restore_defaults: false
+shutdown_costmaps: false
+

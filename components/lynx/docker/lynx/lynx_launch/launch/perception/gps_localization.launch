@@ -1,0 +1,19 @@
+<launch>
+
+    <arg name="namespace" default="" />
+
+    <!--  
+        GPS localization
+    -->
+    <node name="lynx_gps_localization_node" 
+            pkg="lynx_localization" type="lynx_gps_localization_node">
+
+        <param name="tf_prefix" value="$(arg namespace)" />
+
+        <param name="gps_odom/fixed_frame" value="odom" />
+        <param name="gps_odom/base_frame" value="base_link" />
+        <param name="gps_odom/gps_trust" value="0.5" />
+        
+    </node>
+
+</launch>

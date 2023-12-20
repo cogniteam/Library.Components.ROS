@@ -1,0 +1,37 @@
+<launch>
+    
+    <arg name="local_ip" default="10.0.2.25" />
+
+    <arg name="rosbridge_ip" default="$(arg local_ip)" />
+    <arg name="rosbridge_port" default="8090" />
+    
+    <arg name="video_ip" default="$(arg local_ip)" />
+    <arg name="video_port" default="8080" />
+
+    <arg name="http_port" default="8000" />
+
+
+    <!--  
+        ROSBridge server (ROS JavaScript server)
+    -->
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+        <arg name="address" value="$(arg rosbridge_ip)" />
+        <arg name="port" value="$(arg rosbridge_port)" />
+    </include>
+
+    <!--  
+        Video stream server
+    -->
+    <node name="web_video_server" pkg="web_video_server" type="web_video_server">
+        <param name="address" value="$(arg video_ip)" />
+        <param name="port" value="$(arg video_port)" />
+    </node>
+
+    <!--  
+        OCU HTTP server
+    -->
+    <node name="http_ocu_server" pkg="lynx_launch" type="http_server.sh" 
+            args="$(arg http_port) $(find lynx_launch)/../lynx_web_ocu" />
+
+</launch>
+

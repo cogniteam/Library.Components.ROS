@@ -14,7 +14,7 @@ Before you begin, ensure you have met the following requirements:
 1. **Fork the Repository**: Click on the 'Fork' button on the upper right-hand side of the page. A copy of the repository will be created on your personal GitHub account.
 2. **Clone the Repository**: Clone the forked repository to your local machine by running:
    ```bash
-   git clone https://github.com/cognimbus/Nimbus.Library.Components.ROS.git
+   git clone https://github.com/cognimbus/Nimbus.Library.Components.ROS2.git
    ```
 
 ## Adding a New Component

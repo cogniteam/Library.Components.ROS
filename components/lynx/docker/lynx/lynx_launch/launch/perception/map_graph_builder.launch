@@ -1,0 +1,11 @@
+<launch>
+
+    <arg name="min_points_distance" default="30.0" />
+
+    <node name="lynx_map_graph_builder" pkg="lynx_localization" type="lynx_map_graph_builder_node">
+        
+        <param name="min_points_distance" value="$(arg min_points_distance)"/>
+
+    </node>
+
+</launch>

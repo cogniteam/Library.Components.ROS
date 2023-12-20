@@ -1,0 +1,28 @@
+<launch>
+    
+    <arg name="optimize_for" default="1" />
+    <arg name="target_bitrate" default="800000" />
+    <arg name="quality" default="31" />
+    <arg name="keyframe_frequency" default="64" />
+    <arg name="time_interval" default="5.0" />
+
+    <param name = "/video/theora/keyframe_frequency" value = "$(arg keyframe_frequency)" />
+    <param name = "/video/theora/target_bitrate" value = "$(arg target_bitrate)" />
+    <param name = "/video/theora/quality" value = "$(arg quality)" />
+    <param name = "/video/theora/optimize_for" value = "$(arg optimize_for)" />
+
+
+   
+    <node name="republish" pkg="image_transport" 
+        type="republish" args="raw in:=usb_cam/image_raw theora out:=video" required = "true">   
+
+    </node>     
+
+    <node name="theora_node" pkg="theora_info"
+        type="theora_node"   output="screen" required = "true">
+            
+            <param name = "time_interval" value = "$(arg time_interval)" />
+
+    </node>	
+
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+
+    <node name="lynx_state_monitor" pkg="lynx_driver" type="lynx_sensors_state_monitor_node"/>
+
+ </launch>

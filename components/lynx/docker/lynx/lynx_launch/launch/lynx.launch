@@ -1,0 +1,86 @@
+<launch>
+
+    <arg name="namespace" default="" />
+    <arg name="local_ip" default="10.0.2.25" />
+    <arg name="record_localization" default="false" />
+
+
+    <group ns="$(arg namespace)">
+
+        <!--  
+            LLC driver
+        -->
+        <include file="$(find lynx_launch)/launch/drivers/llc_driver.launch">
+            <arg name="namespace" value="$(arg namespace)" />
+        </include>
+
+        <!--  
+            GPS driver
+        -->
+        <include file="$(find lynx_launch)/launch/drivers/gps_serial_driver.launch">
+        </include>
+
+	    <!--
+	        Lidar driver
+	    -->
+        <include file="$(find lynx_launch)/launch/drivers/lslidar_c16.launch"/>
+
+        <!--
+	        Detection
+	    -->
+	    <include file ="$(find lynx_launch)/launch/perception/detection.launch">
+		    <arg name="namespace" value="$(arg namespace)" />
+	    </include>
+
+        <!--
+	        Hardware state monitor
+	    -->
+
+        <include file="$(find lynx_launch)/launch/perception/state_monitor.launch">
+        </include>
+
+        <!--  
+            Intel RealSense cameras (D435i + T265)
+        -->
+        <include file="$(find lynx_launch)/launch/drivers/realsense_d435_and_t265.launch">
+            <arg name="namespace" value="$(arg namespace)" />
+        </include>
+
+        <!--  
+            IMU orientation filtering (madgwick or complementary filter)
+        -->
+        <include file="$(find lynx_launch)/launch/perception/imu_filtering.launch">
+            <arg name="namespace" value="$(arg namespace)" />
+        </include>
+
+        <!--  
+            Localization fusion of GPS and odometry 
+        -->
+        <include file="$(find lynx_launch)/launch/perception/gps_localization.launch">
+            <arg name="namespace" value="$(arg namespace)" />
+        </include>
+
+        <!--  
+            Navigation (goto goal) 
+        -->
+        <include file="$(find lynx_launch)/launch/capabilities/navigation.launch">
+            <arg name="namespace" value="$(arg namespace)" />
+        </include>
+
+        <!--  
+            OCU web server and services
+        -->
+        <include file="$(find lynx_launch)/launch/capabilities/ocu_server.launch">
+            <arg name="local_ip" value="$(arg local_ip)" />
+        </include>
+
+        <!--
+            GPS localization data record 
+        -->
+        <node if="$(arg record_localization)" name="lynx_record_localization" pkg="rosbag" type="record" 
+                args="imu_raw mag_raw t265/odom/sample sensors/gps/fix" required = "true"/>
+
+    </group>
+
+
+</launch>

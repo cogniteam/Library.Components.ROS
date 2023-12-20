@@ -1,0 +1,14 @@
+[Unit]
+Description=Lynx robot system
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+User=lynx
+ExecStart=/bin/bash -i -c 'roslaunch lynx_launch lynx.launch'
+
+[Install]
+WantedBy=multi-user.target

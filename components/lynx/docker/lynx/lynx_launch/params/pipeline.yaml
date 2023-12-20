@@ -1,0 +1,18 @@
+Pipelines:
+- name: object
+  inputs: [RealSenseCameraTopic]
+  infers:
+    - name: ObjectDetection
+      model: /home/lynx/ssdlite_mobilenet_v2_coco_2018_05_09/vino/frozen_inference_graph.xml
+      engine: MYRIAD
+      label: /home/lynx/lynx_ws/src/lynx/lynx_launch/params/frozen_inference_graph.labels
+      batch: 1
+  outputs: [RosTopic,RViz]
+  confidence_threshold: 0.2
+  connects:
+    - left: RealSenseCameraTopic
+      right: [ObjectDetection]
+    - left: ObjectDetection
+      right: [RosTopic,RViz]
+OpenvinoCommon:
+

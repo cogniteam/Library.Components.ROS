@@ -1,0 +1,8 @@
+prefix=/home/robodeck2/local_camera_ws/install
+
+Name: local_camera_driver
+Description: Description of local_camera_driver
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

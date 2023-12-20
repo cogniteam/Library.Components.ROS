@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package>
+  <name>lynx_navigation</name>
+  <version>1.0.0</version>
+  <description>Simple navigation algorithm</description>
+  <maintainer email="igor@cogniteam.com">Igor Makhtes</maintainer>
+  <author email="igor@cogniteam.com">Igor Makhtes</author>
+  <license>Proprietary</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>dynamic_reconfigure</build_depend>
+  <build_depend>angles</build_depend>
+  <build_depend>geodesy</build_depend>
+  <build_depend>object_msgs</build_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>dynamic_reconfigure</run_depend>
+  <run_depend>angles</run_depend>
+  <run_depend>geodesy</run_depend>
+  <run_depend>object_msgs</run_depend>
+</package>

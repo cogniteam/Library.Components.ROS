@@ -1,0 +1,21 @@
+local_costmap:
+  global_frame: odom
+  robot_base_frame: base_footprint
+  update_frequency: 10
+  publish_frequency: 10
+  rolling_window: true
+  width: 2
+  height: 2
+  resolution: 0.02
+  transform_tolerance: 0.5
+  #inflation_layer: 
+  #  enabled: true
+  #  inflation_radius: 1.75
+  #  cost_scaling_factor: 2.58
+
+  plugins:
+   - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
+   - {name: range_sensor_layer,   type: "range_sensor_layer::RangeSensorLayer"}
+   - {name: inflation_layer,     type: "costmap_2d::InflationLayer"} 
+ 
+ 

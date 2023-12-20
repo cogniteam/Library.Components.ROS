@@ -56,15 +56,15 @@ def generate_supported_arch(dir_path, repo_name):
         print('Error while trying to extract architectures from docker hub')
         print(str(e))
 
-
 # This method extracts the ros version of the component from the docker file
 def generate_ros_version(dir_path, repo_name):
     try:
-        docker_file = open(os.path.join(dir_path, 'docker', 'Dockerfile'), 'r')
-        ros_version = docker_file.readline().split(':')[-1]
-        return  f"* ROS version <b>{ros_version}</b>"
+        with open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r') as json_file:  # Open json file
+            json_content = json.load(json_file)                                          # Load the json content
+        ros_version = json_content['environment']['dockerInfo']['image'].split(':')[1]  # Extract the ros version from the image's tag   
+        return  f"* ROS version <b>{ros_version}</b>"                                                              # Return the docker image name
     except Exception as e:
-        print('Error while trying to extract ros version from Dockerfile')
+        print("Error while trying to extract docker image from json file")
         print(str(e))
 
 
@@ -271,19 +271,20 @@ def generate_library_reademe():
     library_dir_path = os.path.dirname(__file__)
     repos = os.listdir(library_dir_path)
 
-    repos.remove('unclassified')
-    repos.remove('generate_readme.py')
-    repos.remove('README.md')
-    repos.remove('.git')
-    repos.remove('.gitignore')
-    repos.remove('.gitlab-ci.yml')
-    repos.remove('generate_table.py')
-    repos.remove('docker_retag.py')
+    files_to_remove = ['unclassified', 'generate_readme.py', 'README.md', '.git', '.gitignore', '.gitlab-ci.yml', 'generate_table.py', 'docker_retag.py',
+                        '.filter_only_updated_items.py', 'json_retag.py']
+    repos_to_remove = ['hamster-v8-environment', 'isaac-skeleton-viewer', 'slam-toolbox']
 
-    repos.remove('.filter_only_updated_items.py')  # Unknown
-    repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
-    repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
-    repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
+    for file_name in files_to_remove:
+        try:
+            repos.remove(file_name)
+        except ValueError:
+            pass
+    for file_name in repos_to_remove:
+        try:
+            repos.remove(file_name)
+        except ValueError:
+            pass
 
     for repo in sorted(repos):
         print(repo)

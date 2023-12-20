@@ -1,0 +1,23 @@
+<launch>
+
+      <arg name="map_frame_id" default="map" />
+
+      <arg name="static_objects_life_time_seconds" default="0.2" />
+
+      
+
+      <node name="poses_estimation_node" pkg="objects_pose_estimation" type="poses_estimation_node" required = "true">
+
+            <param name="map_frame_id" value="$(arg map_frame_id)" /> 
+            <param name="static_objects_life_time_seconds" value="$(arg static_objects_life_time_seconds)" /> 
+            
+      </node>
+
+
+
+      <node name="bbox_convertor_node" pkg="bbox_convertor"
+            type="bbox_convertor_node"  output="screen" required = "true">
+      </node>	
+
+
+</launch>

@@ -1,0 +1,137 @@
+{
+    "name": "nimbus/bosch-imu-driver",
+    "type": "COMPONENT_TYPE_COMPONENT",
+    "className": "Ros1Component",
+    "instanceName": "",
+    "description": "A driver for the sensor IMU Bosch BNO055. It was implemented only the UART communication interface (correct sensor mode should be selected).\nLicense: LGPL\nGIT: https://github.com/mdrwiega/bosch_imu_driver: ",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0,
+        "build": ""
+    },
+    "start": "START_MODE_AUTO",
+    "environment": {
+        "name": "",
+        "ipAddress": "",
+        "state": "ENVIRONMENT_STATE_UNLOADED",
+        "message": "",
+        "progress": 0,
+        "requiredDevices": [],
+        "ports": [],
+        "hostIpAddress": "",
+        "variables": [],
+        "dockerInfo": {
+            "image": "cognimbus/bosch-imu-driver:melodic",
+            "containerId": "",
+            "imageSize": 0,
+            "commands": [
+                "roslaunch",
+                "rr_bosch_bno055_imu",
+                "example.launch",
+                "--screen"
+            ],
+            "privileged": false,
+            "gpu": false,
+            "networkHost": false,
+            "binds": []
+        },
+        "log": "",
+        "convertedCommands": "",
+        "onExit": "IGNORE"
+    },
+    "parameters": {
+        "parameters": []
+    },
+    "state": "COMPONENT_STATE_UNLOADED",
+    "message": "",
+    "streams": {
+        "inputStreams": [],
+        "outputStreams": [
+            {
+                "name": "imu_data",
+                "type": "",
+                "description": "Streaming acceleration, angular velocity, and orientation measurements from the Razor M0",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/imu/data",
+                    "type": "Messages.sensor_msgs.Imu",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "imu_data_raw",
+                "type": "",
+                "description": "Streaming acceleration and angular velocity measurements from the Razor M0, i.e. raw inertial measurements",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/imu/raw",
+                    "type": "Messages.sensor_msgs.Imu",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "imu_mag",
+                "type": "",
+                "description": "Streaming three-axis magnetic field measurements from the Razor M0",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/imu/mag",
+                    "type": "Messages.sensor_msgs.MagneticField",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            }
+        ]
+    },
+    "requiredDevices": [
+        {
+            "name": "imu",
+            "info": {
+                "type": "USB_PORT_TYPE_SERIAL",
+                "productId": "2303",
+                "vendorId": "067b",
+                "revision": "",
+                "serial": "",
+                "vendorName": "",
+                "productName": "",
+                "attributes": {},
+                "ports": [],
+                "portIndex": 0,
+                "simulation": false,
+                "ip": "",
+                "id": "",
+                "internalId": ""
+            },
+            "attachedDevice": {
+                "name": "",
+                "connected": false,
+                "id": ""
+            },
+            "mountAs": "/dev/ttyUSB1",
+            "optional": false
+        }
+    ],
+    "ros": {
+        "baseFrame": "base_link",
+        "rate": 10,
+        "publishTfDevices": true,
+        "rosMasterUri": "",
+        "rosIp": "",
+        "autoDetectIp": false
+    },
+    "tags": {},
+    "category": "Drivers/Imu",
+    "simulation": false,
+    "pluginFile": "",
+    "license": "BSD",
+    "id": "bdfe7334-1965-4989-b958-52df2c3b4fb7"
+}

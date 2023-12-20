@@ -1,0 +1,1240 @@
+{
+    "name": "nimbus/move-base-navigation",
+    "type": "COMPONENT_TYPE_COMPONENT",
+    "className": "Ros1Component",
+    "instanceName": "",
+    "description": "The move_base package provides an implementation of an action (see the actionlib package) that, given a goal in the world, will attempt to reach it with a mobile base. The move_base node links together a global and local planner to accomplish its global navigation task. It supports any global planner adhering to the nav_core::BaseGlobalPlanner interface specified in the nav_core package and any local planner adhering to the nav_core::BaseLocalPlanner interface specified in the nav_core package. The move_base node also maintains two costmaps, one for the global planner, and one for a local planner (see the costmap_2d package) that are used to accomplish navigation tasks.\nLicense: BSD\nGIT:https://github.com/ros-planning/navigation.git",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0,
+        "build": ""
+    },
+    "start": "START_MODE_AUTO",
+    "environment": {
+        "name": "",
+        "ipAddress": "",
+        "state": "ENVIRONMENT_STATE_UNLOADED",
+        "message": "",
+        "progress": 0,
+        "requiredDevices": [],
+        "ports": [],
+        "hostIpAddress": "",
+        "variables": [],
+        "dockerInfo": {
+            "image": "cognimbus/move-base:melodic",
+            "containerId": "",
+            "imageSize": 0,
+            "commands": [
+                "roslaunch",
+                "turtlebot_navigation",
+                "move_base.launch.xml",
+                "global_frame_id:=${global_frame_id}",
+                "base_frame_id:=${base_frame_id}",
+                "general_odom_topic:=${general_odom_topic}",
+                "laser_topic:=${laser_topic}",
+                "scan_min_obstacle_height:=${scan_min_obstacle_height}",
+                "scan_max_obstacle_height:=${scan_max_obstacle_height}",
+                "d435_cam1_min_obstacle_height:=${d435_cam1_min_obstacle_height}",
+                "d435_cam1_max_obstacle_height:=${d435_cam1_max_obstacle_height}",
+                "bump_min_obstacle_height:=${bump_min_obstacle_height}",
+                "bump_max_obstacle_height:=${bump_max_obstacle_height}",
+                "max_obstacle_height:=${max_obstacle_height}",
+                "local_costmap_transform_tolerance:=${local_costmap_transform_tolerance}",
+                "global_costmap_transform_tolerance:=${global_costmap_transform_tolerance}",
+                "scan_observation_persistence:=${scan_observation_persistence}",
+                "d435_cam1_observation_persistence:=${d435_cam1_observation_persistence}",
+                "general_max_vel_x:=${general_max_vel_x}",
+                "general_max_vel_y:=${general_max_vel_y}",
+                "general_min_vel_x:=${general_min_vel_x}",
+                "dwa_min_vel_y:=${dwa_min_vel_y}",
+                "costmap_obstacle_range:=${costmap_obstacle_range}",
+                "global_origin_x:=${global_origin_x}",
+                "global_origin_y:=${global_origin_y}",
+                "global_origin_z:=${global_origin_z}",
+                "global_map_width:=${global_map_width}",
+                "global_map_height:=${global_map_height}",
+                "local_map_width:=${local_map_width}",
+                "local_map_height:=${local_map_height}",
+                "robot_radius:=${robot_radius}",
+                "track_unknown_space:=${track_unknown_space}",
+                "local_inflation_radius:=${local_inflation_radius}",
+                "enable_static_layer:=${enable_static_layer}",
+                "dwa_planner_activated:=${dwa_planner_activated}",
+                "recovery_behavior_enabled:=${recovery_behavior_enabled}",
+                "dwa_max_trans_vel:=${dwa_max_trans_vel}",
+                "dwa_min_trans_vel:=${dwa_min_trans_vel}",
+                "dwa_trans_stopped_vel:=${dwa_trans_stopped_vel}",
+                "dwa_max_vel_theta:=${dwa_max_vel_theta}",
+                "dwa_min_vel_theta:=${dwa_min_vel_theta}",
+                "dwa_max_rot_vel:=${dwa_max_rot_vel}",
+                "dwa_min_rot_vel:=${dwa_min_rot_vel}",
+                "dwa_rot_stopped_vel:=${dwa_rot_stopped_vel}",
+                "dwa_acc_lim_x:=${dwa_acc_lim_x}",
+                "dwa_acc_lim_theta:=${dwa_acc_lim_theta}",
+                "dwa_acc_lim_y:=${dwa_acc_lim_y}",
+                "general_yaw_goal_tolerance:=${general_yaw_goal_tolerance}",
+                "general_xy_goal_tolerance:=${general_xy_goal_tolerance}",
+                "dwa_sim_time:=${dwa_sim_time}",
+                "dwa_vx_samples:=${dwa_vx_samples}",
+                "dwa_vy_samples:=${dwa_vy_samples}",
+                "dwa_vtheta_samples:=${dwa_vtheta_samples}",
+                "dwa_path_distance_bias:=${dwa_path_distance_bias}",
+                "dwa_goal_distance_bias:=${dwa_goal_distance_bias}",
+                "dwa_occdist_scale:=${dwa_occdist_scale}",
+                "dwa_forward_point_distance:=${dwa_forward_point_distance}",
+                "dwa_stop_time_buffer:=${dwa_stop_time_buffer}",
+                "dwa_scaling_speed:=${dwa_scaling_speed}",
+                "dwa_max_scaling_factor:=${dwa_max_scaling_factor}",
+                "dwa_oscillation_reset_dist:=${dwa_oscillation_reset_dist}",
+                "dwa_publish_traj_pc:=${dwa_publish_traj_pc}",
+                "dwa_publish_cost_grid_pc:=${dwa_publish_cost_grid_pc}",
+                "teb_autosize:=${teb_autosize}",
+                "teb_dt_ref:=${teb_dt_ref}",
+                "teb_dt_hysteresis:=${teb_dt_hysteresis}",
+                "teb_global_plan_overwrite_orientation:=${teb_global_plan_overwrite_orientation}",
+                "teb_max_global_plan_lookahead_dist:=${teb_max_global_plan_lookahead_dist}",
+                "teb_feasibility_check_no_poses:=${teb_feasibility_check_no_poses}",
+                "teb_max_vel_x_backwards:=${teb_max_vel_x_backwards}",
+                "teb_max_vel_theta:=${teb_max_vel_theta}",
+                "teb_acc_lim_x:=${teb_acc_lim_x}",
+                "teb_acc_lim_theta:=${teb_acc_lim_theta}",
+                "teb_min_turning_radius:=${teb_min_turning_radius}",
+                "teb_wheelbase:=${teb_wheelbase}",
+                "teb_cmd_angle_instead_rotvel:=${teb_cmd_angle_instead_rotvel}",
+                "teb_footprint_model_type:=${teb_footprint_model_type}",
+                "teb_free_goal_vel:=${teb_free_goal_vel}",
+                "teb_min_obstacle_dist:=${teb_min_obstacle_dist}",
+                "teb_include_costmap_obstacles:=${teb_include_costmap_obstacles}",
+                "teb_costmap_obstacles_behind_robot_dist:=${teb_costmap_obstacles_behind_robot_dist}",
+                "teb_obstacle_poses_affected:=${teb_obstacle_poses_affected}",
+                "teb_costmap_converter_plugin:=${teb_costmap_converter_plugin}",
+                "teb_costmap_converter_spin_thread:=${teb_costmap_converter_spin_thread}",
+                "teb_costmap_converter_rate:=${teb_costmap_converter_rate}",
+                "teb_no_inner_iterations:=${teb_no_inner_iterations}",
+                "teb_no_outer_iterations:=${teb_no_outer_iterations}",
+                "teb_optimization_activate:=${teb_optimization_activate}",
+                "teb_optimization_verbose:=${teb_optimization_verbose}",
+                "teb_penalty_epsilon:=${teb_penalty_epsilon}",
+                "teb_weight_max_vel_x:=${teb_weight_max_vel_x}",
+                "teb_weight_max_vel_theta:=${teb_weight_max_vel_theta}",
+                "teb_weight_acc_lim_x:=${teb_weight_acc_lim_x}",
+                "teb_weight_acc_lim_theta:=${teb_weight_acc_lim_theta}",
+                "teb_weight_kinematics_nh:=${teb_weight_kinematics_nh}",
+                "teb_weight_kinematics_forward_drive:=${teb_weight_kinematics_forward_drive}",
+                "teb_weight_kinematics_turning_radius:=${teb_weight_kinematics_turning_radius}",
+                "teb_weight_optimaltime:=${teb_weight_optimaltime}",
+                "teb_weight_obstacle:=${teb_weight_obstacle}",
+                "teb_weight_dynamic_obstacle:=${teb_weight_dynamic_obstacle}",
+                "teb_enable_homotopy_class_planning:=${teb_enable_homotopy_class_planning}",
+                "teb_enable_multithreading:=${teb_enable_multithreading}",
+                "teb_simple_exploration:=${teb_simple_exploration}",
+                "teb_max_number_classes:=${teb_max_number_classes}",
+                "teb_selection_cost_hysteresis:=${teb_selection_cost_hysteresis}",
+                "teb_selection_obst_cost_scale:=${teb_selection_obst_cost_scale}",
+                "teb_selection_alternative_time_cost:=${teb_selection_alternative_time_cost}",
+                "teb_roadmap_graph_no_samples:=${teb_roadmap_graph_no_samples}",
+                "teb_roadmap_graph_area_width:=${teb_roadmap_graph_area_width}",
+                "teb_h_signature_prescaler:=${teb_h_signature_prescaler}",
+                "teb_h_signature_threshold:=${teb_h_signature_threshold}",
+                "teb_obstacle_keypoint_offset:=${teb_obstacle_keypoint_offset}",
+                "teb_obstacle_heading_threshold:=${teb_obstacle_heading_threshold}",
+                "teb_visualize_hc_graph:=${teb_visualize_hc_graph}"
+            ],
+            "privileged": false,
+            "gpu": false,
+            "networkHost": false,
+            "binds": []
+        },
+        "log": "",
+        "convertedCommands": "",
+        "onExit": "IGNORE"
+    },
+    "parameters": {
+        "parameters": [
+            {
+                "name": "robot_radius",
+                "description": "The inscribed radius of the robot.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.2
+            },
+            {
+                "name": "global_frame_id",
+                "description": "The global frame for the costmap to operate in.",
+                "Category": "Static",
+                "node": "",
+                "stringValue": "map"
+            },
+            {
+                "name": "base_frame_id",
+                "description": "The name of the frame for the base link of the robot.",
+                "Category": "Static",
+                "node": "",
+                "stringValue": "base_link"
+            },
+            {
+                "name": "general_odom_topic",
+                "description": "The name of the odometry topic.",
+                "Category": "Static",
+                "node": "",
+                "stringValue": "odom"
+            },
+            {
+                "name": "laser_topic",
+                "description": "The name of the laser scan topic.",
+                "Category": "Static",
+                "node": "",
+                "stringValue": "scan"
+            },
+            {
+                "name": "scan_min_obstacle_height",
+                "description": "The minimum height in meters of a sensor reading considered valid. This is usually set to be at ground height, but can be set higher or lower based on the noise model of your sensor.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.2
+            },
+            {
+                "name": "scan_max_obstacle_height",
+                "description": "The maximum height in meters of a sensor reading considered valid. This is usually set to be slightly higher than the height of the robot.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "d435_cam1_min_obstacle_height",
+                "description": "The minimum height in meters of a sensor reading considered valid. This is usually set to be at ground height, but can be set higher or lower based on the noise model of your sensor.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.15
+            },
+            {
+                "name": "d435_cam1_max_obstacle_height",
+                "description": "The maximum height in meters of a sensor reading considered valid. This is usually set to be slightly higher than the height of the robot.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1
+            },
+            {
+                "name": "bump_min_obstacle_height",
+                "description": "The minimum height in meters of a sensor reading considered valid. This is usually set to be at ground height, but can be set higher or lower based on the noise model of your sensor.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "bump_max_obstacle_height",
+                "description": "The maximum height in meters of a sensor reading considered valid. This is usually set to be slightly higher than the height of the robot.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "local_costmap_transform_tolerance",
+                "description": "The transform_tolerance parameter sets the maximum amount of latency allowed between transforms in the local costmap (all transforms between the coordinate frames).",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "global_costmap_transform_tolerance",
+                "description": "The transform_tolerance parameter sets the maximum amount of latency allowed between transforms in the global costmap (all transforms between the coordinate frames).",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "scan_observation_persistence",
+                "description": "How long to keep the scan sensor reading in seconds. A value of 0.0 will only keep the most recent reading.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "d435_cam1_observation_persistence",
+                "description": "How long to keep the d435_cam1 sensor reading in seconds. A value of 0.0 will only keep the most recent reading.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "max_obstacle_height",
+                "description": "The maximum height of any obstacle to be inserted into the costmap in meters. This parameter should be set to be slightly higher than the height of your robot.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1
+            },
+            {
+                "name": "costmap_obstacle_range",
+                "description": "The default maximum distance from the robot at which an obstacle will be inserted into the cost map in meters. This can be over-ridden on a per-sensor basis.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 2.5
+            },
+            {
+                "name": "track_unknown_space",
+                "description": "If false, each pixel has one of 2 states: lethal obstacle or free. If true, each pixel has one of 3 states: lethal obstacle, free, or unknown.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "false"
+            },
+            {
+                "name": "general_max_vel_x",
+                "description": "The maximum forward velocity allowed for the base in meters/sec.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.8
+            },
+            {
+                "name": "general_max_vel_y",
+                "description": "The maximum y velocity for the robot in m/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "general_min_vel_x",
+                "description": "The minimum forward velocity allowed for the base in meters/sec. It is useful to specify this to guarantee that velocity commands sent to a mobile base are high enough to allow the base to overcome friction.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.3
+            },
+            {
+                "name": "global_origin_x",
+                "description": "The x origin of the map in the global frame in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "global_origin_y",
+                "description": "The y origin of the map in the global frame in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "global_origin_z",
+                "description": "The z origin of the map in the global frame in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "global_map_width",
+                "description": "The width of the global cost map in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 20
+            },
+            {
+                "name": "global_map_height",
+                "description": "The height of the global cost map in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 20
+            },
+            {
+                "name": "local_map_width",
+                "description": "The width of the local cost map in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 6
+            },
+            {
+                "name": "local_map_height",
+                "description": "The height of the local cost map in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 6
+            },
+            {
+                "name": "local_inflation_radius",
+                "description": "The radius in meters to which the map inflates obstacle cost values.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.1
+            },
+            {
+                "name": "enable_static_layer",
+                "description": "A flag that enables to execute the move-base with or without static layer. If this fag is true, the move-base will be executed with a static layer and we'll have to get him a map as an input stream. If false, the move-base will be executed without a static layer and we'll not have to get him a map as an input stream.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "dwa_planner_activated",
+                "description": "If this flag is true, the local planner will be dwa-planner. If this flag is false, the local planner will be from type teb-planner.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "recovery_behavior_enabled",
+                "description": "Whether or not to enable the move_base recovery behaviors to attempt to clear out space.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "general_yaw_goal_tolerance",
+                "description": "The tolerance in radians for the controller in yaw/rotation when achieving its goal.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.3
+            },
+            {
+                "name": "general_xy_goal_tolerance",
+                "description": "The tolerance in meters for the controller in the x & y distance when achieving a goal.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.15
+            },
+            {
+                "name": "dwa_min_vel_y",
+                "description": "The minimum y velocity for the robot in m/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "dwa_max_trans_vel",
+                "description": "The absolute value of the maximum translational velocity for the robot in m/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "dwa_min_trans_vel",
+                "description": "The absolute value of the minimum translational velocity for the robot in m/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.1
+            },
+            {
+                "name": "dwa_trans_stopped_vel",
+                "description": "The robot is recognized in the 'stop' state. If the speed of the robot is lower than this value, it is considered that the robot has stopped. Unit is m/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.1
+            },
+            {
+                "name": "dwa_max_vel_theta",
+                "description": "The maximum rotational velocity allowed for the base in radians/sec.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 4
+            },
+            {
+                "name": "dwa_min_vel_theta",
+                "description": "The minimum rotational velocity allowed for the base in radians/sec.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "dwa_max_rot_vel",
+                "description": "The absolute value of the maximum rotational velocity for the robot in rad/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 4
+            },
+            {
+                "name": "dwa_min_rot_vel",
+                "description": "The absolute value of the minimum rotational velocity for the robot in rad/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "dwa_rot_stopped_vel",
+                "description": "Robot is recognized in the 'stop' state. Unit is RAD/S.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "dwa_acc_lim_x",
+                "description": "The x acceleration limit of the robot in meters/sec^2.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1
+            },
+            {
+                "name": "dwa_acc_lim_theta",
+                "description": "The rotational acceleration limit of the robot in radians/sec^2.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 3
+            },
+            {
+                "name": "dwa_acc_lim_y",
+                "description": "The y acceleration limit of the robot in meters/sec^2.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0
+            },
+            {
+                "name": "dwa_sim_time",
+                "description": "The amount of time to forward-simulate trajectories in seconds.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 2
+            },
+            {
+                "name": "dwa_vx_samples",
+                "description": "The number of samples to use when exploring the x velocity space.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "10"
+            },
+            {
+                "name": "dwa_vy_samples",
+                "description": "The number of samples to use when exploring the y velocity space.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "1"
+            },
+            {
+                "name": "dwa_vtheta_samples",
+                "description": "The number of samples to use when exploring the theta velocity space.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "20"
+            },
+            {
+                "name": "dwa_path_distance_bias",
+                "description": "The weight for how much the local planner should stay close to the global path",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 128
+            },
+            {
+                "name": "dwa_goal_distance_bias",
+                "description": "The weight for how much the robot should attempt to reach the local goal, with whatever path",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 24
+            },
+            {
+                "name": "dwa_occdist_scale",
+                "description": " The weight for how much the robot should attempt to avoid obstacles. A high value for this parameter results in indecisive robot that stucks in place.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.3
+            },
+            {
+                "name": "dwa_forward_point_distance",
+                "description": "The distance from the center point of the robot to place an additional scoring point, in meters.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.325
+            },
+            {
+                "name": "dwa_stop_time_buffer",
+                "description": "The amount of time that the robot must stop before a collision in order for a trajectory to be considered valid in seconds.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.2
+            },
+            {
+                "name": "dwa_scaling_speed",
+                "description": "The absolute value of the velocity at which to start scaling the robot's footprint, in m/s.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.25
+            },
+            {
+                "name": "dwa_max_scaling_factor",
+                "description": "The maximum factor to scale the robot's footprint by.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.2
+            },
+            {
+                "name": "dwa_oscillation_reset_dist",
+                "description": "How far the robot must travel in meters before oscillation flags are reset.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.05
+            },
+            {
+                "name": "dwa_publish_traj_pc",
+                "description": "Put the plans on RVIZ.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "dwa_publish_cost_grid_pc",
+                "description": "Whether or not to publish the cost grid that the planner will use when planning.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_autosize",
+                "description": "Enable automatic resizing of the trajectory with regard to the temporal resolution (recommended)",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_dt_ref",
+                "description": "Desired temporal resolution of the trajectory (the trajectory is not fixed to dt_ref since the temporal resolution is part of the optimization, but the trajectory will be resized between iterations if dt_ref +-dt_hysteresis is violated.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.3
+            },
+            {
+                "name": "teb_dt_hysteresis",
+                "description": "Hysteresis for automatic resizing depending on the current temporal resolution, usually approx. 10% of dt_ref is recommended.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.1
+            },
+            {
+                "name": "teb_global_plan_overwrite_orientation",
+                "description": "Overwrite orientation of local subgoals provided by the global planner (since they often provide only a 2D path).",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_max_global_plan_lookahead_dist",
+                "description": "Specify the maximum length (cumulative Euclidean distances) of the subset of the global plan taken into account for optimization.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 2
+            },
+            {
+                "name": "teb_feasibility_check_no_poses",
+                "description": "Specify up to which pose on the predicted plan the feasibility should be checked each sampling interval.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "2"
+            },
+            {
+                "name": "teb_max_vel_x_backwards",
+                "description": "Maximum absolute translational velocity of the robot while driving backwards in meters/sec.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.2
+            },
+            {
+                "name": "teb_max_vel_theta",
+                "description": "Maximum angular velocity of the robot in radians/sec.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1.5
+            },
+            {
+                "name": "teb_acc_lim_x",
+                "description": "Maximum translational acceleration of the robot in meters/sec^2.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.2
+            },
+            {
+                "name": "teb_acc_lim_theta",
+                "description": "Maximum angular acceleration of the robot in radians/sec^2.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.6
+            },
+            {
+                "name": "teb_min_turning_radius",
+                "description": "Minimum turning radius of a carlike robot (set to zero for a diff-drive robot).",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.4
+            },
+            {
+                "name": "teb_wheelbase",
+                "description": "The distance between the rear axle and the front axle.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.16
+            },
+            {
+                "name": "teb_cmd_angle_instead_rotvel",
+                "description": "Substitute the rotational velocity in the commanded velocity message by the corresponding steering angle [-pi/2,pi/2].",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_footprint_model_type",
+                "description": "Specify the robot footprint model type used for optimization. Different types are 'point', 'circular', 'line', 'two_circles' and 'polygon'.",
+                "Category": "Static",
+                "node": "",
+                "stringValue": "point"
+            },
+            {
+                "name": "teb_free_goal_vel",
+                "description": "Remove the goal velocity constraint such that the robot can arrive at the goal with maximum speed.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "false"
+            },
+            {
+                "name": "teb_min_obstacle_dist",
+                "description": "Minimum desired separation from obstacles in meteres.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.2
+            },
+            {
+                "name": "teb_include_costmap_obstacles",
+                "description": "Specify if obstacles of the local costmap should be taken into account. Each cell that is marked as obstacle is considered as a point-obstacle.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_costmap_obstacles_behind_robot_dist",
+                "description": "Limit the occupied local costmap obstacles taken into account for planning behind the robot (specify distance in meters).",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1
+            },
+            {
+                "name": "teb_obstacle_poses_affected",
+                "description": "Each obstacle position is attached to the closest pose on the trajectory in order to keep a distance. Additional neighbors can be taken into account as well.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "15"
+            },
+            {
+                "name": "teb_costmap_converter_plugin",
+                "description": "Define plugin name in order to convert costmap cells to points/lines/polygons. Set an empty string to disable the conversion such that all cells are treated as point-obstacles.",
+                "Category": "Static",
+                "node": "",
+                "stringValue": ""
+            },
+            {
+                "name": "teb_costmap_converter_spin_thread",
+                "description": "If set to true, the costmap converter invokes its callback queue in a different thread.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_costmap_converter_rate",
+                "description": "Rate that defines how often the costmap_converter plugin processes the current costmap (the value should not be much higher than the costmap update rate) [in Hz].",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "5"
+            },
+            {
+                "name": "teb_no_inner_iterations",
+                "description": "Number of actual solver iterations called in each outerloop iteration. See param no_outer_iterations.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "3"
+            },
+            {
+                "name": "teb_no_outer_iterations",
+                "description": "Each outerloop iteration automatically resizes the trajectory according to the desired temporal resolution dt_ref and invokes the internal optimizer (that performs no_inner_iterations).",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "2"
+            },
+            {
+                "name": "teb_optimization_activate",
+                "description": "Activate the optimization.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_optimization_verbose",
+                "description": "Print verbose information.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "false"
+            },
+            {
+                "name": "teb_penalty_epsilon",
+                "description": "Add a small safety margin to penalty functions for hard-constraint approximations.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.1
+            },
+            {
+                "name": "teb_weight_max_vel_x",
+                "description": "Optimization weight for satisfying the maximum allowed translational velocity.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "2"
+            },
+            {
+                "name": "teb_weight_max_vel_theta",
+                "description": "Optimization weight for satisfying the maximum allowed angular velocity.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "1"
+            },
+            {
+                "name": "teb_weight_acc_lim_x",
+                "description": "Optimization weight for satisfying the maximum allowed translational acceleration.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "1"
+            },
+            {
+                "name": "teb_weight_acc_lim_theta",
+                "description": "Optimization weight for satisfying the maximum allowed angular acceleration.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "1"
+            },
+            {
+                "name": "teb_weight_kinematics_nh",
+                "description": "Optimization weight for satisfying the non-holonomic kinematics.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "1000"
+            },
+            {
+                "name": "teb_weight_kinematics_forward_drive",
+                "description": "Optimization weight for forcing the robot to choose only forward directions (positive transl. velocities).",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "1"
+            },
+            {
+                "name": "teb_weight_kinematics_turning_radius",
+                "description": "Optimization weight for enforcing a minimum turning radius (only for carlike robots).",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "1"
+            },
+            {
+                "name": "teb_weight_optimaltime",
+                "description": "Optimization weight for contracting the trajectory with regard to transition/execution time.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "10"
+            },
+            {
+                "name": "teb_weight_obstacle",
+                "description": "Optimization weight for keeping a minimum distance from obstacles.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "20"
+            },
+            {
+                "name": "teb_weight_dynamic_obstacle",
+                "description": "Optimization weight for satisfying a minimum separation from dynamic obstacles.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "10"
+            },
+            {
+                "name": "teb_enable_homotopy_class_planning",
+                "description": "Activate parallel planning in distinctive topologies (requires much more CPU resources, since multiple trajectories are optimized at once).",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "false"
+            },
+            {
+                "name": "teb_enable_multithreading",
+                "description": "Activate multiple threading in order to plan each trajectory in a different thread.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "true"
+            },
+            {
+                "name": "teb_simple_exploration",
+                "description": "If true, distinctive trajectories are explored using a simple left-right approach (pass each obstacle on the left or right side) for path generation, otherwise sample possible roadmaps randomly in a specified region between start and goal.",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "false"
+            },
+            {
+                "name": "teb_max_number_classes",
+                "description": "Specify the maximum number of distinctive trajectories taken into account (limits computational effort).",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "4"
+            },
+            {
+                "name": "teb_selection_cost_hysteresis",
+                "description": "Specify how much trajectory cost must a new candidate have with regard to a previously selected trajectory in order to be selected (selection if new_cost < old_cost*factor).",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1
+            },
+            {
+                "name": "teb_selection_obst_cost_scale",
+                "description": "Extra scaling of obstacle cost terms just for selecting the 'best' candidate.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1
+            },
+            {
+                "name": "teb_selection_alternative_time_cost",
+                "description": "If true, time cost (sum of squared time differences) is replaced by the total transition time (sum of time differences).",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "false"
+            },
+            {
+                "name": "teb_roadmap_graph_no_samples",
+                "description": "Specify the number of samples generated for creating the roadmap graph.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "15"
+            },
+            {
+                "name": "teb_roadmap_graph_area_width",
+                "description": "Random keypoints/waypoints are sampled in a rectangular region between start and goal. Specify the width of that region in meters.",
+                "Category": "Static",
+                "node": "",
+                "integerValue": "5"
+            },
+            {
+                "name": "teb_h_signature_prescaler",
+                "description": "Scale internal parameter (H-signature) that is used to distinguish between homotopy classes. (0.2 < value <= 1).",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.5
+            },
+            {
+                "name": "teb_h_signature_threshold",
+                "description": "Two H-signatures are assumed to be equal, if both the difference of real parts and complex parts are below the specified threshold.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.1
+            },
+            {
+                "name": "teb_obstacle_keypoint_offset",
+                "description": "If simple_exploration is turned on, this parameter determines the distance on the left and right side of the obstacle at which a new keypoint will be cretead (in addition to min_obstacle_dist).",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.1
+            },
+            {
+                "name": "teb_obstacle_heading_threshold",
+                "description": "Specify the value of the normalized scalar product between obstacle heading and goal heading in order to take them (obstacles) into account for exploration [0,1].",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 0.45
+            },
+            {
+                "name": "teb_visualize_hc_graph",
+                "description": "Visualize the graph that is created for exploring distinctive trajectories (check marker message in rviz).",
+                "Category": "Static",
+                "node": "",
+                "booleanValue": "false"
+            }
+        ]
+    },
+    "state": "COMPONENT_STATE_UNLOADED",
+    "message": "",
+    "streams": {
+        "inputStreams": [
+            {
+                "name": "goal_simple",
+                "type": "",
+                "description": "Provides a non-action interface to move_base for users that don't care about tracking the execution status of their goals (Communicate with move_base node over ROS directly).",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base_simple/goal",
+                    "type": "Messages.geometry_msgs.PoseStamped",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "goal",
+                "type": "",
+                "description": "A goal for move_base to pursue in the world. This is the recommended way to send goals to move_base (by using the SimpleActionClient interface) so you can be able to track their status.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/goal",
+                    "type": "Messages.move_base_msgs.MoveBaseActionGoal",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "move_base_cancel",
+                "type": "",
+                "description": "A request to cancel a specific goal.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/cancel",
+                    "type": "Messages.actionlib_msgs.GoalID",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "map",
+                "type": "",
+                "description": "Map of the world.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/map",
+                    "type": "Messages.nav_msgs.OccupancyGrid",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "realsense_pointclouds",
+                "type": "",
+                "description": "Point clouds from the realsense camera",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/cam1/depth/color/points",
+                    "type": "Messages.sensor_msgs.PointCloud2",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "scan",
+                "type": "",
+                "description": "Laser scan from the lidar (Optional)",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "scan",
+                    "type": "Messages.sensor_msgs.LaserScan",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "odom",
+                "type": "",
+                "description": "2D pose (used by wheel odometry): The 2D pose contains the position and orientation of the robot in the ground plane and the covariance on this pose. The message to send this 2D pose actually represents a 3D pose, but the z, roll and pitch are simply ignored.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "odom",
+                    "type": "Messages.nav_msgs.Odometry",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "odom_base_link",
+                "type": "Nimbus.Messages.nav_msgs.Odometry",
+                "description": "tf from odometry to base_link",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTf": {
+                    "baseFrame": "odom",
+                    "childFrame": "base_link",
+                    "rate": 10,
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "map_odom",
+                "type": "Nimbus.Messages.nav_msgs.Odometry",
+                "description": "tf from map to odometry",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTf": {
+                    "baseFrame": "map",
+                    "childFrame": "odom",
+                    "rate": 10,
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "tf_base_link_to_camera_depth_optical_frame",
+                "type": "Messages.geometry_msgs.Pose",
+                "description": "tf from base_link to camera_depth_optical_frame",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTf": {
+                    "baseFrame": "base_link",
+                    "childFrame": "camera_depth_optical_frame",
+                    "rate": 10,
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "bumper_point_clouds",
+                "type": "",
+                "description": "Point clouds from bumper",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/mobile_base/sensors/bumper_pointcloud",
+                    "type": "Messages.sensor_msgs.PointCloud2",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            }
+        ],
+        "outputStreams": [
+            {
+                "name": "cmd_vel",
+                "type": "",
+                "description": "A stream of velocity commands meant for execution by a mobile base.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/navigation_velocity_smoother/raw_cmd_vel",
+                    "type": "Messages.geometry_msgs.Twist",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "local_cost_map",
+                "type": "",
+                "description": "The values in the local costmap.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/local_costmap/costmap",
+                    "type": "Messages.nav_msgs.OccupancyGrid",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "global_cost_map_updates",
+                "type": "",
+                "description": "The value of the updated area of the global costmap.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/global_costmap/costmap_updates",
+                    "type": "Messages.map_msgs.OccupancyGridUpdate",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "global_cost_map",
+                "type": "",
+                "description": "The values in the global costmap.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/global_costmap/costmap",
+                    "type": "Messages.nav_msgs.OccupancyGrid",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "global_plan",
+                "type": "",
+                "description": "The portion of the global plan that the local planner is currently attempting to follow. Used primarily for visualization purposes.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/DWAPlannerROS/global_plan",
+                    "type": "Messages.nav_msgs.Path",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "plan",
+                "type": "",
+                "description": "The local plan or trajectory that scored the highest on the last cycle. Used primarily for visualization purposes.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/NavfnROS/plan",
+                    "type": "Messages.nav_msgs.Path",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "move_base_status",
+                "type": "",
+                "description": "Provides status information on the goals that are sent to the move_base action.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/status",
+                    "type": "Messages.actionlib_msgs.GoalStatusArray",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "move_base_feedback",
+                "type": "",
+                "description": "Feedback contains the current position of the base in the world.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/feedback",
+                    "type": "Messages.move_base_msgs.MoveBaseActionFeedback",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "move_base_result",
+                "type": "",
+                "description": "Result is empty for the move_base action.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/move_base/result",
+                    "type": "Messages.move_base_msgs.MoveBaseActionResult",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            }
+        ]
+    },
+    "requiredDevices": [],
+    "ros": {
+        "baseFrame": "base_link",
+        "rate": 10,
+        "publishTfDevices": true,
+        "rosMasterUri": "",
+        "rosIp": "",
+        "autoDetectIp": false
+    },
+    "tags": {},
+    "category": "Algorithms/Navigation",
+    "simulation": false,
+    "pluginFile": "",
+    "license": "BSD",
+    "id": ""
+}

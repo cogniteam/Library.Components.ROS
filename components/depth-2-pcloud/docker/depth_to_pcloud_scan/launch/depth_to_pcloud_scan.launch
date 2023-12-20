@@ -1,0 +1,9 @@
+<launch>
+
+    <node name="depth_to_pcloud_scan_node" pkg="depth_to_pcloud_scan" 
+            type="depth_to_pcloud_scan_node" required = "true">      
+
+
+    </node>
+
+</launch>

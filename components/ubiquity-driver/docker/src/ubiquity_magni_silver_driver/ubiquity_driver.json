@@ -1,0 +1,91 @@
+{
+	"name": "ubiquity_magni_robot",
+	"type": 0,
+	"className": "Ros1Component",
+	"description": "Ubiquity base driver",
+	"version": {
+		"major": 1,
+		"minor": 0,
+		"patch": 0,
+		"build": ""
+	}, 
+	"environment": {   
+		"dockerInfo": {
+			"image": "manodhayan2/ubiquity_magni_robot:latest",
+			"privileged": true,
+			"commands": [
+				"roslaunch",
+				"magni_bringup",
+				"core.launch",
+				"controller_serial_port:=${controller_serial_port}"
+			]
+		}
+	},
+	"parameters": {
+		"parameters": [
+			{
+				"name": "controller_serial_port",
+				"limits": {
+					"min": 0,
+					"max": 0,
+					"step": 0
+				},
+				"stringValue": "/dev/ttyUSB0"
+			}
+		]
+	},
+	"streams": {
+		"inputStreams": [
+			{
+				"name": "cmd_vel",
+				"type": "",
+				"ros_topic": {
+					"topic": "/cmd_vel",
+					"type": "Messages.geometry_msgs.Twist"
+				}
+			}
+		],
+		"outputStreams": [
+			{
+				"name": "odom",
+				"type": "",
+				"ros_topic": {
+					"topic": "/odom",
+					"type": "Messages.nav_msgs.Odometry"
+				}
+			},
+			{
+				"name": "odom_base_footprint",
+				"type": "Nimbus.Messages.nav_msgs.Odometry",
+				"rosTf": {
+					"baseFrame": "odom",
+					"childFrame": "base_footprint",
+					"rate": 10
+				}
+			},
+			{
+				"name": "odom_base_link",
+				"type": "Nimbus.Messages.nav_msgs.Odometry",
+				"rosTf": {
+					"baseFrame": "odom",
+					"childFrame": "base_link",
+					"rate": 10
+				}
+			},
+			{
+				"name": "battery_status",
+				"type": "",
+				"ros_topic": {
+                                        "topic": "/battery_state",
+                                        "type": "Messages.sensor_msgs.BatteryState"
+                                }
+
+			}
+		]
+	},
+	"ros": {
+		"base_frame": "base_link",
+		"rate": 10.0,
+		"publishTfDevices":true
+	}
+}

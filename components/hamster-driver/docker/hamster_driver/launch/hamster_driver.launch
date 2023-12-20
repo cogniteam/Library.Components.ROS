@@ -1,0 +1,50 @@
+<launch>
+
+    <arg name="odom_frame" default="odom" />
+    <arg name="base_frame" default="base_link" />
+    
+    <arg name="max_speed" default="1.2" />
+    <arg name="steer_offset" default="0.0" />
+
+    <arg name="mag_offset_x" default= "0" />
+    <arg name="mag_offset_y" default= "0" />
+    <arg name="mag_offset_z" default= "0" />
+    <arg name="gyro_offset_x" default= "0" />
+    <arg name="gyro_offset_y" default= "0" />
+    <arg name="gyro_offset_z" default= "0" />
+    <arg name="serial_port" default= "/dev/ttyAMA0" />
+    <arg name="enable_gps" default="true" />
+    <arg name="enable_detection" default= "false" />
+    <arg name="enable_realsense" default="false" />
+
+    <node name="hamster_driver" pkg="hamster_driver" type="hamster_driver_node" respawn="true">
+        <param name="baud_rate"             value="115200" />
+        <param name="port"                  value="$(arg serial_port)" />
+        <param name="debug"                 value="false" />
+        <param name="steer_offset"          value="$(arg steer_offset)" />
+        <param name="heading_offset"        value="0.0" />
+        <param name="publish_odom_tf"       value="true" />
+        <param name="odom_frame"            value="$(arg odom_frame)" />
+        <param name="base_frame"            value="$(arg base_frame)" />
+
+        <param name="max_speed"             value="$(arg max_speed)" />          
+        <param name="enable_realsense"      value="$(arg enable_realsense )" />
+    </node>
+
+    <node name="imu_filter_madgwick" pkg="imu_filter_madgwick" type="imu_filter_node">
+        <remap from="imu/data" to="imu" />
+        <remap from="imu/data_raw" to="imu/raw" />
+        <remap from="imu/mag" to="imu/mag" />
+
+        <param name="world_frame" value="nwu" />
+        <param name="use_mag" value="false" />
+        <param name="use_magnetic_field_msg" value="false" />
+        <param name="publish_debug_topics" value="false" />
+        <param name="publish_tf" value="false" />
+        <param name="gain" value="0.05" />
+    </node>    
+
+    <node name="twist_to_ackermann_node" pkg="twist_to_ackermann" type="twist_to_ackermann_node.py" />
+
+
+</launch>

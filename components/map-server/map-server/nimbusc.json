@@ -1,0 +1,102 @@
+{
+    "name": "nimbus/map-server",
+    "type": "COMPONENT_TYPE_COMPONENT",
+    "className": "Ros1Component",
+    "instanceName": "",
+    "description": "map_server provides the map_server ROS Node, which offers map data as a ROS Service. It also provides the map_saver command-line utility, which allows dynamically generated maps to be saved to file.\nLicense: BSD\nGIT:https://github.com/ros-planning/navigation.git",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0,
+        "build": ""
+    },
+    "start": "START_MODE_AUTO",
+    "environment": {
+        "name": "",
+        "ipAddress": "",
+        "state": "ENVIRONMENT_STATE_UNLOADED",
+        "message": "",
+        "progress": 0,
+        "requiredDevices": [],
+        "ports": [],
+        "hostIpAddress": "",
+        "variables": [],
+        "dockerInfo": {
+            "image": "cognimbus/map-server:melodic",
+            "containerId": "",
+            "imageSize": 0,
+            "commands": [
+                "roslaunch",
+                "map_server",
+                "map_server.launch",
+                "publish_rate:=${publish_rate}",
+                "--screen"
+            ],
+            "privileged": false,
+            "gpu": false,
+            "networkHost": false,
+            "binds": [
+                {
+                    "source": "/opt/nimbus/data/map-server/maps/",
+                    "target": "/opt/nimbus/data/map-server/maps/"
+                }
+            ]
+        },
+        "log": "",
+        "convertedCommands": "",
+        "onExit": "IGNORE"
+    },
+    "parameters": {
+        "parameters": [
+            {
+                "name": "publish_rate",
+                "description": "Controls the publish rate of real_time_map_topic.",
+                "Category": "Static",
+                "node": "",
+                "doubleValue": 1
+            }
+        ]
+    },
+    "state": "COMPONENT_STATE_UNLOADED",
+    "message": "",
+    "streams": {
+        "inputStreams": [],
+        "outputStreams": [
+            {
+                "name": "map",
+                "type": "",
+                "description": "Receive the map via this topic, that it is sent once to each new subscriber ",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/map",
+                    "type": "Messages.nav_msgs.OccupancyGrid",
+                    "qosProfile": ""
+                },
+                "latched": true,
+                "maxRate": 0,
+                "expectedRate": 0
+            },
+            {
+                "name": "map_realtime",
+                "type": "",
+                "description": "This topic publishes the map in realtime. It is used for visualization of the map in RVIZ or in the streams tab in the robot page in nimbus.",
+                "streamMode": "STREAM_MODE_TOPIC",
+                "rosTopic": {
+                    "topic": "/map_realtime",
+                    "type": "Messages.nav_msgs.OccupancyGrid",
+                    "qosProfile": ""
+                },
+                "latched": false,
+                "maxRate": 0,
+                "expectedRate": 0
+            }
+        ]
+    },
+    "requiredDevices": [],
+    "tags": {},
+    "category": "Algorithms/Localization",
+    "simulation": false,
+    "pluginFile": "",
+    "license": "BSD",
+    "id": ""
+}

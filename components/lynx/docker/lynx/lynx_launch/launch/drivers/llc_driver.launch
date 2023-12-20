@@ -1,0 +1,39 @@
+<launch>
+
+    <arg name="namespace" default="" />
+
+	<node name="lynx_driver_node" pkg="lynx_driver" type="lynx_driver_node" >
+	    <remap from="odom_external" to="t265/odom/sample" />
+
+	    <param name="port" value="/dev/lynx/llc" />
+        <param name="baud" value="115200" />
+        <param name="reset" value="false" />
+        
+        <param name="tf_prefix" value="$(arg namespace)" />
+        <param name="publish_transform" value="false" />
+
+        <param name="imu/mag_publish_rate" value="10.0" />
+
+        <param name="drive/drive_pwm_inverse" value="true" />
+        <param name="drive/odom_yaw_offset" value="3.0" />
+        <param name="drive/drive_enable_pid" value="true" />
+
+        <param name="steering_pwm_min" value="800" />
+        <param name="steering_pwm_max" value="2200" />
+        <param name="steering_angle_min" value="-25.0" />
+        <param name="steering_angle_max" value="25.0" />
+
+        <param name="speed_pid/rate" value="100.0" />
+        <param name="speed_pid/inverse_control" value="true" />
+        <param name="speed_pid/kp" value="1.0" />
+        <param name="speed_pid/ki" value="0.0" />
+        <param name="speed_pid/kd" value="1.0" />
+        <param name="speed_pid/process_smooth_factor" value="0.001" />
+        <param name="speed_pid/control_smooth_factor" value="0.001" />
+        <param name="speed_pid/output_limit_min" value="1000" />
+        <param name="speed_pid/output_limit_max" value="2100" />
+        <param name="speed_pid/input_limit_min" value="-2.0" />
+        <param name="speed_pid/input_limit_max" value="2.0" />
+    </node>
+
+</launch>

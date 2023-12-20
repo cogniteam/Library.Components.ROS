@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rqt --perspective-file $(rospack find lynx_launch)/assets/rqt/pid_calibration.perspective

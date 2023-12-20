@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/robodeck2/local_camera_ws/install/setup.sh

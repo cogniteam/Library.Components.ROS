@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>lynx_launch</name>
+  <version>1.0.0</version>
+  <description>The lynx_launch package</description>
+  <maintainer email="igor@cogniteam.com">Igor Makhtes</maintainer>
+  <maintainer email="daria@cogniteam.com">Daria Kushnareva</maintainer>
+  <license>Proprietary</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>move_base</exec_depend>
+</package>
