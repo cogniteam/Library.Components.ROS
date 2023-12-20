@@ -14,7 +14,7 @@ Before you begin, ensure you have met the following requirements:
 1. **Fork the Repository**: Click on the 'Fork' button on the upper right-hand side of the page. A copy of the repository will be created on your personal GitHub account.
 2. **Clone the Repository**: Clone the forked repository to your local machine by running:
    ```bash
-   git clone https://github.com/cognimbus/Nimbus.Library.Components.ROS2.git
+   git clone https://github.com/cognimbus/Nimbus.Library.Components.ROS.git
    ```
 
 ## Adding a New Component
@@ -80,7 +80,7 @@ To add a new component to the table, follow these steps:
 
 1. **Push Your Changes**: Push to your forked repository:
    ```bash
-   git push origin master
+   git push origin <ros-distro>
    ```
 2. **Create a Pull Request**: Navigate to your forked repository's GitHub page, click 'Pull request', and write a detailed comment.
 3. **Submit**: Click 'Submit pull request'.

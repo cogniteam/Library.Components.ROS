@@ -5,6 +5,7 @@ import shutil
 import re
 import subprocess
 from distutils.dir_util import copy_tree
+import glob
 
 
 def does_project_has_json(project_path):
@@ -15,6 +16,14 @@ def does_project_has_json(project_path):
         if not os.path.isfile(os.path.join(abs_path, 'nimbusc.json')):
             return False
     return True
+
+def find_json_files(directory):
+    # This will walk through all directories and subdirectories
+    for root, dirs, files in os.walk(directory):
+        # Using glob to match any .json files
+        for file in glob.glob(os.path.join(root, '*.json')):
+            return True  # If we find at least one JSON file, return True
+    return False  # If no JSON file was found after walking through the directories, return False
 
 
 def main():
@@ -64,15 +73,21 @@ def main():
             pass
     # remove duplicates
     absolute_paths = list(dict.fromkeys(absolute_paths))
-    print('all items to update:')
 
     # remove non-existing paths
     absolute_paths = list(
         filter(
-            lambda path: os.path.isfile(os.path.join(path, 'nimbusc.json')),
+            lambda path: find_json_files(path),
             absolute_paths
         )
     )
+
+    # if there are no updated components
+    if not absolute_paths:
+        print('No items to update')
+        exit(0)
+
+    print('all items to update:')
 
     for p in absolute_paths:
         print(p)
@@ -80,10 +95,6 @@ def main():
     print(f'-------------saving items in {options.dir_name} directory----------------')
     # create tmp directory
     directory_name = f'{options.dir_name}'
-    if os.path.exists(directory_name):
-        shutil.rmtree(directory_name)
-
-    os.mkdir(directory_name)
     project_path = os.path.join(os.path.abspath(directory_name), 'all-modified-components')
     os.mkdir(project_path)
     for p in absolute_paths:

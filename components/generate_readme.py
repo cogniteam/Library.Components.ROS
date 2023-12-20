@@ -11,7 +11,8 @@ def generate_headline(repo_name:str):
 # This method generates a link to the repo image
 def generate_img_src(dir_path, repo_name):
     try:
-        files = os.listdir(os.path.join(dir_path, repo_name))                                # list the files at the repo nimbus directory
+        files = os.listdir(os.path.join(dir_path, repo_name))          
+        print(files)                      # list the files at the repo nimbus directory
         files.remove('nimbusc.json')                                                         # Remove the nimbus json file from the list (folder contains a json and an image)
         img_name = files[0]                                                                  # Extract the image's name
         return f"<img src=\"./{repo_name}/{img_name}\" alt=\"{repo_name}\" width=\"400\"/>"  # Return the link to the image
@@ -56,15 +57,15 @@ def generate_supported_arch(dir_path, repo_name):
         print('Error while trying to extract architectures from docker hub')
         print(str(e))
 
+
 # This method extracts the ros version of the component from the docker file
 def generate_ros_version(dir_path, repo_name):
     try:
-        with open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r') as json_file:  # Open json file
-            json_content = json.load(json_file)                                          # Load the json content
-        ros_version = json_content['environment']['dockerInfo']['image'].split(':')[1]  # Extract the ros version from the image's tag   
-        return  f"* ROS version <b>{ros_version}</b>"                                                              # Return the docker image name
+        docker_file = open(os.path.join(dir_path, 'docker', 'Dockerfile'), 'r')
+        ros_version = docker_file.readline().split(':')[-1]
+        return  f"* ROS version <b>{ros_version}</b>"
     except Exception as e:
-        print("Error while trying to extract docker image from json file")
+        print('Error while trying to extract ros version from Dockerfile')
         print(str(e))
 
 
@@ -271,20 +272,14 @@ def generate_library_reademe():
     library_dir_path = os.path.dirname(__file__)
     repos = os.listdir(library_dir_path)
 
-    files_to_remove = ['unclassified', 'generate_readme.py', 'README.md', '.git', '.gitignore', '.gitlab-ci.yml', 'generate_table.py', 'docker_retag.py',
-                        '.filter_only_updated_items.py', 'json_retag.py']
-    repos_to_remove = ['hamster-v8-environment', 'isaac-skeleton-viewer', 'slam-toolbox']
+    repos.remove('generate_readme.py')
+    repos.remove('.gitlab-ci.yml')
+    repos.remove('generate_table.py')
+    repos.remove('docker_retag.py')
+    repos.remove('json_retag.py')
 
-    for file_name in files_to_remove:
-        try:
-            repos.remove(file_name)
-        except ValueError:
-            pass
-    for file_name in repos_to_remove:
-        try:
-            repos.remove(file_name)
-        except ValueError:
-            pass
+    repos.remove('.filter_only_updated_items.py')  # Unknown
+    repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
 
     for repo in sorted(repos):
         print(repo)
@@ -298,12 +293,12 @@ def generate_library_reademe():
             except ValueError:
                 pass
 
-        f = open(os.path.join(repo_dir_path, 'README.md'), 'w')
-        readme = ""
-        for dir in dirs:
-            readme += generate_repo_readme(repo_dir_path, dir)
-            readme += '\n\n'
-        f.write(readme)
+        with open(os.path.join(repo_dir_path, 'README.md'), 'w') as f:
+            readme = ""
+            for dir in dirs:
+                readme += generate_repo_readme(repo_dir_path, dir)
+                readme += '\n\n'
+            f.write(readme)
 
 generate_library_reademe()
 
