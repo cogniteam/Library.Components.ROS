@@ -20,16 +20,10 @@ def json_retag():
     workdir = os.path.dirname(os.path.abspath(__file__))
     repos = os.listdir(workdir)
     non_components = ['docker_retag.py', 'generate_readme.py','generate_table.py','json_retag.py','README.md','.filter_only_updated_items.py',
-                      '.gitignore','.gitlab-ci.yml','.git']
-    non_relevant = ['isaac-skeleton-viewer']
+                      '.gitignore','.gitlab-ci.yml','.git', 'ros2-gateway']
     ros_version = get_git_branch()
 
     for element in non_components:
-        try:
-            repos.remove(element)
-        except ValueError:
-            pass
-    for element in non_relevant:
         try:
             repos.remove(element)
         except ValueError:
