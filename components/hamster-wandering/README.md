@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/hamster-wandering
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * ros node that get the odometry from hamster robot, subscribe to the laser-scan msg from the lidar and send ackerman msgs to the robot while avoides obstacles.

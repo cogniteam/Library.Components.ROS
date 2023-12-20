@@ -56,13 +56,19 @@ def generate_supported_arch(dir_path, repo_name):
     except Exception as e:
         print('Error while trying to extract architectures from docker hub')
         print(str(e))
+        return ""
 
 
 # This method extracts the ros version of the component from the docker file
 def generate_ros_version(dir_path, repo_name):
     try:
-        docker_file = open(os.path.join(dir_path, 'docker', 'Dockerfile'), 'r')
-        ros_version = docker_file.readline().split(':')[-1]
+        # docker_file = open(os.path.join(dir_path, 'docker', 'Dockerfile'), 'r')
+        # ros_version = docker_file.readline().split(':')[-1]
+        # return  f"* ROS version <b>{ros_version}</b>"
+        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')
+        json_content = json.load(json_file)
+        docker_image = json_content['environment']['dockerInfo']['image']
+        ros_version = docker_image.split(':')[1]
         return  f"* ROS version <b>{ros_version}</b>"
     except Exception as e:
         print('Error while trying to extract ros version from Dockerfile')
@@ -277,6 +283,8 @@ def generate_library_reademe():
     repos.remove('generate_table.py')
     repos.remove('docker_retag.py')
     repos.remove('json_retag.py')
+    repos.remove('hamster-v8-environment')
+    repos.remove('leo-robot-gateway')
 
     repos.remove('.filter_only_updated_items.py')  # Unknown
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
@@ -300,9 +308,10 @@ def generate_library_reademe():
                 readme += '\n\n'
             f.write(readme)
 
-generate_library_reademe()
+if __name__ == '__main__':
+    generate_library_reademe()
 
 # library_dir_path = os.path.dirname(__file__)
-# repo_dir_path = os.path.join(library_dir_path, 'amcl')
-# readme = generate_repo_readme(repo_dir_path, 'amcl')
+# repo_dir_path = os.path.join(library_dir_path, 'slam-toolbox')
+# readme = generate_repo_readme(repo_dir_path, 'slam-toolbox')
 # print(readme)

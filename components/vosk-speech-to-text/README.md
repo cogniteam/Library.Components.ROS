@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/vosk-speech-to-text
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * A ROS package for speech-to-text services based on Vosk

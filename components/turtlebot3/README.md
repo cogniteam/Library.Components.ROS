@@ -1,11 +1,88 @@
+# Turtlebot3-Slam
+
+<img src="./turtlebot3-slam/turtlebot.jpeg" alt="turtlebot3-slam" width="400"/>
+
+* Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
+* ROS version <b>noetic</b>
+
+# Short description
+* turtlebot3 gmapping algorithm.
+License: Apache 2.0
+
+# Example usage
+```
+docker run -it --network=host cognimbus/turtlebot3-wafflepi:noetic roslaunch turtlebot3_slam turtlebot3_gmapping.launch model:=waffle_pi --screen
+```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/scan | sensor_msgs/LaserScan
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/map | nav_msgs/OccupancyGrid
+
+
+# Required tf
+odom--->base_footprint
+
+
+# Provided tf
+map--->base_footprint
+map--->odom
+
+
+# Turtlebot3-Driver
+
+<img src="./turtlebot3-driver/turtlebot.jpeg" alt="turtlebot3-driver" width="400"/>
+
+* Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
+* ROS version <b>noetic</b>
+
+# Short description
+* turtlebot3-wafflepi-driver
+License: Apache 2.0
+Source: git https://github.com/ROBOTIS-GIT/turtlebot3.git
+
+# Example usage
+```
+docker run -it --network=host cognimbus/turtlebot3-wafflepi:noetic roslaunch turtlebot3_bringup turtlebot3_core.launch
+```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/cmd_vel | geometry_msgs/Twist
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/odom | nav_msgs/Odometry
+/sensor_state | turtlebot3_msgs/SensorState
+/imu | sensor_msgs/Imu
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
+
 # Turtlebot3-Lidar
 
 <img src="./turtlebot3-lidar/turtlebot.jpeg" alt="turtlebot3-lidar" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * Standard lds-01-lidar
@@ -41,8 +118,7 @@ This node does not provide tf
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * raspicamera driver
@@ -72,94 +148,13 @@ This node does not require tf
 This node does not provide tf
 
 
-# Turtlebot3-Driver
-
-<img src="./turtlebot3-driver/turtlebot.jpeg" alt="turtlebot3-driver" width="400"/>
-
-* Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-* Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
-
-# Short description
-* turtlebot3-wafflepi-driver
-License: Apache 2.0
-Source: git https://github.com/ROBOTIS-GIT/turtlebot3.git
-
-# Example usage
-```
-docker run -it --network=host cognimbus/turtlebot3-wafflepi:noetic roslaunch turtlebot3_bringup turtlebot3_core.launch
-```
-
-# Subscribers
-ROS topic | type
---- | ---
-/cmd_vel | geometry_msgs/Twist
-
-
-# Publishers
-ROS topic | type
---- | ---
-/odom | nav_msgs/Odometry
-/sensor_state | turtlebot3_msgs/SensorState
-/imu | sensor_msgs/Imu
-
-
-# Required tf
-This node does not require tf
-
-
-# Provided tf
-This node does not provide tf
-
-
-# Turtlebot3-Slam
-
-<img src="./turtlebot3-slam/turtlebot.jpeg" alt="turtlebot3-slam" width="400"/>
-
-* Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-* Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
-
-# Short description
-* turtlebot3 gmapping algorithm.
-License: Apache 2.0
-
-# Example usage
-```
-docker run -it --network=host cognimbus/turtlebot3-wafflepi:noetic roslaunch turtlebot3_slam turtlebot3_gmapping.launch model:=waffle_pi --screen
-```
-
-# Subscribers
-ROS topic | type
---- | ---
-/scan | sensor_msgs/LaserScan
-
-
-# Publishers
-ROS topic | type
---- | ---
-/map | nav_msgs/OccupancyGrid
-
-
-# Required tf
-odom--->base_footprint
-
-
-# Provided tf
-map--->base_footprint
-map--->odom
-
-
 # Turtlebot3-Navigation
 
 <img src="./turtlebot3-navigation/turtlebot.jpeg" alt="turtlebot3-navigation" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * The turtlebot3_navigation provides roslaunch scripts for starting the navigation.

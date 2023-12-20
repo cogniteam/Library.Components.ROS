@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/lizi-driver
 * Supported architectures <b>amd64</b>
-* ROS version <b>kinetic
-</b>
+* ROS version <b>kinetic</b>
 
 # Short description
 * Robotican Lizi robot driver
@@ -14,7 +13,7 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --network=host cognimbus/lizi-driver roslaunch lizi_hw lizi_hw.launch --screen
+docker run -it --network=host cognimbus/lizi-driver:kinetic roslaunch lizi_hw lizi_hw.launch --screen
 ```
 
 # Subscribers

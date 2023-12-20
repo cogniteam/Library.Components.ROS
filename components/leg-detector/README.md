@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/ros1-legs-detector
 * Supported architectures <b>amd64/arm64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * ros1-legs-detector algorithm

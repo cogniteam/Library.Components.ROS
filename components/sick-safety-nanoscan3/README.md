@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/sick-safety-nanoscan3
 * Supported architectures <b>amd64/arm64</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * sick-safety-nanoscan3 driver

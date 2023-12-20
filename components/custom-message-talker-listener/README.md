@@ -1,46 +1,10 @@
-# Custom-Message-Listener
-
-<img src="./custom-message-listener/nimbusc.jpg" alt="custom-message-listener" width="400"/>
-
-* Dockerhub image https://hub.docker.com/r/cognimbus/custome-message-tutorial
-* Supported architectures <b>arm64/amd64</b>
-* ROS version <b>noetic
-</b>
-
-# Short description
-* 
-
-# Example usage
-```
-docker run -it --network=host cognimbus/custome-message-tutorial:noetic roslaunch listener listener.launch
-```
-
-# Subscribers
-ROS topic | type
---- | ---
-/custom_chatter | 
-
-
-# Publishers
-This node has no publishers
-
-
-# Required tf
-This node does not require tf
-
-
-# Provided tf
-This node does not provide tf
-
-
 # Custom-Message-Talker
 
 <img src="./custom-message-talker/nimbusc.jpg" alt="custom-message-talker" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/custome-message-tutorial
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * The generic talker from the ros1 tutorials using custom messages
@@ -59,6 +23,40 @@ This node has no subscribers
 ROS topic | type
 --- | ---
 /custom_chatter | 
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
+
+# Custom-Message-Listener
+
+<img src="./custom-message-listener/nimbusc.jpg" alt="custom-message-listener" width="400"/>
+
+* Dockerhub image https://hub.docker.com/r/cognimbus/custome-message-tutorial
+* Supported architectures <b>arm64/amd64</b>
+* ROS version <b>noetic</b>
+
+# Short description
+* 
+
+# Example usage
+```
+docker run -it --network=host cognimbus/custome-message-tutorial:noetic roslaunch listener listener.launch
+```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/custom_chatter | 
+
+
+# Publishers
+This node has no publishers
 
 
 # Required tf

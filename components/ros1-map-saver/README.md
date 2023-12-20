@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/map-saver
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * map_saver responsible for saving a map using the map_server package

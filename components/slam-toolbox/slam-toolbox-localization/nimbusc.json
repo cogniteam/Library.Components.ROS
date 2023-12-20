@@ -37,7 +37,10 @@
         },
         "log": "",
         "convertedCommands": "",
-        "onExit": "IGNORE"
+        "onExit": "IGNORE",
+    },
+    "parameters": {
+        "parameters": []
     },
     "state": "COMPONENT_STATE_UNLOADED",
     "message": "",

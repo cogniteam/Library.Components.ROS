@@ -1,11 +1,10 @@
-# Hands_Pose_Detection
+# Hands-Pose-Detection
 
-<img src="./hands_pose_detection/hand_landmarks.png" alt="hands_pose_detection" width="400"/>
+<img src="./hands-pose-detection/hand_landmarks.png" alt="hands-pose-detection" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/hands-pose-detection
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>noetic
-</b>
+* ROS version <b>noetic</b>
 
 # Short description
 * google's hands-pose-detection

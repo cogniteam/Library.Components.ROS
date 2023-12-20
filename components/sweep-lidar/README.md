@@ -4,8 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/sweep_lidar
 * Supported architectures <b>amd64</b>
-* ROS version <b>kinetic-ros-core
-</b>
+* ROS version <b>kinetic</b>
 
 # Short description
 * The Sweep 360-degree rotating LIDAR has a range of 40 meters. This is the Scanse Sweep ROS driver and node.
@@ -13,7 +12,7 @@ License: MIT
 
 # Example usage
 ```
-docker run -it --network=host cognimbus/sweep_lidar 
+docker run -it --network=host cognimbus/sweep_lidar:kinetic 
 ```
 
 # Subscribers
