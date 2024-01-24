@@ -5,12 +5,15 @@ FROM ros:noetic
 RUN apt update && apt install wget -y && apt install git-all -y
 RUN wget https://raw.githubusercontent.com/clearpathrobotics/public-rosdistro/master/rosdep/50-clearpath.list -O /etc/ros/rosdep/sources.list.d/50-clearpath.list 
 RUN apt update && apt install -y python3-pip bridge-utils 
-RUN pip3 install cython  
-RUN pip3 install bosdyn-client && pip3 install bosdyn-mission 
-RUN pip3 install bosdyn-api && pip3 install bosdyn-core 
-RUN pip3 install empy && pip3 install transforms3d
+RUN pip3 install cython \
+    bosdyn-client \
+    bosdyn-mission \
+    bosdyn-core \
+    bosdyn-api \
+    empy \
+    transforms3d \
+    opencv-python
 #RUN apt-get install libbullet-dev -y
-
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
@@ -19,20 +22,21 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 
 COPY ./spot_ros sopt_ws/src/spot_ros
 
-WORKDIR sopt_ws
+WORKDIR /sopt_ws
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt install ros-noetic-interactive-marker-twist-server -y && \
-    apt install ros-noetic-twist-mux -y && \
-    apt install ros-noetic-teleop-twist-joy -y  && \
-    apt install ros-noetic-joy -y && \
-    apt install ros-noetic-robot-state-publisher -y && \
-    apt install ros-noetic-xacro -y && \
-    apt install ros-noetic-rviz -y && \
-    apt-get install qt5-default -y &&  apt install qttools5-dev -y
+RUN apt install -y ros-noetic-interactive-marker-twist-server \
+    ros-noetic-twist-mux \
+    ros-noetic-teleop-twist-joy \
+    ros-noetic-joy \
+    ros-noetic-robot-state-publisher \
+    ros-noetic-xacro \
+    ros-noetic-rviz \
+    qt5-default \
+    qttools5-dev -y
 
 RUN cd src && \
-    cd spot_ros  && rm -r spot_wrapper && git clone https://github.com/bdaiinstitute/spot_wrapper.git && \
+    cd spot_ros  && git clone https://github.com/bdaiinstitute/spot_wrapper.git && \
     pip3 install -e spot_wrapper && cd .. && cd ..
 
 RUN . /opt/ros/noetic/setup.sh && catkin_make -j1
