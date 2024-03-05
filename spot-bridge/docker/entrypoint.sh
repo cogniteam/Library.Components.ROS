@@ -1,4 +1,4 @@
 #!/bin/bash
 
-. /sopt_ws/devel/setup.bash
+. /spot_ws/devel/setup.bash
 exec "$@"
