@@ -1,107 +1,109 @@
 {
-    "name": "nimbus/spot-bridge",
-    "type": "COMPONENT_TYPE_COMPONENT",
-    "className": "Ros1Component",
-    "instanceName": "",
-    "description": "ros noetic spot-bridge.\nLicense: LGPL\nGIT: https://github.com/heuristicus/spot_ros",
-    "version": {
-        "major": 1,
-        "minor": 0,
-        "patch": 0,
-        "build": ""
-    },
-    "start": "START_MODE_AUTO",
-    "environment": {
-        "name": "",
-        "ipAddress": "",
-        "state": "ENVIRONMENT_STATE_UNLOADED",
-        "message": "",
-        "progress": 0,
-        "requiredDevices": [],
-        "ports": [],
-        "hostIpAddress": "",
-        "variables": [],
-        "dockerInfo": {
-            "image": "cognimbus/spot_ws:noetic",
-            "containerId": "",
-            "imageSize": 0,
-            "commands": [
-                "roslaunch",
-                "spot_driver",
-                "driver.launch",
-                "username:=${username}",
-                "password:=${password}",
-                "hostname:=${hostname}",
-                "--screen"
-            ],
-            "privileged": true,
-            "gpu": false,
-            "networkHost": true,
-            "binds": []
-        },
-        "log": "",
-        "convertedCommands": "",
-        "onExit": "IGNORE"
-    },
-    "parameters": {
-        "parameters": [
-            {
-                "name": "username",
-                "description": "",
-                "Category": "Static",
-                "node": "",
-                "stringValue": "user"
-            },
-            {
-                "name": "password",
-                "description": "",
-                "Category": "Static",
-                "node": "",
-                "stringValue": "12345"
-            },
-            {
-                "name": "hostname",
-                "description": "",
-                "Category": "Static",
-                "node": "",
-                "stringValue": "192.168.80.3"
-            }
-        ]
-    },
-    "state": "COMPONENT_STATE_UNLOADED",
+  "name": "nimbus/spot-bridge",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "instanceName": "",
+  "description": "ros noetic spot-bridge.\nLicense: LGPL\nGIT: https://github.com/heuristicus/spot_ros",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "build": ""
+  },
+  "start": "START_MODE_AUTO",
+  "environment": {
+    "name": "",
+    "ipAddress": "",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
     "message": "",
-    "streams": {
-        "inputStreams": [
-            {
-                "name": "spot_cmd_vel",
-                "type": "",
-                "description": "Command velocity.",
-                "streamMode": "STREAM_MODE_TOPIC",
-                "rosTopic": {
-                    "topic": "/spot/cmd_vel",
-                    "type": "Messages.geometry_msgs.Twist",
-                    "qosProfile": ""
-                },
-                "latched": false,
-                "maxRate": 0,
-                "expectedRate": 0
-            }
-        ],
-        "outputStreams": []
-    },
+    "progress": 0,
     "requiredDevices": [],
-    "ros": {
-        "baseFrame": "base_link",
-        "rate": 10,
-        "publishTfDevices": true,
-        "rosMasterUri": "",
-        "rosIp": "",
-        "autoDetectIp": false
+    "ports": [],
+    "hostIpAddress": "",
+    "variables": [],
+    "dockerInfo": {
+      "image": "cognimbus/spot_ws:latest",
+      "containerId": "",
+      "imageSize": 0,
+      "commands": [
+        "roslaunch", 
+        "spot_driver",
+        "driver.launch",
+        "username:=${username}",
+        "password:=${password}",
+        "hostname:=${hostname}",
+        "--screen"
+      ],
+      "privileged": true,
+      "gpu": false,
+      "networkHost": true,
+      "binds": []
     },
-    "tags": {},
-    "category": "Drivers/Robots",
-    "simulation": false,
-    "pluginFile": "",
-    "license": "LGPL",
-    "id": ""
+    "log": "",
+    "convertedCommands": "",
+    "onExit": "IGNORE"
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "username",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "user"
+      },
+      {
+        "name": "password",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "12345"
+      },
+      {
+        "name": "hostname",
+        "description": "",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "192.168.80.3"
+      }
+    ]
+  },
+  "state": "COMPONENT_STATE_UNLOADED",
+  "message": "",
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "spot_cmd_vel",
+        "type": "",
+        "description": "Command velocity.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/spot/cmd_vel",
+          "type": "Messages.geometry_msgs.Twist",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      }
+    ],
+    "outputStreams": [
+      
+    ]
+  },
+  "requiredDevices": [],
+  "ros": {
+    "baseFrame": "base_link",
+    "rate": 10,
+    "publishTfDevices": true,
+    "rosMasterUri": "",
+    "rosIp": "",
+    "autoDetectIp": false
+  },
+  "tags": {},
+  "category": "Drivers/Robots",
+  "simulation": false,
+  "pluginFile": "",
+  "license": "LGPL",
+  "id": ""
 }
