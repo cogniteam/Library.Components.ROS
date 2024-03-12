@@ -1,0 +1,4 @@
+<launch>
+  <node name="image_rotator_node" pkg="image_rotator" type="image_rotator_node.py" output="screen">
+  </node>
+</launch>
